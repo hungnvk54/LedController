@@ -1,18 +1,18 @@
-"E:\03-DuAn\LedController\RS485\STM8S_StdPeriph_Driver\src\stm8s_tim2.c"
+"E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485\STM8S_StdPeriph_Driver\src\stm8s_tim2.c"
 -std=c99
 -ferror-limit=0
 -I
-E:\03-DuAn\LedController\RS485\STM8S_StdPeriph_Driver\inc
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485\STM8S_StdPeriph_Driver\inc
 -I
-E:\03-DuAn\LedController\RS485
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\inc\c
 -I
-E:\03-DuAn\LedController\RS485\STM8S_StdPeriph_Driver\inc
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485\STM8S_StdPeriph_Driver\inc
 -I
-E:\03-DuAn\LedController\RS485
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

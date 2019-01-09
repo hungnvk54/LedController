@@ -2098,6 +2098,33 @@
         </settings>
     </configuration>
     <group>
+        <name>Command</name>
+        <file>
+            <name>$PROJ_DIR$\Command\commands.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Command\transport.c</name>
+        </file>
+    </group>
+    <group>
+        <name>LedControl</name>
+        <file>
+            <name>$PROJ_DIR$\LedControl\gpio_util.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\LedControl\led_controller.c</name>
+        </file>
+    </group>
+    <group>
+        <name>Node</name>
+        <file>
+            <name>$PROJ_DIR$\Node\nodecontrol.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Node\nodecontrol.h</name>
+        </file>
+    </group>
+    <group>
         <name>StdPeriph_Drivers</name>
         <file>
             <name>$PROJ_DIR$\STM8S_StdPeriph_Driver\src\stm8s_clk.c</name>
@@ -2113,6 +2140,15 @@
         </file>
         <file>
             <name>$PROJ_DIR$\STM8S_StdPeriph_Driver\src\stm8s_uart1.c</name>
+        </file>
+    </group>
+    <group>
+        <name>TimerUtil</name>
+        <file>
+            <name>$PROJ_DIR$\TimerUtil\timer_counter.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\TimerUtil\timer_pwm.c</name>
         </file>
     </group>
     <file>

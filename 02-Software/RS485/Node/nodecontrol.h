@@ -2,6 +2,8 @@
 #ifndef NODE_CONTROL_H
 #define NODE_CONTROL_H
 
+#include "inc.h"
+
 #define MAX_NODES		25
 
 typedef struct {

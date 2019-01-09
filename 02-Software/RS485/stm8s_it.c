@@ -31,6 +31,11 @@
 #include "stm8s_it.h"
 #include "stm8s_tim2.h"
 #include "stm8s_gpio.h"
+#include "stm8s_tim1.h"
+#include "timer_counter.h"
+#include "stm8s_uart1.h"
+#include "transport.h"
+#include "const.h"
 /** @addtogroup Template_Project
   * @{
   */
@@ -230,7 +235,16 @@ INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-  
+  if( TIM1_GetITStatus(TIM1_IT_UPDATE) == SET ) 
+  {
+    // Clear interrupt to prepare next Interrupt
+    TIM1_ClearFlag(TIM1_FLAG_UPDATE);
+    // Counter up
+    Timer_Counter_IncreaseCounter();
+    
+    //Perform task
+    Timer_Counter_PerformTask();
+  }
 }
 
 /**
@@ -277,75 +291,8 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
   * @retval None
   */
 
-#define INTERRUPT_RESOLUTION	10		//us
-#define TIME_PERIOD						100	///1ms = 1KHz
-#define MAX_INCREASE_TIME			150000	//1s
-uint8_t mask = 0;
-uint16_t counter = 0;
-volatile uint16_t off_cycle = 0;
-volatile uint16_t on_cycle = TIME_PERIOD;
-volatile uint32_t time_counter = 0;
-volatile uint16_t cycle_counter = 0;
-volatile uint8_t cycle_type = 0; //0-off, 1-on
-volatile uint8_t on_off = 0;
  INTERRUPT_HANDLER(TIM2_UPD_OVF_BRK_IRQHandler, 13)
  {
-  /* In order to detect unexpected events during development,
-     it is recommended to set a breakpoint on the following instruction.
-  */
-   if( TIM2_GetITStatus(TIM2_IT_UPDATE) == SET ) {
-     //Clear Interrupt Flag
-     TIM2_ClearFlag(TIM2_FLAG_UPDATE);
-     
-     time_counter++;
-      if( cycle_type == 0){
-              off_cycle = (time_counter*TIME_PERIOD)/MAX_INCREASE_TIME;
-              if( time_counter > MAX_INCREASE_TIME) {
-                              cycle_type = 1;
-                              time_counter = 0;
-              }
-              on_cycle = TIME_PERIOD - off_cycle;
-      } else {
-              on_cycle = (time_counter*TIME_PERIOD)/MAX_INCREASE_TIME;
-              if( time_counter > MAX_INCREASE_TIME) {
-                              cycle_type = 0;
-                              time_counter = 0;
-              }
-              off_cycle = TIME_PERIOD - on_cycle;
-      }
-      
-      //on_cycle = TIME_PERIOD/2;
-      //off_cycle = TIME_PERIOD/2;
-      
-      cycle_counter++;
-      if( on_off == 0 ){
-              if( cycle_counter < off_cycle) {
-                      GPIO_Write(GPIOB, 0);
-              } else {
-                      on_off = 1;
-                      cycle_counter = 0;
-              }
-      } else {
-              if( cycle_counter < on_cycle) {
-                      GPIO_Write(GPIOB, 255);
-              } else {
-                      on_off = 0;
-                      cycle_counter = 0;
-              }
-      }
-     
-//     if(counter > 10) {
-//     if( mask == 0 ) {
-//       GPIO_Write(GPIOB, 0);
-//     } else {
-//       GPIO_Write(GPIOB, 255);
-//     }
-//     mask = ~mask;
-//     counter = 0 ;
-//     }
-//     
-//    counter ++;
-   }
  }
 
 /**
@@ -400,6 +347,11 @@ volatile uint8_t on_off = 0;
     /* In order to detect unexpected events during development,
        it is recommended to set a breakpoint on the following instruction.
     */
+   uint8_t data, ret;
+   ret = Transport_TxPop(&data);
+   if( ret == SUCCESS ) {
+    UART1_SendData8(data);
+   }
  }
 
 /**
@@ -412,6 +364,8 @@ volatile uint8_t on_off = 0;
     /* In order to detect unexpected events during development,
        it is recommended to set a breakpoint on the following instruction.
     */
+   uint8_t data = UART1_ReceiveData8();
+   Transport_RxPush(data);
  }
 #endif /* (STM8S208) || (STM8S207) || (STM8S103) || (STM8S001) || (STM8S903) || (STM8AF62Ax) || (STM8AF52Ax) */
 

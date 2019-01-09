@@ -10,4 +10,7 @@
 #define YES		TRUE
 #define NO		FALSE
 
+#define FAILED	FALSE
+#define SUCCESS	TRUE
+
 #endif //CONST_H

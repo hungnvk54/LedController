@@ -31,6 +31,10 @@
 #include "stm8s_gpio.h"
 #include "stm8s_clk.h"
 #include "stm8s_tim2.h"
+#include "gpio_util.h"
+#include "timer_counter.h"
+#include "timer_pwm.h"
+#include "transport.h"
 /* Private defines -----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -45,43 +49,42 @@ void Clock_Config(void) {
   //CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO, CLK_SOURCE_HSI, DISABLE, CLK_CURRENTCLOCKSTATE_DISABLE);
 }
 
-void Tim_Config(void) {
-  TIM2_TimeBaseInit(TIM2_PRESCALER_16, 10);
-  TIM2_ARRPreloadConfig(ENABLE);
-
-  TIM2_ITConfig(TIM2_IT_UPDATE, ENABLE);
-    
-  TIM2_Cmd(ENABLE);
-  //Enable interrupt
-  enableInterrupts();
-}
+//void Tim_Config(void) {
+//  TIM2_TimeBaseInit(TIM2_PRESCALER_16, 10);
+//  TIM2_ARRPreloadConfig(ENABLE);
+//
+//  TIM2_ITConfig(TIM2_IT_UPDATE, ENABLE);
+//    
+//  TIM2_Cmd(ENABLE);
+//  //Enable interrupt
+//  enableInterrupts();
+//}
 
 void main(void)
 {
   /* Infinite loop */
   Clock_Config();
-  GPIO_Init(GPIOB, GPIO_PIN_5,GPIO_MODE_OUT_PP_LOW_FAST);
-  GPIO_Write(GPIOB, 0);
-  uint32_t counter = 0;
-  uint8_t mask = 0;
-  Tim_Config();
-  enableInterrupts();
+  GPIO_Util_Init();
+  Timer_Counter_Init();
+  Timer_PWM_Init();
+  Timer_Counter_AddTask(&Timer_PWM_Update_Period);
+  Transport_Init();
+  
+  uint32_t previous_counter = 0;
+  uint8_t mask = 0 ;
   while (1)
   {
-//    if( counter >= 100000) {
-//        counter = 0;
-//        if( mask == 0) {
-//          GPIO_Write(GPIOB, 0);
-//          mask = 1;
-//        } else {
-//          GPIO_Write(GPIOB, 255);
-//          mask = 0;
-//        }
-//    }
-//    
-//    counter++;
+    if((Timer_Counter_GetCounter()  - previous_counter) > TICK_PER_SECOND) {
+      if( mask == 0 )
+      {
+        GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+      } else {
+        GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+      }
+       mask = !mask;
+      previous_counter = Timer_Counter_GetCounter();
+    }
   }
-  
 }
 
 #ifdef USE_FULL_ASSERT
