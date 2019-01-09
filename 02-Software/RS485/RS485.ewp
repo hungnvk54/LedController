@@ -262,6 +262,7 @@
                     <state>$PROJ_DIR$\Node</state>
                     <state>$PROJ_DIR$\TimerUtil</state>
                     <state>$PROJ_DIR$\LedControl</state>
+                    <state>$PROJ_DIR$\IRInterface</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -1615,6 +1616,15 @@
         </file>
         <file>
             <name>$PROJ_DIR$\Command\transport.c</name>
+        </file>
+    </group>
+    <group>
+        <name>IRInterface</name>
+        <file>
+            <name>$PROJ_DIR$\IRInterface\ir_receiver.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\IRInterface\ir_transmitter.c</name>
         </file>
     </group>
     <group>

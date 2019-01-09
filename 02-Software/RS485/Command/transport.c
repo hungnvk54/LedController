@@ -61,7 +61,7 @@ void Transport_Init(void)
                 UART1_SYNCMODE_CLOCK_DISABLE, UART1_MODE_TXRX_ENABLE);
     /* Enable UART1 Transmit interrupt*/
     UART1_ITConfig(UART1_IT_TXE, ENABLE);
-    UART1_ITConfig(UART1_IT_RXNE, ENABLE);
+    UART1_ITConfig(UART1_IT_RXNE_OR, ENABLE);
 }
 
 void Transport_TxPush(uint8_t data)

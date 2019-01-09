@@ -39,12 +39,14 @@ void Timer_PWM_Init()
   // Clock scale = 16
   // Counter Period = 100  ==> PWM Period = 100 us
   TIM2_TimeBaseInit(TIM2_PRESCALER_16, TIMER_PWM_TICK);
+  TIM2_OC1Init(TIM2_OCMODE_PWM1,TIM2_OUTPUTSTATE_ENABLE,50,TIM2_OCPOLARITY_HIGH);
+  TIM2_OC1PreloadConfig(ENABLE);
+  
   TIM2_ARRPreloadConfig(ENABLE);
-  TIM2_OC1Init(TIM2_OCMODE_PWM1,TIM2_OUTPUTSTATE_ENABLE,0,TIM2_OCPOLARITY_HIGH);
-    
   TIM2_Cmd(ENABLE);
   
   if( change_factor == 0 ) change_factor = 0.001;
+  
 }
 void Timer_PWM_Start(GPIO_State_TypeDef state)
 {
@@ -55,11 +57,19 @@ void Timer_PWM_Update_Period(void *args)
   (void)args;
   if( GPIO_STATE_ON == gpio_state )
   {
-    if( active_period >= 1 ) return;
+    if( active_period >= 1 ) 
+    {
+      gpio_state = GPIO_STATE_OFF;
+      return;
+    }
     active_period += change_factor;
   } else
   {
-    if( active_period <= 0 ) return;
+    if( active_period <= 0 ) 
+    {
+      gpio_state = GPIO_STATE_ON;
+      return;
+    }
     active_period -= change_factor;
   }
   update_duty_cycle();

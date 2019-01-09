@@ -36,6 +36,7 @@
 #include "stm8s_uart1.h"
 #include "transport.h"
 #include "const.h"
+#include "gpio_util.h"
 /** @addtogroup Template_Project
   * @{
   */
