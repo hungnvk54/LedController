@@ -35,6 +35,8 @@
 #include "timer_counter.h"
 #include "timer_pwm.h"
 #include "transport.h"
+#include "ir_transmitter.h"
+#include "ir_receiver.h"
 /* Private defines -----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -64,7 +66,7 @@ void main(void)
 {
   /* Infinite loop */
   Clock_Config();
-  GPIO_Util_Init();
+//  GPIO_Util_Init();
   Timer_Counter_Init();
   Timer_PWM_Init();
   Timer_Counter_AddTask(&Timer_PWM_Update_Period);
@@ -81,7 +83,7 @@ void main(void)
       } else {
         GPIO_Util_WriteLow(LED_PORT,LED_PIN);
       }
-       mask = !mask;
+      mask = !mask;
       previous_counter = Timer_Counter_GetCounter();
     }
   }

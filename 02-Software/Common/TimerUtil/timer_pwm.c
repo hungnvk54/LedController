@@ -25,6 +25,7 @@
 double active_period = 0;//[Value from 0 - 1]
 double change_factor = 0;
 GPIO_State_TypeDef gpio_state = GPIO_STATE_OFF;
+FunctionalState is_configured = DISABLE;
 /* Private function prototypes -----------------------------------------------*/
 void update_duty_cycle();
 /* Private functions ---------------------------------------------------------*/
@@ -38,16 +39,34 @@ void Timer_PWM_Init()
   // Fclk = 16MHz
   // Clock scale = 16
   // Counter Period = 100  ==> PWM Period = 100 us
-  TIM2_TimeBaseInit(TIM2_PRESCALER_16, TIMER_PWM_TICK);
   TIM2_OC1Init(TIM2_OCMODE_PWM1,TIM2_OUTPUTSTATE_ENABLE,50,TIM2_OCPOLARITY_HIGH);
   TIM2_OC1PreloadConfig(ENABLE);
   
-  TIM2_ARRPreloadConfig(ENABLE);
-  TIM2_Cmd(ENABLE);
+  if( DISABLE == is_configured ){
+    TIM2_TimeBaseInit(TIM2_PRESCALER_16, TIMER_PWM_TICK);
+    TIM2_ARRPreloadConfig(ENABLE);
+    TIM2_Cmd(ENABLE);
+    is_configured = ENABLE;
+  }
   
   if( change_factor == 0 ) change_factor = 0.001;
   
 }
+
+void Timer_PWM_IR_Transmitter_Init()
+{
+  //5KHz Pulse
+  TIM2_OC2Init(TIM2_OCMODE_PWM1,TIM2_OUTPUTSTATE_ENABLE,TIMER_PWM_TICK/2,TIM2_OCPOLARITY_HIGH);
+  TIM2_OC2PreloadConfig(ENABLE);
+  
+  if( DISABLE == is_configured ){
+    TIM2_TimeBaseInit(TIM2_PRESCALER_16, TIMER_PWM_TICK);
+    TIM2_ARRPreloadConfig(ENABLE);
+    TIM2_Cmd(ENABLE);
+    is_configured = ENABLE;
+  }
+}
+
 void Timer_PWM_Start(GPIO_State_TypeDef state)
 {
   gpio_state = state;

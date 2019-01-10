@@ -47,7 +47,6 @@ void Timer_Counter_Init()
   //Init Timer 1 to Counter the counter variable
   timer_counter = 0;
   Timer_Connter_Init_Timer();
-  
 }
 uint32_t Timer_Counter_GetCounter()
 {

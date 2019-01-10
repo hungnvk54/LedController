@@ -20,5 +20,7 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
+void IR_Receiver_Init(void);
+
 #endif /* __IR_RECEIVER_H */
 

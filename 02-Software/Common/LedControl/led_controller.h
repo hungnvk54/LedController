@@ -25,6 +25,8 @@ typedef enum {
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
+void Led_Control_Init(Control_Mode_TypeDef mode);
+
 void Led_Control_Cmd( GPIO_TypeDef port, GPIO_Pin_TypeDef pin,  \
                     Control_Mode_TypeDef mode, GPIO_State_TypeDef state
                     );

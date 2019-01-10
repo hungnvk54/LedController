@@ -10,6 +10,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "led_controller.h"
+#include "timer_pwm.h"
 /** @addtogroup Template_Project
   * @{
   */
@@ -43,7 +44,7 @@ void Led_Control_Cmd( GPIO_TypeDef port, GPIO_Pin_TypeDef pin,  \
     Led_Control_Immediate(state);
   } else if( CONTROL_MODE_IMMEDIATE == mode )
   {
-    
+    Timer_PWM_Start(state);
   }
 }
 
@@ -55,6 +56,16 @@ void Led_Control_Immediate(GPIO_State_TypeDef state)
   } else 
   {
     GPIO_WriteLow(LED_PORT,LED_PIN);
+  }
+}
+
+void Led_Control_Init(Control_Mode_TypeDef mode)
+{
+  if( CONTROL_MODE_IMMEDIATE == mode )
+  {
+    GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
+  } else {
+    Timer_PWM_Init();
   }
 }
 

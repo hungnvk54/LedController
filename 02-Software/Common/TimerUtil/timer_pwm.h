@@ -24,5 +24,8 @@ void Timer_PWM_Init();
 void Timer_PWM_SetChangePeriod(uint16_t period_in_ms);
 void Timer_PWM_Start(GPIO_State_TypeDef state);
 void Timer_PWM_Update_Period(void *args);
+
+//For the IR Pulse generator
+void Timer_PWM_IR_Transmitter_Init();
 #endif /* __TIMER_PWM_H */
 
