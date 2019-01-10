@@ -25,7 +25,6 @@ uint8_t cmd_wr_idx=0, cmd_rd_idx = 0, cmd_cnt=0;
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 uint8_t cmd_push(Command_TypeDef cmd);
-uint8_t cmd_pop(Command_TypeDef *cmd);
 /* Private functions ---------------------------------------------------------*/
 uint8_t cmd_push(Command_TypeDef cmd)
 {
@@ -37,7 +36,7 @@ uint8_t cmd_push(Command_TypeDef cmd)
   if( cmd_wr_idx >= MAX_COMMAND_BUFFER_SIZE ) cmd_wr_idx = 0 ;
   return SUCCESS;
 }
-uint8_t cmd_pop(Command_TypeDef *cmd)
+uint8_t Command_PopCommand(Command_TypeDef *cmd)
 {
   if( cmd_cnt == 0 ) return FAILED;
   *cmd = commands[cmd_rd_idx];
