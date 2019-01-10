@@ -9,27 +9,18 @@
   */ 
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __LED_CONTROLLER_H
-#define __LED_CONTROLLER_H
+#ifndef __TASK_MANAGER_H
+#define __TASK_MANAGER_H
 
 /* Includes ------------------------------------------------------------------*/
-#include "gpio_util.h"
+#include "task.h"
 
 /* Exported types ------------------------------------------------------------*/
-typedef enum {
-  CONTROL_MODE_DIMMING,
-  CONTROL_MODE_IMMEDIATE
-} Control_Mode_TypeDef;
-
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+void Task_Manager_AddTask(Task *task);
+void Task_Manager_PerformTask(void);
 
-void Led_Control_Init(Control_Mode_TypeDef mode);
-
-void Led_Control_Cmd( GPIO_TypeDef port, GPIO_Pin_TypeDef pin,  \
-                      GPIO_State_TypeDef state
-                    );
-Control_Mode_TypeDef Led_Control_GetMode(void);
-#endif /* __LED_CONTROLLER_H */
+#endif /* __TASK_MANAGER_H */
 

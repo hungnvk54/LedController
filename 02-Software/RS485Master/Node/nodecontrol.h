@@ -14,8 +14,8 @@ typedef struct {
 } Nodes_t;
 
 
-void init_nodes(void);
-void detect_nodes(void);
+void Node_Control_InitNodes(void);
+void Node_Control_DetectNodes(void);
 
 
 #endif //NODE_CONTROL_H

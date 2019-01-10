@@ -61,7 +61,7 @@ typedef struct  {
 /* Exported functions ------------------------------------------------------- */
 
 void Command_SendCommand(Command_TypeDef cmd);
-void Command_PerformTask(void *args);
+void Command_Task(void *args);
 uint8_t Command_PopCommand(Command_TypeDef *cmd);
 
 #endif /* __COMMANDS_H */

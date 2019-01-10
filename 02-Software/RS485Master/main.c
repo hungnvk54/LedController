@@ -37,54 +37,83 @@
 #include "transport.h"
 #include "ir_transmitter.h"
 #include "ir_receiver.h"
+#include "taskmanager.h"
+#include "led_controller.h"
+#include "commands.h"
+#include "nodecontrol.h"
 /* Private defines -----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
+void System_Init();
+void Clock_Config(void);
+void Task_Init(void);
+void Test_Task(void *args);
 /* Private functions ---------------------------------------------------------*/
 
-void Clock_Config(void) {
-//  CLK_DeInit();
+void System_Init()
+{
+  Clock_Config();
+  Timer_Counter_Init();
+  Timer_PWM_Init();
+  Transport_Init();
+  IR_Receiver_Init();
+  IR_Transmitter_Init(IR_OUTPUT_MODE_PWM);
+  Led_Control_Init(CONTROL_MODE_DIMMING);
   
+  ///Init node control
+  Node_Control_InitNodes();
+}
+    
+void Clock_Config(void) { 
+  CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
   CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
-
-//  CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
   
-  //CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO, CLK_SOURCE_HSI, DISABLE, CLK_CURRENTCLOCKSTATE_DISABLE);
 }
 
-//void Tim_Config(void) {
-//  TIM2_TimeBaseInit(TIM2_PRESCALER_16, 10);
-//  TIM2_ARRPreloadConfig(ENABLE);
-//
-//  TIM2_ITConfig(TIM2_IT_UPDATE, ENABLE);
-//    
-//  TIM2_Cmd(ENABLE);
-//  //Enable interrupt
-//  enableInterrupts();
-//}
+void Task_Init(void)
+{
+  if( IR_OUTPUT_MODE_PWM == IR_Transmitter_GetMode()){
+    Task_Manager_AddTask(&Timer_PWM_Update_Period);
+  }
+  if( CONTROL_MODE_DIMMING == Led_Control_GetMode())
+  {
+    Task_Manager_AddTask(&IR_Transmitter_Task);
+  }
+  
+  Task_Manager_AddTask(&Command_Task); /* This task will get data from the 
+                                        RX buffer then process command */
+  Task_Manager_AddTask(&Test_Task);
+}
+
+void Test_Task(void *args)
+{
+  static uint16_t counter = 0;
+  if( ++counter == 500) {
+    GPIO_Util_Toggle(LED_PORT,LED_PIN);
+    counter = 0; 
+  }
+}
 
 void main(void)
 {
   /* Infinite loop */
-  Clock_Config();
-//  GPIO_Util_Init();
-  Timer_Counter_Init();
-  Timer_PWM_Init();
-  Timer_Counter_AddTask(&Timer_PWM_Update_Period);
-  Transport_Init();
+  System_Init();
+  Task_Init();
   
+//  GPIO_Util_Init();
+  GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
+
   uint32_t previous_counter = 0;
-  uint8_t mask = 0 ;
   while (1)
   {
-    if((Timer_Counter_GetCounter()  - previous_counter) > TICK_PER_SECOND) {
-      if( mask == 0 )
-      {
-        GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
-      } else {
-        GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+    if( previous_counter <= Timer_Counter_GetCounter() )
+    {
+      if((Timer_Counter_GetCounter()  - previous_counter) > TICK_IN_MS) { //TICK_IN_MS
+        Task_Manager_PerformTask();
+        previous_counter = Timer_Counter_GetCounter();
       }
-      mask = !mask;
-      previous_counter = Timer_Counter_GetCounter();
+    } else {
+      ///Counter Overflow - Update the previous_counter value
+        previous_counter = Timer_Counter_GetCounter();
     }
   }
 }
@@ -102,10 +131,15 @@ void assert_failed(u8* file, u32 line)
 { 
   /* User can add his own implementation to report the file name and line number,
      ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-
+  static uint32_t counter = 0;
+  
   /* Infinite loop */
   while (1)
   {
+    if( ++counter == 10000) {
+    GPIO_Util_Toggle(LED_PORT,LED_PIN);
+    counter = 0; 
+  }
   }
 }
 #endif

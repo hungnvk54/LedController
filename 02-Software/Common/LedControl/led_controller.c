@@ -19,6 +19,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+static Control_Mode_TypeDef running_mode;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 void Led_Control_Immediate(GPIO_State_TypeDef state);
@@ -35,14 +36,14 @@ void Led_Control_Immediate(GPIO_State_TypeDef state);
   * On/Off
   * @retval None
   */
-void Led_Control_Cmd( GPIO_TypeDef port, GPIO_Pin_TypeDef pin,  \
-                    Control_Mode_TypeDef mode, GPIO_State_TypeDef state
+void Led_Control_Cmd( GPIO_TypeDef port, GPIO_Pin_TypeDef pin,\
+                      GPIO_State_TypeDef state
                     )
 {
-  if( CONTROL_MODE_DIMMING == mode )
+  if( CONTROL_MODE_DIMMING == running_mode )
   {
     Led_Control_Immediate(state);
-  } else if( CONTROL_MODE_IMMEDIATE == mode )
+  } else if( CONTROL_MODE_IMMEDIATE == running_mode )
   {
     Timer_PWM_Start(state);
   }
@@ -67,6 +68,12 @@ void Led_Control_Init(Control_Mode_TypeDef mode)
   } else {
     Timer_PWM_Init();
   }
+  running_mode = mode;
+}
+
+Control_Mode_TypeDef Led_Control_GetMode(void)
+{
+  return running_mode;
 }
 
 /**

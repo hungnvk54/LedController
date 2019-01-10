@@ -26,6 +26,8 @@ typedef enum {
 #define IR_TRANSMITTER_PIN              GPIO_PIN_3
 /* Exported functions ------------------------------------------------------- */
 void IR_Transmitter_Init(IR_Output_Mode_TypeDef mode);
-void IR_Transmitter_PerformTask(void *args);
+void IR_Transmitter_SetPrescaler(uint8_t scale);
+void IR_Transmitter_Task(void *args);
+IR_Output_Mode_TypeDef IR_Transmitter_GetMode(void);
 #endif /* __IR_TRANSMITTER_H */
 

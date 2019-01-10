@@ -5,7 +5,7 @@
   * @version 
   * @date    
   * @brief   
-  * ******************************************************************************
+  * ****************************************************************************
   */ 
 
 /* Includes ------------------------------------------------------------------*/
@@ -17,13 +17,9 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
-#define MAX_TASK                10
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-// External Task
-Timer_Counter_Task *tasks[MAX_TASK];
-uint8_t task_Index = 0;
-static uint32_t timer_counter;
+static uint32_t timer_counter ;
 /* Private function prototypes -----------------------------------------------*/
 void Timer_Connter_Init_Timer();
 /* Private functions ---------------------------------------------------------*/
@@ -34,7 +30,7 @@ void Timer_Connter_Init_Timer()
    * Period = 1000
    * Prescale = 16 ==> Interrupt Period 1ms
  */
-  TIM1_TimeBaseInit(16, TIM1_COUNTERMODE_UP, 1000, 0);
+  TIM1_TimeBaseInit(16, TIM1_COUNTERMODE_UP, 50, 0);
   TIM1_ITConfig(TIM1_IT_UPDATE, ENABLE);
   TIM1_Cmd(ENABLE);
   
@@ -65,19 +61,6 @@ void Timer_Counter_IncreaseCounter()
   timer_counter++;
 }
 
-void Timer_Counter_AddTask(Timer_Counter_Task *task)
-{
-  tasks[task_Index++] = task;
-}
-
-void Timer_Counter_PerformTask(void)
-{
-  uint8_t index;
-  for( index = 0; index < task_Index; ++index )
-  {
-    tasks[index](0);
-  }
-}
 /**
   * @}
   */

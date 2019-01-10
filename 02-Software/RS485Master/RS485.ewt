@@ -2152,6 +2152,12 @@
         </file>
     </group>
     <group>
+        <name>TaskManager</name>
+        <file>
+            <name>$PROJ_DIR$\..\Common\Task\TaskManager.c</name>
+        </file>
+    </group>
+    <group>
         <name>TimerUtil</name>
         <file>
             <name>$PROJ_DIR$\..\Common\TimerUtil\timer_counter.c</name>

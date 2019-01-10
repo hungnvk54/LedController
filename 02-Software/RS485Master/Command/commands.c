@@ -61,7 +61,7 @@ void sendCommand(Command_TypeDef cmd)
   Transport_Write(buffer, COMMAND_SIZE);
 }
 
-void Command_PerformTask(void *args)
+void Command_Task(void *args)
 {
   /** Query data from transporter, then decode data to find the command
    * Command will be pushed into the internal buffer 

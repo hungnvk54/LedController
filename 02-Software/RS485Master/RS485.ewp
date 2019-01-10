@@ -258,13 +258,14 @@
                     <name>CCIncludePath2</name>
                     <state>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\inc</state>
                     <state>$PROJ_DIR$</state>
-                    <state>$PROJ_DIR$\..\Common\Command</state>
-                    <state>$PROJ_DIR$\..\Common\Node</state>
+                    <state>$PROJ_DIR$\Command</state>
+                    <state>$PROJ_DIR$\Node</state>
                     <state>$PROJ_DIR$\..\Common\TimerUtil</state>
                     <state>$PROJ_DIR$\..\Common\LedControl</state>
                     <state>$PROJ_DIR$\..\Common\IRInterface</state>
                     <state>$PROJ_DIR$\..\Common</state>
                     <state>$PROJ_DIR$\..\Common\Transport</state>
+                    <state>$PROJ_DIR$\..\Common\Task</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -1663,6 +1664,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\src\stm8s_uart1.c</name>
+        </file>
+    </group>
+    <group>
+        <name>TaskManager</name>
+        <file>
+            <name>$PROJ_DIR$\..\Common\Task\TaskManager.c</name>
         </file>
     </group>
     <group>

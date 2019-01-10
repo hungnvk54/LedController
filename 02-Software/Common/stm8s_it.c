@@ -242,9 +242,6 @@ INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
     TIM1_ClearFlag(TIM1_FLAG_UPDATE);
     // Counter up
     Timer_Counter_IncreaseCounter();
-    
-    //Perform task
-    Timer_Counter_PerformTask();
   }
 }
 

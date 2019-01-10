@@ -38,7 +38,7 @@ void tx_interrupt_config(FunctionalState state)
 }
 void rx_interrupt_config(FunctionalState state)
 {
-    UART1_ITConfig(UART1_IT_RXNE, state);
+    UART1_ITConfig(UART1_IT_RXNE_OR, state);
 }
 
 /* Public functions ----------------------------------------------------------*/
@@ -91,12 +91,11 @@ uint8_t Transport_TxPop(uint8_t *data)
 void Transport_RxPush(uint8_t data)
 {
   if( rx_cnt >= MAX_TX_BUFFER ) return; //Wait here until data is send
-  rx_interrupt_config(DISABLE);
   rx_buff[rx_wr_idx] = data;
   ++rx_cnt;
   ++rx_wr_idx;
   if( rx_wr_idx >= MAX_RX_BUFFER ) rx_wr_idx = 0;
-  rx_interrupt_config(ENABLE);
+  
 }
 uint8_t Transport_RxPop(uint8_t *data)
 {
@@ -104,10 +103,12 @@ uint8_t Transport_RxPop(uint8_t *data)
   {
     return FAILED;
   }
+  rx_interrupt_config(DISABLE);
   *data = rx_buff[rx_rd_idx];
   --rx_cnt;
   ++rx_rd_idx;
   if( MAX_RX_BUFFER == rx_rd_idx ) rx_rd_idx = 0;
+  rx_interrupt_config(ENABLE);
   return SUCCESS;
 }
 
