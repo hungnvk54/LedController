@@ -10,7 +10,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "taskmanager.h"
-#include "stm8s.h"
+#include "inc.h"
 /** @addtogroup Template_Project
   * @{
   */

@@ -41,6 +41,7 @@
 #include "led_controller.h"
 #include "commands.h"
 #include "nodecontrol.h"
+#include "nodestatemanager.h"
 /* Private defines -----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 void System_Init();
@@ -61,12 +62,12 @@ void System_Init()
   
   ///Init node control
   Node_Control_InitNodes();
+  Node_State_Manager_Init();
 }
     
 void Clock_Config(void) { 
   CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
   CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
-  
 }
 
 void Task_Init(void)
@@ -81,6 +82,9 @@ void Task_Init(void)
   
   Task_Manager_AddTask(&Command_Task); /* This task will get data from the 
                                         RX buffer then process command */
+//  Task_Manager_AddTask(&Node_Control_Task); /*This task will process command
+//                                            which is received from Network */
+  Task_Manager_AddTask(&Node_State_Manager_Task);
   Task_Manager_AddTask(&Test_Task);
 }
 

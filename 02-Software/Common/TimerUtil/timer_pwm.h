@@ -13,7 +13,7 @@
 #define __TIMER_PWM_H
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm8s.h"
+#include "inc.h"
 #include "gpio_util.h"
 
 /* Exported types ------------------------------------------------------------*/

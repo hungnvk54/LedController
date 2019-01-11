@@ -13,4 +13,7 @@
 #define FAILED	FALSE
 #define SUCCESS	TRUE
 
+#define LB_UINT8	0x0F
+#define UB_UINT8	0xF0
+
 #endif //CONST_H

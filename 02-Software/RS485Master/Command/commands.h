@@ -46,7 +46,7 @@ typedef struct  {
   uint8_t header;
   Node_Address_TypeDef address;
   Command_Code_TypeDef code;
-  Command_Data_TypeDef data;
+  uint8_t data;
 } Command_TypeDef;
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/

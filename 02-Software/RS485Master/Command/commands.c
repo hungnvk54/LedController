@@ -47,7 +47,7 @@ uint8_t Command_PopCommand(Command_TypeDef *cmd)
 }
 /* Public functions ----------------------------------------------------------*/
 
-void sendCommand(Command_TypeDef cmd)
+void Command_SendCommand(Command_TypeDef cmd)
 {
   ///Prepare the command
   uint8_t buffer[COMMAND_SIZE];
@@ -77,7 +77,7 @@ void Command_Task(void *args)
         Transport_RxPop(&data);
         cmd.code = (Command_Code_TypeDef)data;
         Transport_RxPop(&data);
-        cmd.data = (Command_Data_TypeDef)data;
+        cmd.data = data;
         
         cmd_push(cmd);
       }

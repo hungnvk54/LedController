@@ -16,14 +16,18 @@
         <ShowSource>1</ShowSource>
     </Trace1>
     <DebugChecksum>
-        <Checksum>570296539</Checksum>
+        <Checksum>1674940546</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>_ 0</Enabled>
     </CodeCoverage>
     <Disassembly>
         <InstrCount>0</InstrCount>
+        <MixedMode>1</MixedMode>
     </Disassembly>
+    <CallStack>
+        <ShowArgs>0</ShowArgs>
+    </CallStack>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>1</Mode>
@@ -46,9 +50,6 @@
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
     </TermIOLog>
-    <CallStack>
-        <ShowArgs>0</ShowArgs>
-    </CallStack>
     <InterruptLog>
         <LogEnabled>0</LogEnabled>
         <GraphEnabled>0</GraphEnabled>

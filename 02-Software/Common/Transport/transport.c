@@ -90,7 +90,7 @@ uint8_t Transport_TxPop(uint8_t *data)
 
 void Transport_RxPush(uint8_t data)
 {
-  if( rx_cnt >= MAX_TX_BUFFER ) return; //Wait here until data is send
+  while( rx_cnt >= MAX_TX_BUFFER ); //Wait here until data is send
   rx_buff[rx_wr_idx] = data;
   ++rx_cnt;
   ++rx_wr_idx;
@@ -118,6 +118,7 @@ void Transport_Write(uint8_t *data, uint16_t length)
   while( length > 0)
   {
     Transport_TxPush(data[read_idx++]);
+    length--;
   }
 }
 uint16_t Transport_Read(uint8_t *data, uint16_t length)

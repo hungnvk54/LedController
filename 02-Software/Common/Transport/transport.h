@@ -13,7 +13,7 @@
 #define __TRANSPORT_H
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm8s.h"
+#include "inc.h"
 #include "const.h"
 
 /* Exported types ------------------------------------------------------------*/

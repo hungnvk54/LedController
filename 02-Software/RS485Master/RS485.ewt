@@ -2127,7 +2127,7 @@
             <name>$PROJ_DIR$\Node\nodecontrol.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\Node\nodecontrol.h</name>
+            <name>$PROJ_DIR$\Node\nodestatemanager.c</name>
         </file>
     </group>
     <group>
