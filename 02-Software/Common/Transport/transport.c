@@ -11,6 +11,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "transport.h"
 #include "stm8s_uart1.h"
+#include "gpio_util.h"
 /** @addtogroup Template_Project
   * @{
   */
@@ -22,6 +23,9 @@
 #define                 MAX_TX_BUFFER           64
 
 #define                 BAUDRATE                19200
+    
+#define                 OUTPUT_DRIVER_PORT      GPIOA
+#define                 OUTPUT_DRIVER_PIN       GPIO_PIN_2
 /* Private variables ---------------------------------------------------------*/
 uint8_t tx_buff[MAX_TX_BUFFER];
 uint8_t tx_wr_idx = 0, tx_rd_idx= 0, tx_cnt = 0;
@@ -34,7 +38,7 @@ void rx_interrupt_config(FunctionalState state);
 /* Private functions ---------------------------------------------------------*/
 void tx_interrupt_config(FunctionalState state)
 {
-    UART1_ITConfig(UART1_IT_TXE, state);
+    UART1_ITConfig(UART1_IT_TC, state);
 }
 void rx_interrupt_config(FunctionalState state)
 {
@@ -60,8 +64,12 @@ void Transport_Init(void)
     UART1_Init((uint32_t)BAUDRATE, UART1_WORDLENGTH_8D, UART1_STOPBITS_1, UART1_PARITY_NO,
                 UART1_SYNCMODE_CLOCK_DISABLE, UART1_MODE_TXRX_ENABLE);
     /* Enable UART1 Transmit interrupt*/
-    UART1_ITConfig(UART1_IT_TXE, ENABLE);
+    UART1_ITConfig(UART1_IT_TC, ENABLE);
     UART1_ITConfig(UART1_IT_RXNE_OR, ENABLE);
+    
+    /* Config Driver Pin to Control MAX485 IC */
+    GPIO_Util_Init_As_Out(OUTPUT_DRIVER_PORT,OUTPUT_DRIVER_PIN);
+    GPIO_Util_WriteLow(OUTPUT_DRIVER_PORT,OUTPUT_DRIVER_PIN);
 }
 
 void Transport_TxPush(uint8_t data)
@@ -144,6 +152,14 @@ uint8_t Transport_GetRxBufferSize(void)
   return rx_cnt;
 }
 
+void Transport_OutputEnable(void)
+{
+  GPIO_Util_WriteHigh(OUTPUT_DRIVER_PORT,OUTPUT_DRIVER_PIN);
+}
+void Transport_OutputDisable(void)
+{
+  GPIO_Util_WriteLow(OUTPUT_DRIVER_PORT,OUTPUT_DRIVER_PIN);
+}
 /**
   * @}
   */

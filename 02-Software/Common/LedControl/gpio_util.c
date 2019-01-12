@@ -37,7 +37,7 @@
 //}
 void GPIO_Util_Init_As_Out(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
 {
-  GPIO_Init(port,pin,GPIO_MODE_OUT_OD_LOW_SLOW);
+  GPIO_Init(port,pin,GPIO_MODE_OUT_PP_LOW_FAST);
 }
 void GPIO_Util_Init_As_In(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
 {

@@ -32,5 +32,7 @@ void Transport_Write(uint8_t *data, uint16_t length);
 uint16_t Transport_Read(uint8_t *data, uint16_t length);
 
 uint8_t Transport_GetRxBufferSize(void);
+void Transport_OutputEnable(void);
+void Transport_OutputDisable(void);
 #endif /* __TRANSPORT_H */
 

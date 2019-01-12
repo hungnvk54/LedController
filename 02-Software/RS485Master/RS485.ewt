@@ -2100,7 +2100,7 @@
     <group>
         <name>Command</name>
         <file>
-            <name>$PROJ_DIR$\Command\commands.c</name>
+            <name>$PROJ_DIR$\..\Common\Command\commands.c</name>
         </file>
     </group>
     <group>
@@ -2127,7 +2127,7 @@
             <name>$PROJ_DIR$\Node\nodecontrol.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\Node\nodestatemanager.c</name>
+            <name>$PROJ_DIR$\..\Common\NodeStateManager\nodestatemanager.c</name>
         </file>
     </group>
     <group>

@@ -189,6 +189,7 @@
                 <option>
                     <name>CCDefines</name>
                     <state>STM8S003</state>
+                    <state>NDEBUG</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
@@ -259,12 +260,14 @@
                     <state>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\inc</state>
                     <state>$PROJ_DIR$</state>
                     <state>$PROJ_DIR$\..\Common\Command</state>
-                    <state>$PROJ_DIR$\..\Common\Node</state>
+                    <state>$PROJ_DIR$\Node</state>
                     <state>$PROJ_DIR$\..\Common\TimerUtil</state>
                     <state>$PROJ_DIR$\..\Common\LedControl</state>
                     <state>$PROJ_DIR$\..\Common\IRInterface</state>
                     <state>$PROJ_DIR$\..\Common</state>
                     <state>$PROJ_DIR$\..\Common\Transport</state>
+                    <state>$PROJ_DIR$\..\Common\Task</state>
+                    <state>$PROJ_DIR$\..\Common\NodeStateManager</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -286,11 +289,11 @@
                 </option>
                 <option>
                     <name>IccUseExtraOptions</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IccExtraOptions</name>
-                    <state></state>
+                    <state>--no_path_in_file_macros</state>
                 </option>
                 <option>
                     <name>IccLang</name>
@@ -1614,7 +1617,7 @@
     <group>
         <name>Command</name>
         <file>
-            <name>$PROJ_DIR$\Command\commands.c</name>
+            <name>$PROJ_DIR$\..\Common\Command\commands.c</name>
         </file>
     </group>
     <group>
@@ -1641,11 +1644,14 @@
             <name>$PROJ_DIR$\Node\nodecontrol.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\Node\nodecontrol.h</name>
+            <name>$PROJ_DIR$\..\Common\NodeStateManager\nodestatemanager.c</name>
         </file>
     </group>
     <group>
         <name>StdPeriph_Drivers</name>
+        <file>
+            <name>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\src\stm8s_adc1.c</name>
+        </file>
         <file>
             <name>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\src\stm8s_clk.c</name>
         </file>
@@ -1660,6 +1666,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\src\stm8s_uart1.c</name>
+        </file>
+    </group>
+    <group>
+        <name>TaskManager</name>
+        <file>
+            <name>$PROJ_DIR$\..\Common\Task\TaskManager.c</name>
         </file>
     </group>
     <group>

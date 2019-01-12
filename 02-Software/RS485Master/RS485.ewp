@@ -258,7 +258,7 @@
                     <name>CCIncludePath2</name>
                     <state>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\inc</state>
                     <state>$PROJ_DIR$</state>
-                    <state>$PROJ_DIR$\Command</state>
+                    <state>$PROJ_DIR$\..\Common\Command</state>
                     <state>$PROJ_DIR$\Node</state>
                     <state>$PROJ_DIR$\..\Common\TimerUtil</state>
                     <state>$PROJ_DIR$\..\Common\LedControl</state>
@@ -266,6 +266,7 @@
                     <state>$PROJ_DIR$\..\Common</state>
                     <state>$PROJ_DIR$\..\Common\Transport</state>
                     <state>$PROJ_DIR$\..\Common\Task</state>
+                    <state>$PROJ_DIR$\..\Common\NodeStateManager</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -1073,9 +1074,10 @@
                     <state>$PROJ_DIR$\..\Common\Task</state>
                     <state>$PROJ_DIR$\..\Common\TimerUtil</state>
                     <state>$PROJ_DIR$\..\Common\Transport</state>
-                    <state>$PROJ_DIR$\Command</state>
+                    <state>$PROJ_DIR$\..\Common\Command</state>
                     <state>$PROJ_DIR$\Node</state>
                     <state>$PROJ_DIR$\..\Common</state>
+                    <state>$PROJ_DIR$\..\Common\NodeStateManager</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -1624,7 +1626,7 @@
     <group>
         <name>Command</name>
         <file>
-            <name>$PROJ_DIR$\Command\commands.c</name>
+            <name>$PROJ_DIR$\..\Common\Command\commands.c</name>
         </file>
     </group>
     <group>
@@ -1651,7 +1653,7 @@
             <name>$PROJ_DIR$\Node\nodecontrol.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\Node\nodestatemanager.c</name>
+            <name>$PROJ_DIR$\..\Common\NodeStateManager\nodestatemanager.c</name>
         </file>
     </group>
     <group>

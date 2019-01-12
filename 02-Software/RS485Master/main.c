@@ -48,6 +48,7 @@ void System_Init();
 void Clock_Config(void);
 void Task_Init(void);
 void Test_Task(void *args);
+void Test_Uart(void *args);
 /* Private functions ---------------------------------------------------------*/
 
 void System_Init()
@@ -85,7 +86,8 @@ void Task_Init(void)
 //  Task_Manager_AddTask(&Node_Control_Task); /*This task will process command
 //                                            which is received from Network */
   Task_Manager_AddTask(&Node_State_Manager_Task);
-  Task_Manager_AddTask(&Test_Task);
+//  Task_Manager_AddTask(&Test_Task);
+  Task_Manager_AddTask(&Test_Uart);
 }
 
 void Test_Task(void *args)
@@ -97,15 +99,39 @@ void Test_Task(void *args)
   }
 }
 
+void Test_Uart(void *args)
+{
+  if(GPIO_ReadInputData(GPIOA) & GPIO_PIN_1) {
+    Transport_TxPush(1);
+//    GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+
+  } else {
+    Transport_TxPush(0);
+//    GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+  }
+  uint8_t data = 0;
+  if( Transport_RxPop(&data) == SUCCESS) {
+    if( data == 1 ) {
+      GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+    } else {
+      GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+    }
+  }
+}
+
 void main(void)
 {
   /* Infinite loop */
   System_Init();
   Task_Init();
   
+  /*For Test Only*/
+  GPIO_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
 //  GPIO_Util_Init();
   GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
-
+//  GPIO_Util_Init_As_Out(GPIOD,GPIO_PIN_3);
+//  GPIO_WriteLow(GPIOD,GPIO_PIN_3);
+  
   uint32_t previous_counter = 0;
   while (1)
   {
