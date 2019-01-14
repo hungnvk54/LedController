@@ -16,11 +16,16 @@
 
 
 /* Exported types ------------------------------------------------------------*/
+typedef enum {
+  IR_HIDDEN, //Tin hieu bi che khuat - khong co tin hieu tai mat nhan
+  IR_SHORT_HIDDEN, //Tin hieu bi che khuat trong khoang thoi gian ngan
+  IR_NOT_HIDDEN //Tin hieu khong bi che khuat.
+} IR_Signal_State_TypeDef;
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
 void IR_Receiver_Init(void);
-
+void IR_Receiver_Task(void *args);
 #endif /* __IR_RECEIVER_H */
 

@@ -58,7 +58,8 @@ void System_Init()
   Timer_PWM_Init();
   Transport_Init();
   IR_Receiver_Init();
-  IR_Transmitter_Init(IR_OUTPUT_MODE_PWM);
+  IR_Transmitter_Init(IR_OUTPUT_MODE_IO);
+//  IR_Transmitter_SetPrescaler(U8_MAX);
   Led_Control_Init(CONTROL_MODE_DIMMING);
   
   ///Init node control
@@ -73,21 +74,22 @@ void Clock_Config(void) {
 
 void Task_Init(void)
 {
-  if( IR_OUTPUT_MODE_PWM == IR_Transmitter_GetMode()){
-    Task_Manager_AddTask(&Timer_PWM_Update_Period);
+  if( IR_OUTPUT_MODE_IO == IR_Transmitter_GetMode()){
+    Task_Manager_AddTask(&IR_Transmitter_Task);
   }
   if( CONTROL_MODE_DIMMING == Led_Control_GetMode())
   {
-    Task_Manager_AddTask(&IR_Transmitter_Task);
+    Task_Manager_AddTask(&Timer_PWM_Update_Period);
   }
   
   Task_Manager_AddTask(&Command_Task); /* This task will get data from the 
                                         RX buffer then process command */
 //  Task_Manager_AddTask(&Node_Control_Task); /*This task will process command
 //                                            which is received from Network */
+  Task_Manager_AddTask(IR_Receiver_Task);
   Task_Manager_AddTask(&Node_State_Manager_Task);
-//  Task_Manager_AddTask(&Test_Task);
-  Task_Manager_AddTask(&Test_Uart);
+  Task_Manager_AddTask(&Test_Task);
+//  Task_Manager_AddTask(&Test_Uart);
 }
 
 void Test_Task(void *args)
@@ -126,12 +128,9 @@ void main(void)
   Task_Init();
   
   /*For Test Only*/
-  GPIO_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
-//  GPIO_Util_Init();
+//  GPIO_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
   GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
-//  GPIO_Util_Init_As_Out(GPIOD,GPIO_PIN_3);
-//  GPIO_WriteLow(GPIOD,GPIO_PIN_3);
-  
+
   uint32_t previous_counter = 0;
   while (1)
   {

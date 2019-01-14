@@ -20,7 +20,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-uint8_t time_prescaler = 1;
+uint8_t time_prescaler = 4;
 IR_Output_Mode_TypeDef running_mode = IR_OUTPUT_MODE_PWM;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -40,14 +40,17 @@ void IR_Transmitter_Init(IR_Output_Mode_TypeDef mode)
 void IR_Transmitter_Task(void *args)
 {
   ///This task is peridically called in 1ms, so The max frequency is 500Hz
-
   if( IR_OUTPUT_MODE_IO == running_mode)
   {
-    static uint8_t counter = 0;
-    counter++;
-    if( counter >= time_prescaler ) {
-      counter = 0;
-      GPIO_Util_Toggle(IR_TRANSMITTER_PORT, IR_TRANSMITTER_PIN);
+    if( time_prescaler == U8_MAX) {
+      GPIO_Util_WriteLow(IR_TRANSMITTER_PORT,IR_TRANSMITTER_PIN);
+    } else {
+      static uint8_t counter = 0;
+      counter++;
+      if( counter >= time_prescaler ) {
+        counter = 0;
+        GPIO_Util_Toggle(IR_TRANSMITTER_PORT, IR_TRANSMITTER_PIN);
+      }
     }
   }
 }

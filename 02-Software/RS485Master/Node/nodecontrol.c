@@ -32,7 +32,7 @@ uint8_t detected_node_index=0;// For detecting node
 uint8_t state_node_query_index=0; // For control state of the node
 Node_Control_State_TypeDef control_state;
 
-uint16_t timeout;
+static uint16_t timeout;
 /* Private function prototypes -----------------------------------------------*/
 void change_control_state(Node_Control_State_TypeDef state); //Thay doi trang thai cua cac node
 void query_node_state(); //Lay thong tin trang thai dau vao cua node

@@ -29,7 +29,8 @@ uint8_t task_Index = 0;
 
 void Task_Manager_AddTask(Task *task)
 {
-  tasks[task_Index++] = task;
+  tasks[task_Index] = task;
+  task_Index++;
 }
 
 void Task_Manager_PerformTask(void)
