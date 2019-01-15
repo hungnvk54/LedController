@@ -11,6 +11,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "led_controller.h"
 #include "timer_pwm.h"
+#include "system_def.h"
 /** @addtogroup Template_Project
   * @{
   */

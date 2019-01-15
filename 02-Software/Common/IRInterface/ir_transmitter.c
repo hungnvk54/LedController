@@ -12,6 +12,7 @@
 #include "ir_transmitter.h"
 #include "gpio_util.h"
 #include "timer_pwm.h"
+#include "system_def.h"
 /** @addtogroup Template_Project
   * @{
   */

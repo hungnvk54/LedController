@@ -18,8 +18,6 @@
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
-#define TICK_IN_MS               20
-#define TICK_PER_SECOND                 (1000*TICK_IN_MS)
 /* Exported functions ------------------------------------------------------- */
 void Timer_Counter_Init();
 uint32_t Timer_Counter_GetCounter();

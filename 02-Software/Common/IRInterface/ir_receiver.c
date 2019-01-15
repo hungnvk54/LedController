@@ -21,10 +21,10 @@
 //      double everage_value;
 //      uint16_t size;//Number of adc sample which is used to calcuate everage
 //    } IR_Signal_Value_TypeDef;
-    typedef struct {
-      IR_Signal_State_TypeDef state;
-      uint16_t time;//The time this state is exist
-    } IR_Signal_Value_TypeDef;
+typedef struct {
+  IR_Signal_State_TypeDef state;
+  uint32_t pulse_counter;//The time this state is exist
+} IR_Signal_Value_TypeDef;
 
 /* Private define ------------------------------------------------------------*/
 #define PARALLEL_LEDS            YES
@@ -38,16 +38,20 @@
 #define NUMBER_SAMPLE           20
 
 //For timeout service
-#define MAX_TIME_OUT_MS         300
-#define UPDATE_TIME_OUT(x)      (x++)
-#define RESET_TIME_OUT(x)       (x=0)
-#define IS_TIME_OUT(x)          (x==MAX_TIME_OUT_MS)
+//#define MAX_TIME_OUT_MS         300
+//#define UPDATE_TIME_OUT(x)      (x++)
+//#define RESET_TIME_OUT(x)       (x=0)
+//#define IS_TIME_OUT(x)          (x==MAX_TIME_OUT_MS)
+#define UPDATE_TIME(x)          (++x)
+
+#define TIME_OUT_IN_MS          1000
+
 /* Private variables ---------------------------------------------------------*/
 //IR_Signal_Value_TypeDef ir_signal_value = {0.0f,0};
 IR_Signal_Value_TypeDef signal_state = {IR_NOT_HIDDEN,0};
 
-static uint16_t timeout = 0;
-uint16_t detected_time = 0;
+uint32_t detected_time_stamp = 0;
+uint32_t timer_counter = 0;
 // For LC Filter
 double RC;// = 1.0f/(F_CUT*2*3.1415);
 double dt;// = 1.0/(SAMPLE_RATE);
@@ -56,7 +60,7 @@ double alpha;// = dt/(RC + dt);
 
 /* Private function prototypes -----------------------------------------------*/
 void process_ir_signal(void);
-void calculate_everage(uint16_t v);
+//void calculate_everage(uint16_t v);
 void make_decision(void);
 uint16_t lowpass_filter(uint16_t v);
 uint8_t detecting_pulse(uint16_t v); //YES - Has Pulse. No - No Pulse
@@ -72,10 +76,26 @@ void process_ir_signal(void)
     uint8_t has_pulse = detecting_pulse(v);
     
     if(has_pulse == YES) {
-      
+      if(timer_counter > detected_time_stamp){
+        if(timer_counter > (detected_time_stamp + TIME_OUT_IN_MS)) {
+          // Khong nhan duoc xung sau 1 khoang thoi gian TIME_OUT_IN_MS
+          //Reset the counter
+          signal_state.pulse_counter = 0;
+        } else {
+          // Nhan duoc xung nhip voi tan so xac dinh
+          signal_state.pulse_counter += 1;
+        }
+      } else {
+        //The timer counter overflow
+        detected_time_stamp = timer_counter;
+      }
     }
+    
+    // making decision
+    make_decision();
   } else {
     stable_marker++;
+    detected_time_stamp = timer_counter;
   }
 }
 void calculate_everage(uint16_t v)
@@ -98,18 +118,13 @@ void calculate_everage(uint16_t v)
 }
 void make_decision(void)
 {
-#if (PARALLEL_LEDS == YES)
   
-#else
-  
-#endif
 }
 
 uint16_t lowpass_filter(uint16_t v)
 {
   static uint16_t filtered_value = 0;
   filtered_value = (uint16_t)(alpha*v + (1-alpha)*filtered_value);
-  
   return filtered_value;
 }
 
@@ -171,6 +186,7 @@ void IR_Receiver_Task(void *args)
   /** This function will read adc value, calculate the everage values. 
     * Make the decision base on Received Signal 
     */
+  UPDATE_TIME(timer_counter);
   process_ir_signal();
 }
 

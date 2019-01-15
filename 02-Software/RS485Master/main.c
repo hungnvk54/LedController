@@ -42,6 +42,7 @@
 #include "commands.h"
 #include "nodecontrol.h"
 #include "nodestatemanager.h"
+#include "system_def.h"
 /* Private defines -----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 void System_Init();
@@ -136,7 +137,7 @@ void main(void)
   {
     if( previous_counter <= Timer_Counter_GetCounter() )
     {
-      if((Timer_Counter_GetCounter()  - previous_counter) > TICK_IN_MS) { //TICK_IN_MS
+      if((Timer_Counter_GetCounter()  - previous_counter) > TIMER_COUNTER_TICK_IN_MS) { //TICK_IN_MS
         Task_Manager_PerformTask();
         previous_counter = Timer_Counter_GetCounter();
       }

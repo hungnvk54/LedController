@@ -23,9 +23,6 @@ typedef enum {
 } GPIO_State_TypeDef;
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
-#define LED_PORT                GPIOB
-#define LED_PIN                 GPIO_PIN_5
-
 /* Exported functions ------------------------------------------------------- */
 void GPIO_Util_Init_As_Out(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin);
 void GPIO_Util_Init_As_In(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin);
