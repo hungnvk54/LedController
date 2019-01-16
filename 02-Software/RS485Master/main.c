@@ -48,8 +48,11 @@
 void System_Init();
 void Clock_Config(void);
 void Task_Init(void);
+
 void Test_Task(void *args);
 void Test_Uart(void *args);
+void Test_IR_Receiver(void *args);
+void Test_ADC(void *args);
 /* Private functions ---------------------------------------------------------*/
 
 void System_Init()
@@ -90,7 +93,9 @@ void Task_Init(void)
   Task_Manager_AddTask(IR_Receiver_Task);
   Task_Manager_AddTask(&Node_State_Manager_Task);
   Task_Manager_AddTask(&Test_Task);
-//  Task_Manager_AddTask(&Test_Uart);
+//  Task_Manager_AddTask(&Test_Uart); //Done
+//  Task_Manager_AddTask(&Test_IR_Receiver); //Done++++++++++++++++++++++++++++++++++
+//  Task_Manager_AddTask(&Test_ADC); //Done
 }
 
 void Test_Task(void *args)
@@ -122,6 +127,27 @@ void Test_Uart(void *args)
   }
 }
 
+void Test_IR_Receiver(void *args)
+{
+  IR_Signal_State_TypeDef state = IR_Receiver_GetState();
+  
+  if( state == IR_HIDDEN ){
+     GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+  } else {
+    GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+  }
+}
+
+void Test_ADC(void *args)
+{
+  uint16_t v = ADC1_GetConversionValue(); 
+  if( v > 900) {
+    GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+  } else if( v< 200) {
+    GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+    }
+}
+
 void main(void)
 {
   /* Infinite loop */
@@ -131,6 +157,7 @@ void main(void)
   /*For Test Only*/
 //  GPIO_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
   GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
+  GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
 
   uint32_t previous_counter = 0;
   while (1)
