@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V3.10.1.201 for STM8                     15/Jan/2019  16:04:16
+# IAR ELF Linker V3.10.1.201 for STM8                     16/Jan/2019  14:14:25
 # Copyright 2010-2017 IAR Systems AB.
 #
 #    Output file  =  
@@ -8,7 +8,7 @@
 #    Map file     =  
 #        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\List\RS485.map
 #    Command line =  
-#        -f C:\Users\PM-HUN~1\AppData\Local\Temp\EW3735.tmp
+#        -f C:\Users\PM-HUN~1\AppData\Local\Temp\EW31E.tmp
 #        (E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\commands.o
 #        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\gpio_util.o
 #        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\ir_receiver.o
@@ -21,6 +21,7 @@
 #        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_clk.o
 #        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_gpio.o
 #        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_it.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_itc.o
 #        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_tim1.o
 #        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_tim2.o
 #        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_uart1.o

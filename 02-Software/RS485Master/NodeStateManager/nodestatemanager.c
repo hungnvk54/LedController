@@ -10,11 +10,14 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "nodestatemanager.h"
+#include "ir_receiver.h"
+#include "system_def.h"
 /** @addtogroup Template_Project
   * @{
   */
 
 /* Private typedef -----------------------------------------------------------*/
+
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
@@ -31,6 +34,12 @@ void Node_State_Manager_Init(void)
 void Node_State_Manager_Task(void *args)
 {
   //Get input ADC and generate the input state
+  IR_Signal_State_TypeDef ir_state = void IR_Receiver_GetState();
+#if (STATE_MANAGER_PARALLEL_LEDS == YES)
+  
+#else
+  
+#endif
 }
 
 uint8_t Node_State_GetInputState(void)

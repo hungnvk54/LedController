@@ -27,5 +27,6 @@ typedef enum {
 
 void IR_Receiver_Init(void);
 void IR_Receiver_Task(void *args);
+void IR_Receiver_GetState(void);
 #endif /* __IR_RECEIVER_H */
 
