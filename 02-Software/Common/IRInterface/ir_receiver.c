@@ -34,6 +34,7 @@ typedef struct {
 //Macro for low pass filter
 #define F_CUT                   (IR_RECEIVER_SIGNAL_FREQ)
 #define SAMPLE_RATE             1000    //1000 sample per second
+#define F_CUT_HIGH_PASS         100
 
 //For timeout service
 //#define MAX_TIME_OUT_MS         300
@@ -53,13 +54,17 @@ double RC;// = 1.0f/(F_CUT*2*3.1415);
 double dt;// = 1.0/(SAMPLE_RATE);
 double alpha;// = dt/(RC + dt);
 
+double RC_h;// = 1.0/(SAMPLE_RATE);
+double alpha_h;// = dt/(RC + dt);
+
 
 /* Private function prototypes -----------------------------------------------*/
 void process_ir_signal(void);
 //void calculate_everage(uint16_t v);
 void make_decision(void);
-uint16_t lowpass_filter(uint16_t v);
-uint8_t detecting_pulse(uint16_t v); //YES - Has Pulse. No - No Pulse
+int16_t lowpass_filter(uint16_t v);
+int16_t highpass_filter(uint16_t v);
+uint8_t detecting_pulse(int16_t v); //YES - Has Pulse. No - No Pulse
 /* Private functions ---------------------------------------------------------*/
 void process_ir_signal(void)
 {
@@ -68,6 +73,7 @@ void process_ir_signal(void)
   {
     uint16_t v = ADC1_GetConversionValue();
     //Low pass filter
+//    v = highpass_filter(v);
     v = lowpass_filter(v);
     uint8_t has_pulse = detecting_pulse(v);
     
@@ -126,14 +132,21 @@ void make_decision(void)
   }
 }
 
-uint16_t lowpass_filter(uint16_t v)
+int16_t lowpass_filter(uint16_t v)
 {
   static uint16_t filtered_value = 0;
   filtered_value = (uint16_t)(alpha*v + (1-alpha)*filtered_value);
   return filtered_value;
 }
 
-uint8_t detecting_pulse(uint16_t v)
+int16_t highpass_filter(uint16_t v)
+{
+  static int16_t previous_x=0, previous_y=0;
+  previous_y = previous_y*alpha_h + alpha_h*(previous_x-v);
+  return previous_y;
+}
+
+uint8_t detecting_pulse(int16_t v)
 {
 //  static uint8_t  increase_counter =0;
 //  static uint8_t decrease_counter = 0;
@@ -183,6 +196,9 @@ void IR_Receiver_Init(void)
   RC = 1.0f/(F_CUT*2*3.1415);
   dt = 1.0/(SAMPLE_RATE);
   alpha = dt/(RC + dt);
+  
+  RC_h = 1.0f/(F_CUT_HIGH_PASS*2*3.1415);
+  alpha = dt/(RC_h + dt);
 }
 
 void IR_Receiver_Task(void *args)

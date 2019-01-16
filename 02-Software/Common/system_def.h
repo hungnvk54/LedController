@@ -27,7 +27,7 @@
 #define LED_PIN                         GPIO_PIN_5
 
 //For IR Transmitter
-#define IR_TRANSMITTER_FREQ             500     //100Hz
+#define IR_TRANSMITTER_FREQ             200     //100Hz
 #define IR_TRANSMITTER_PORT             GPIOA
 #define IR_TRANSMITTER_PIN              GPIO_PIN_3
 
