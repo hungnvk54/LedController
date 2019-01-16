@@ -21,7 +21,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-uint8_t time_prescaler = 4;
+uint8_t time_prescaler = 1;
 IR_Output_Mode_TypeDef running_mode = IR_OUTPUT_MODE_PWM;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/

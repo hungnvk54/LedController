@@ -12,6 +12,7 @@
 #include "ir_receiver.h"
 #include "stm8s_adc1.h"
 #include "const.h"
+#include "system_def.h"
 /** @addtogroup Template_Project
   * @{
   */
@@ -44,11 +45,9 @@ typedef struct {
 //#define IS_TIME_OUT(x)          (x==MAX_TIME_OUT_MS)
 #define UPDATE_TIME(x)          (++x)
 
-#define TIME_OUT_IN_MS          1000
-
 /* Private variables ---------------------------------------------------------*/
 //IR_Signal_Value_TypeDef ir_signal_value = {0.0f,0};
-IR_Signal_Value_TypeDef signal_state = {IR_NOT_HIDDEN,0};
+IR_Signal_Value_TypeDef signal_state = {IR_HIDDEN,0};
 
 uint32_t detected_time_stamp = 0;
 uint32_t timer_counter = 0;
@@ -77,17 +76,19 @@ void process_ir_signal(void)
     
     if(has_pulse == YES) {
       if(timer_counter > detected_time_stamp){
-        if(timer_counter > (detected_time_stamp + TIME_OUT_IN_MS)) {
-          // Khong nhan duoc xung sau 1 khoang thoi gian TIME_OUT_IN_MS
-          //Reset the counter
-          signal_state.pulse_counter = 0;
-        } else {
+//        if(timer_counter > (detected_time_stamp + TIME_OUT_IN_MS)) {
+//          // Khong nhan duoc xung sau 1 khoang thoi gian TIME_OUT_IN_MS
+//          //Reset the counter
+//          signal_state.pulse_counter = 1;
+//        } else {
           // Nhan duoc xung nhip voi tan so xac dinh
           signal_state.pulse_counter += 1;
-        }
-      } else {
-        //The timer counter overflow
-        detected_time_stamp = timer_counter;
+//        }
+      }
+      detected_time_stamp = timer_counter;
+    } else {
+      if( timer_counter > (detected_time_stamp + TWO_PULSE_TIME_OUT_IN_MS) ){
+        signal_state.pulse_counter = 0;
       }
     }
     
@@ -118,7 +119,15 @@ void calculate_everage(uint16_t v)
 }
 void make_decision(void)
 {
-  
+  if( signal_state.pulse_counter < IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER){
+    signal_state.state = IR_HIDDEN;
+  }else  if( (signal_state.pulse_counter > IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER)\
+    &&(signal_state.pulse_counter < IR_RECEIVER_SHORT_PULSE_PULSE_COUNTER)) 
+  {
+    signal_state.state = IR_SHORT_PULSE;
+  } else {
+    signal_state.state = IR_LONG_PULSE;
+  }
 }
 
 uint16_t lowpass_filter(uint16_t v)
@@ -164,7 +173,7 @@ void IR_Receiver_Init(void)
 {
   //Init ADC
   ADC1_Init(ADC1_CONVERSIONMODE_CONTINUOUS,
-            ADC1_CHANNEL_2,
+            IR_RECEIVER_ADC_CHANNEL,
             ADC1_PRESSEL_FCPU_D2,
             ADC1_EXTTRIG_TIM,
             DISABLE,
@@ -188,6 +197,11 @@ void IR_Receiver_Task(void *args)
     */
   UPDATE_TIME(timer_counter);
   process_ir_signal();
+}
+
+IR_Signal_State_TypeDef IR_Receiver_GetState(void)
+{
+  return signal_state.state;
 }
 
 /**

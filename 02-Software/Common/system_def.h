@@ -50,6 +50,15 @@
 
 ///For task manager
 
+//For IR Receiver
+#define IR_RECEIVER_PULSE_WITHD_IN_MS                   (1000/IR_TRANSMITTER_FREQ/2)
+#define IR_RECEIVER_SHORT_PULSE_TIME_OUT_IN_MS          200
+#define IR_RECEIVER_LONG_PULSE_TIME_OUT_IN_MS           500
+#define IR_RECEIVER_SHORT_PULSE_PULSE_COUNTER          (IR_RECEIVER_SHORT_PULSE_TIME_OUT_IN_MS/IR_RECEIVER_PULSE_WITHD_IN_MS)
+#define IR_RECEIVER_LONG_PULSE_PULSE_COUNTER          (IR_RECEIVER_LONG_PULSE_TIME_OUT_IN_MS/IR_RECEIVER_PULSE_WITHD_IN_MS)
+#define IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER      5
+#define TWO_PULSE_TIME_OUT_IN_MS                        20
+
 /* Exported functions ------------------------------------------------------- */
 
 #endif /* __SYSTEM_DEF_H */
