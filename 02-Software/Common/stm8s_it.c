@@ -37,6 +37,7 @@
 #include "transport.h"
 #include "const.h"
 #include "gpio_util.h"
+#include "system_def.h"
 /** @addtogroup Template_Project
   * @{
   */
@@ -242,6 +243,7 @@ INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
     TIM1_ClearFlag(TIM1_FLAG_UPDATE);
     // Counter up
     Timer_Counter_IncreaseCounter();
+//    GPIO_Util_Toggle(LED_PORT,LED_PIN);
   }
 }
 
@@ -369,8 +371,11 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
     /* In order to detect unexpected events during development,
        it is recommended to set a breakpoint on the following instruction.
     */
-   uint8_t data = UART1_ReceiveData8();
-   Transport_RxPush(data);
+   if( UART1_GetITStatus( UART1_IT_RXNE ) == SET)
+   {
+     uint8_t data = UART1_ReceiveData8();
+     Transport_RxPush(data);
+   }
  }
 #endif /* (STM8S208) || (STM8S207) || (STM8S103) || (STM8S001) || (STM8S903) || (STM8AF62Ax) || (STM8AF52Ax) */
 

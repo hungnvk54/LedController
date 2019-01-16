@@ -73,14 +73,14 @@ void process_ir_signal(void)
     
     if(has_pulse == YES) {
       if(timer_counter > detected_time_stamp){
-//        if(timer_counter > (detected_time_stamp + TIME_OUT_IN_MS)) {
-//          // Khong nhan duoc xung sau 1 khoang thoi gian TIME_OUT_IN_MS
-//          //Reset the counter
-//          signal_state.pulse_counter = 1;
-//        } else {
-          // Nhan duoc xung nhip voi tan so xac dinh
+        if(timer_counter > (detected_time_stamp + TWO_PULSE_TIME_OUT_IN_MS)) {
+          // Khong nhan duoc xung sau 1 khoang thoi gian TIME_OUT_IN_MS
+          //Reset the counter
+          signal_state.pulse_counter = 0;
+        } else {
+           //Nhan duoc xung nhip voi tan so xac dinh
           signal_state.pulse_counter += 1;
-//        }
+        }
       }
       detected_time_stamp = timer_counter;
     } else {
@@ -135,27 +135,27 @@ uint16_t lowpass_filter(uint16_t v)
 
 uint8_t detecting_pulse(uint16_t v)
 {
-  static uint8_t  increase_counter =0;
-  static uint8_t decrease_counter = 0;
+//  static uint8_t  increase_counter =0;
+//  static uint8_t decrease_counter = 0;
   static uint16_t previous_v = 0;
   const uint8_t INCREASE =0, DECREASE =1;
   static uint8_t direction = 0;
   uint8_t is_has_pulse = NO;
-  if( previous_v > v ) {
-    increase_counter += 1;
-    if( (direction == DECREASE) && (increase_counter >= 2)) {
-      direction = INCREASE;
-      is_has_pulse = YES;
-      //Reset paramter
-      decrease_counter = 0 ;
-    }
-  } else {
-    decrease_counter +=1;
-    if( (direction == INCREASE) && (decrease_counter >= 2)) {
+  if( previous_v > (v+20) ) {
+//    increase_counter += 1;
+    if( (direction == INCREASE) ) {//&& (increase_counter >= 2)
       direction = DECREASE;
       is_has_pulse = YES;
       //Reset paramter
-      increase_counter = 0 ;
+//      decrease_counter = 0 ;
+    }
+  } else if((previous_v +20) < v){
+//    decrease_counter +=1;
+    if((direction == DECREASE)) { // && (decrease_counter >= 2)
+      direction = INCREASE;
+      is_has_pulse = YES;
+      //Reset paramter
+//      increase_counter = 0 ;
     }
   }
   

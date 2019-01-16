@@ -47,6 +47,7 @@ void change_control_state(Node_Control_State_TypeDef state)
 
 void query_node_state()
 {
+ // uint8_t is_need_send = FALSE;
   //Change address to other node
   while( (state_node_query_index < MAX_NODES)&& \
     (nodes[state_node_query_index].is_avaiable == NO)) {
@@ -67,12 +68,13 @@ void query_node_state()
 void process_node_input_state(void)
 {
   uint8_t idx;
+  uint8_t output_state[MAX_NODES];
   for(idx = 0; idx < MAX_NODES;++idx)
   {
     if( nodes[idx].input_state == OFF){
-      nodes[idx].output_state = OFF;
+      output_state[idx] = OFF;
     } else {
-      nodes[idx].output_state = ON;
+      output_state[idx] = ON;
     }
   }
   
@@ -84,7 +86,7 @@ void process_node_input_state(void)
       uint8_t node_counter = ARROUND_NODE_SIZE;
       while( (arround_node_idx >=0 )&& ( node_counter > 0) )
       {
-        nodes[arround_node_idx].output_state = ON;
+        output_state[arround_node_idx] = ON;
         node_counter --;
         arround_node_idx--;
       }
@@ -92,7 +94,7 @@ void process_node_input_state(void)
       arround_node_idx = idx + 1;
       node_counter = ARROUND_NODE_SIZE;
       while( (arround_node_idx < MAX_NODES)&&(node_counter > 0)) {
-        nodes[arround_node_idx].output_state = ON;
+        output_state[arround_node_idx] = ON;
         node_counter --;
         arround_node_idx++;
       }
@@ -101,7 +103,12 @@ void process_node_input_state(void)
   
   for(idx = 0; idx < MAX_NODES;++idx)
   {
-    compose_command(idx,COMMAND_NODE_REQUEST_CHANGE_STATE,nodes[idx].output_state);
+   // if(nodes[idx].is_avaiable == YES){
+    if( nodes[idx].output_state != output_state[idx]) {
+      nodes[idx].output_state = output_state[idx];
+      compose_command(idx,COMMAND_NODE_REQUEST_CHANGE_STATE,nodes[idx].output_state);
+    }
+   // }
   }
 }
 

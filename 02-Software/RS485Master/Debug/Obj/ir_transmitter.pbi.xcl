@@ -22,11 +22,7 @@ E:\03-DuAn\LedController\LedController\02-Software\RS485Master\..\Common\Transpo
 -I
 E:\03-DuAn\LedController\LedController\02-Software\RS485Master\..\Common\Task
 -I
-<<<<<<< HEAD
-E:\03-DuAn\LedController\LedController\02-Software\RS485Master\..\Common\NodeStateManager
-=======
-E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\NodeStateManager
->>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
+E:\03-DuAn\LedController\LedController\02-Software\RS485Master\NodeStateManager
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\inc
 -I
@@ -52,11 +48,7 @@ E:\03-DuAn\LedController\LedController\02-Software\Common\Transport
 -I
 E:\03-DuAn\LedController\LedController\02-Software\Common\Task
 -I
-<<<<<<< HEAD
-E:\03-DuAn\LedController\LedController\02-Software\Common\NodeStateManager
-=======
-E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\NodeStateManager
->>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
+E:\03-DuAn\LedController\LedController\02-Software\RS485Master\NodeStateManager
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

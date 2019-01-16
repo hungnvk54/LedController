@@ -21,14 +21,24 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 #define                 MAX_RX_BUFFER           64
-#define                 MAX_TX_BUFFER           64
+#define                 MAX_TX_BUFFER           128
 
 /* Private variables ---------------------------------------------------------*/
+#if     (MAX_TX_BUFFER <=127)
 uint8_t tx_buff[MAX_TX_BUFFER];
 uint8_t tx_wr_idx = 0, tx_rd_idx= 0, tx_cnt = 0;
+#else
+uint16_t tx_buff[MAX_TX_BUFFER];
+uint16_t tx_wr_idx = 0, tx_rd_idx= 0, tx_cnt = 0;
+#endif
 
+#if     (MAX_RX_BUFFER <=127)
 uint8_t rx_buff[MAX_RX_BUFFER];
 uint8_t rx_wr_idx= 0, rx_rd_idx= 0, rx_cnt = 0;
+#else
+uint16_t rx_buff[MAX_RX_BUFFER];
+uint16_t rx_wr_idx= 0, rx_rd_idx= 0, rx_cnt = 0;
+#endif
 /* Private function prototypes -----------------------------------------------*/
 void tx_interrupt_config(FunctionalState state);
 void rx_interrupt_config(FunctionalState state);
@@ -95,7 +105,7 @@ uint8_t Transport_TxPop(uint8_t *data)
 
 void Transport_RxPush(uint8_t data)
 {
-  while( rx_cnt >= MAX_TX_BUFFER ); //Wait here until data is send
+  if( rx_cnt >= MAX_TX_BUFFER ) return; //Wait here until data is send
   rx_buff[rx_wr_idx] = data;
   ++rx_cnt;
   ++rx_wr_idx;

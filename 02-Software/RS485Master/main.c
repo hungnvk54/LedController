@@ -59,6 +59,7 @@ void Test_ADC(void *args);
 void System_Init()
 {
   Clock_Config();
+  Interrupt_Init();
   Timer_Counter_Init();
   Timer_PWM_Init();
   Transport_Init();
@@ -91,11 +92,11 @@ void Task_Init(void)
                                         RX buffer then process command */
   Task_Manager_AddTask(&Node_Control_Task); /*This task will process command
                                             which is received from Network */
-  Task_Manager_AddTask(IR_Receiver_Task);
+  Task_Manager_AddTask(&IR_Receiver_Task);
   Task_Manager_AddTask(&Node_State_Manager_Task);
-  Task_Manager_AddTask(&Test_Task);
+//  Task_Manager_AddTask(&Test_Task);
 //  Task_Manager_AddTask(&Test_Uart); //Done
-//  Task_Manager_AddTask(&Test_IR_Receiver); //Done++++++++++++++++++++++++++++++++++
+  Task_Manager_AddTask(&Test_IR_Receiver); //Done++++++++++++++++++++++++++++++++++
 //  Task_Manager_AddTask(&Test_ADC); //Done
 }
 
@@ -107,8 +108,9 @@ void Task_Init(void)
 void Interrupt_Init()
 {
   //Change Interrupt Of Timer 1
-  ITC_DeInit();//DeInit All Interrupt Priority
-  ITC_SetSoftwarePriority(ITC_IRQ_TIM1_OVF,ITC_PRIORITYLEVEL_1);
+//  ITC_DeInit();//DeInit All Interrupt Priority
+  ITC_SetSoftwarePriority(ITC_IRQ_TIM1_OVF,ITC_PRIORITYLEVEL_2);
+  ITC_SetSoftwarePriority(ITC_IRQ_UART1_TX,ITC_PRIORITYLEVEL_1);
 }
 
 void Test_Task(void *args)
@@ -144,7 +146,7 @@ void Test_IR_Receiver(void *args)
 {
   IR_Signal_State_TypeDef state = IR_Receiver_GetState();
   
-  if( state == IR_HIDDEN ){
+  if( state == IR_HIDDEN ){//|| state == IR_LONG_PULSE 
      GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
   } else {
     GPIO_Util_WriteLow(LED_PORT,LED_PIN);
@@ -154,9 +156,9 @@ void Test_IR_Receiver(void *args)
 void Test_ADC(void *args)
 {
   uint16_t v = ADC1_GetConversionValue(); 
-  if( v > 900) {
+  if( v > 1000) {
     GPIO_Util_WriteLow(LED_PORT,LED_PIN);
-  } else if( v< 200) {
+  } else if( v< 50) {
     GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
     }
 }
@@ -166,7 +168,6 @@ void main(void)
   /* Infinite loop */
   System_Init();
   Task_Init();
-  Interrupt_Init();
   /*For Test Only*/
 //  GPIO_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
   GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
@@ -177,9 +178,9 @@ void main(void)
   {
     if( previous_counter <= Timer_Counter_GetCounter() )
     {
-      if((Timer_Counter_GetCounter()  - previous_counter) > TIMER_COUNTER_TICK_IN_MS) { //TICK_IN_MS
-        Task_Manager_PerformTask();
+      if((Timer_Counter_GetCounter()  - previous_counter) >= TIMER_COUNTER_TICK_IN_MS) { //TICK_IN_MS
         previous_counter = Timer_Counter_GetCounter();
+        Task_Manager_PerformTask();
       }
     } else {
       ///Counter Overflow - Update the previous_counter value
