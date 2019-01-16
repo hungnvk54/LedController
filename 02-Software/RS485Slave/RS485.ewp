@@ -267,7 +267,7 @@
                     <state>$PROJ_DIR$\..\Common</state>
                     <state>$PROJ_DIR$\..\Common\Transport</state>
                     <state>$PROJ_DIR$\..\Common\Task</state>
-                    <state>$PROJ_DIR$\..\Common\NodeStateManager</state>
+                    <state>$PROJ_DIR$\NodeStateManager</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -1644,7 +1644,7 @@
             <name>$PROJ_DIR$\Node\nodecontrol.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Common\NodeStateManager\nodestatemanager.c</name>
+            <name>$PROJ_DIR$\NodeStateManager\nodestatemanager.c</name>
         </file>
     </group>
     <group>

@@ -20,7 +20,7 @@
 #define MAX_NODES		        25
 #define ARROUND_NODE_SIZE               1
 
-#define TIME_OUT_IN_MS                  10
+#define TIME_OUT_IN_MS                  15
 #define TIMER_IS_TIMEOUT(x)             (x==0)
 #define TIMER_RESET(x)                  (x=TIME_OUT_IN_MS)
 #define TIMER_IS_RUNNING(x)             (x > 0)
@@ -122,8 +122,8 @@ void process_command(Command_TypeDef cmd)
     {
       //Received respond from slave node.
       nodes[cmd.address].is_avaiable = YES;
-      nodes[cmd.address].output_state = ((cmd.data&UB_UINT8)==UB_UINT8);
-      nodes[cmd.address].input_state = ((cmd.data&LB_UINT8)==LB_UINT8);
+//      nodes[cmd.address].output_state = ((cmd.data&UB_UINT8)==UB_UINT8);
+      nodes[cmd.address].input_state = (cmd.data);
       if( detected_node_index < MAX_NODES ) {
         change_control_state(NODE_CONTROL_STATE_DETECTING);
       } else{
@@ -136,10 +136,11 @@ void process_command(Command_TypeDef cmd)
   case COMMAND_NODE_REPORT_STATE:
     {
       //Received the previous request
-      nodes[cmd.address].output_state = ((cmd.data&UB_UINT8)==UB_UINT8);
-      nodes[cmd.address].input_state = ((cmd.data&LB_UINT8)==LB_UINT8);
+//      nodes[cmd.address].output_state = ((cmd.data&UB_UINT8)==UB_UINT8);
+      nodes[cmd.address].input_state = (cmd.data);
       //start new request
       change_control_state(NODE_CONTROL_STATE_STATE_QUERY);
+      break;
     }
   }
 }

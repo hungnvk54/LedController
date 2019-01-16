@@ -187,7 +187,7 @@ void IR_Receiver_Task(void *args)
   process_ir_signal();
 }
 
-void IR_Receiver_GetState(void)
+IR_Signal_State_TypeDef IR_Receiver_GetState(void)
 {
   
 }

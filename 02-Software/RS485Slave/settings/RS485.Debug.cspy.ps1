@@ -23,9 +23,9 @@ param([String]$debugfile = "");
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\03-DuAn\LedController\LedController\02-Software\RS485SlaveABC\settings\RS485.Debug.general.xcl" --backend -f "E:\03-DuAn\LedController\LedController\02-Software\RS485SlaveABC\settings\RS485.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Slave\settings\RS485.Debug.general.xcl" --backend -f "E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Slave\settings\RS485.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\03-DuAn\LedController\LedController\02-Software\RS485SlaveABC\settings\RS485.Debug.general.xcl" --debug_file=$debugfile --backend -f "E:\03-DuAn\LedController\LedController\02-Software\RS485SlaveABC\settings\RS485.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Slave\settings\RS485.Debug.general.xcl" --debug_file=$debugfile --backend -f "E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Slave\settings\RS485.Debug.driver.xcl" 
 }

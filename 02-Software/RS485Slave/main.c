@@ -42,10 +42,13 @@
 #include "commands.h"
 #include "nodecontrol.h"
 #include "nodestatemanager.h"
+#include "system_def.h"
 /* Private defines -----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 void System_Init();
 void Clock_Config(void);
+void Interrupt_Init(void);
+
 void Task_Init(void);
 void Test_Task(void *args);
 void Test_Uart(void *args);
@@ -69,6 +72,13 @@ void System_Init()
 void Clock_Config(void) { 
   CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
   CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
+}
+
+void Interrupt_Init(void)
+{
+  //Change Interrupt Of Timer 1
+  ITC_DeInit();//DeInit All Interrupt Priority
+  ITC_SetSoftwarePriority(ITC_IRQ_TIM1_OVF,ITC_PRIORITYLEVEL_1);
 }
 
 void Task_Init(void)
@@ -123,36 +133,26 @@ void Test_Uart(void *args)
 void main(void)
 {
   /* Infinite loop */
-  //System_Init();
-  //Task_Init();
+  System_Init();
+  Task_Init();
+  Interrupt_Init();
 //    GPIO_Init(,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
 
 //  GPIO_Util_Init();
   GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
 
   uint32_t previous_counter = 0;
-  uint32_t mask = 0;
   while (1)
   {
-//    if( previous_counter <= Timer_Counter_GetCounter() )
-//    {
-//      if((Timer_Counter_GetCounter()  - previous_counter) > TICK_IN_MS) { //TICK_IN_MS
-//        Task_Manager_PerformTask();
-//        previous_counter = Timer_Counter_GetCounter();
-//      }
-//    } else {
-//      ///Counter Overflow - Update the previous_counter value
-//        previous_counter = Timer_Counter_GetCounter();
-//    }
-    if( previous_counter++ == 10000)
+    if( previous_counter <= Timer_Counter_GetCounter() )
     {
-      if( mask ==0 ) {
-        GPIO_WriteHigh(LED_PORT,LED_PIN);
-      } else {
-        GPIO_WriteLow(LED_PORT,LED_PIN);
+      if((Timer_Counter_GetCounter()  - previous_counter) > TIMER_COUNTER_TICK_IN_MS) { //TICK_IN_MS
+        Task_Manager_PerformTask();
+        previous_counter = Timer_Counter_GetCounter();
       }
-      mask = !mask;
-      previous_counter = 0;
+    } else {
+      ///Counter Overflow - Update the previous_counter value
+        previous_counter = Timer_Counter_GetCounter();
     }
   }
 }

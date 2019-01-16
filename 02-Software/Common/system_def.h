@@ -59,6 +59,9 @@
 
 //For state manager
 #define STATE_MANAGER_PARALLEL_LEDS            YES
+
+//Node Address
+#define NODE_ADDRESS                    1
 /* Exported functions ------------------------------------------------------- */
 
 #endif /* __SYSTEM_DEF_H */

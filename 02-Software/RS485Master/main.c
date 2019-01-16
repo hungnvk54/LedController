@@ -48,7 +48,7 @@
 void System_Init();
 void Clock_Config(void);
 void Task_Init(void);
-void Interrupt_Init();
+void Interrupt_Init(void);
 
 void Test_Task(void *args);
 void Test_Uart(void *args);
@@ -87,8 +87,8 @@ void Task_Init(void)
   
   Task_Manager_AddTask(&Command_Task); /* This task will get data from the 
                                         RX buffer then process command */
-//  Task_Manager_AddTask(&Node_Control_Task); /*This task will process command
-//                                            which is received from Network */
+  Task_Manager_AddTask(&Node_Control_Task); /*This task will process command
+                                            which is received from Network */
   Task_Manager_AddTask(IR_Receiver_Task);
   Task_Manager_AddTask(&Node_State_Manager_Task);
   Task_Manager_AddTask(&Test_Task);
@@ -141,10 +141,10 @@ void main(void)
   /* Infinite loop */
   System_Init();
   Task_Init();
+  Interrupt_Init();
   /*For Test Only*/
 //  GPIO_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
   GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
-
   uint32_t previous_counter = 0;
   while (1)
   {
