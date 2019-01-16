@@ -48,6 +48,7 @@
 void System_Init();
 void Clock_Config(void);
 void Task_Init(void);
+void Interrupt_Init(void);
 
 void Test_Task(void *args);
 void Test_Uart(void *args);
@@ -88,14 +89,26 @@ void Task_Init(void)
   
   Task_Manager_AddTask(&Command_Task); /* This task will get data from the 
                                         RX buffer then process command */
-//  Task_Manager_AddTask(&Node_Control_Task); /*This task will process command
-//                                            which is received from Network */
+  Task_Manager_AddTask(&Node_Control_Task); /*This task will process command
+                                            which is received from Network */
   Task_Manager_AddTask(IR_Receiver_Task);
   Task_Manager_AddTask(&Node_State_Manager_Task);
   Task_Manager_AddTask(&Test_Task);
 //  Task_Manager_AddTask(&Test_Uart); //Done
 //  Task_Manager_AddTask(&Test_IR_Receiver); //Done++++++++++++++++++++++++++++++++++
 //  Task_Manager_AddTask(&Test_ADC); //Done
+}
+
+/**
+  * @brief  Init the Interrupt. Change the Software Interrupt Priority.
+  * @param  None
+  * @retval None
+  */
+void Interrupt_Init()
+{
+  //Change Interrupt Of Timer 1
+  ITC_DeInit();//DeInit All Interrupt Priority
+  ITC_SetSoftwarePriority(ITC_IRQ_TIM1_OVF,ITC_PRIORITYLEVEL_1);
 }
 
 void Test_Task(void *args)
@@ -153,7 +166,7 @@ void main(void)
   /* Infinite loop */
   System_Init();
   Task_Init();
-  
+  Interrupt_Init();
   /*For Test Only*/
 //  GPIO_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
   GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);

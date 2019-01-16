@@ -1,6 +1,10 @@
 ###############################################################################
 #
+<<<<<<< HEAD
 # IAR ELF Linker V3.10.1.201 for STM8                     15/Jan/2019  22:27:31
+=======
+# IAR ELF Linker V3.10.1.201 for STM8                     16/Jan/2019  14:40:23
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
 # Copyright 2010-2017 IAR Systems AB.
 #
 #    Output file  =  
@@ -8,6 +12,7 @@
 #    Map file     =  
 #        E:\03-DuAn\LedController\LedController\02-Software\RS485Master\Debug\List\RS485.map
 #    Command line =  
+<<<<<<< HEAD
 #        -f C:\Users\hungn\AppData\Local\Temp\EW4C5C.tmp
 #        (E:\03-DuAn\LedController\LedController\02-Software\RS485Master\Debug\Obj\commands.o
 #        E:\03-DuAn\LedController\LedController\02-Software\RS485Master\Debug\Obj\gpio_util.o
@@ -28,6 +33,29 @@
 #        E:\03-DuAn\LedController\LedController\02-Software\RS485Master\Debug\Obj\timer_counter.o
 #        E:\03-DuAn\LedController\LedController\02-Software\RS485Master\Debug\Obj\timer_pwm.o
 #        E:\03-DuAn\LedController\LedController\02-Software\RS485Master\Debug\Obj\transport.o
+=======
+#        -f C:\Users\PM-HUN~1\AppData\Local\Temp\EWC92D.tmp
+#        (E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\commands.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\gpio_util.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\ir_receiver.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\ir_transmitter.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\led_controller.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\main.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\nodecontrol.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\nodestatemanager.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_adc1.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_clk.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_gpio.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_it.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_itc.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_tim1.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_tim2.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\stm8s_uart1.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\TaskManager.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\timer_counter.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\timer_pwm.o
+#        E:\DATA\03-DuAn\02-LedController\LedController\02-Software\RS485Master\Debug\Obj\transport.o
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
 #        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb -o
 #        E:\03-DuAn\LedController\LedController\02-Software\RS485Master\Debug\Exe\RS485.out
 #        --map
@@ -150,6 +178,7 @@ initialize by copy {
     .intvec          const    0x008000    0x80  interrupt.o [4]
                             - 0x008080    0x80
 
+<<<<<<< HEAD
 "P3-P5":                                0x1dd9
   .near_func.text    ro code  0x008080   0x405  float.o [4]
   .near_func.text    ro code  0x008485   0x222  stm8s_uart1.o [1]
@@ -269,6 +298,128 @@ initialize by copy {
   .near_func.text    ro code  0x009e57     0x1  stm8s_it.o [1]
   .near_func.text    ro code  0x009e58     0x1  __dbg_break.o [3]
                             - 0x009e59  0x1dd9
+=======
+"P3-P5":                                0x1d9a
+  .near_func.text    ro code  0x008080   0x405  float.o [4]
+  .near_func.text    ro code  0x008485   0x222  stm8s_uart1.o [1]
+  .near_func.text    ro code  0x0086a7   0x19a  stm8s_adc1.o [1]
+  .near_func.text    ro code  0x008841   0x185  ir_receiver.o [1]
+  .near_func.text    ro code  0x0089c6   0x176  long.o [4]
+  .near_func.text    ro code  0x008b3c   0x112  vreg_util.o [4]
+  .near_func.text    ro code  0x008c4e   0x110  stm8s_gpio.o [1]
+  .near_func.text    ro code  0x008d5e    0xfc  stm8s_adc1.o [1]
+  .near_func.text    ro code  0x008e5a    0xf8  timer_pwm.o [1]
+  .near_func.text    ro code  0x008f52    0xd3  stm8s_uart1.o [1]
+  .near_func.text    ro code  0x009025    0xd0  stm8s_uart1.o [1]
+  .near_func.text    ro code  0x0090f5    0xbe  stm8s_adc1.o [1]
+  .near_func.text    ro code  0x0091b3    0xac  stm8s_tim2.o [1]
+  .near_func.text    ro code  0x00925f    0xac  stm8s_tim2.o [1]
+  .near_func.text    ro code  0x00930b    0x8b  stm8s_clk.o [1]
+  .near_func.text    ro code  0x009396    0x6d  stm8s_tim1.o [1]
+  .near_func.text    ro code  0x009403    0x60  stm8s_tim1.o [1]
+  .near_func.text    ro code  0x009463    0x59  stm8s_adc1.o [1]
+  .near_func.text    ro code  0x0094bc    0x57  stm8s_clk.o [1]
+  .near_func.text    ro code  0x009513    0x55  nodecontrol.o [1]
+  .near_func.text    ro code  0x009568    0x55  stm8s_adc1.o [1]
+  .near_func.text    ro code  0x0095bd    0x55  stm8s_adc1.o [1]
+  .near_func.text    ro code  0x009612    0x54  commands.o [1]
+  .near_func.text    ro code  0x009666    0x4e  stm8s_tim1.o [1]
+  .near_func.text    ro code  0x0096b4    0x4b  main.o [1]
+  .near_func.text    ro code  0x0096ff    0x47  long_util.o [4]
+  .near_func.text    ro code  0x009746    0x3f  commands.o [1]
+  .near_func.text    ro code  0x009785    0x3d  stm8s_clk.o [1]
+  .near_func.text    ro code  0x0097c2    0x3b  transport.o [1]
+  .near_func.text    ro code  0x0097fd    0x3b  transport.o [1]
+  .near_func.text    ro code  0x009838    0x39  stm8s_it.o [1]
+  .near_func.text    ro code  0x009871    0x35  main.o [1]
+  .near_func.text    ro code  0x0098a6    0x35  stm8s_tim1.o [1]
+  .near_func.text    ro code  0x0098db    0x33  gpio_util.o [1]
+  .near_func.text    ro code  0x00990e    0x32  main.o [1]
+  .near_func.text    ro code  0x009940    0x32  short.o [4]
+  .near_func.text    ro code  0x009972    0x2f  ir_transmitter.o [1]
+  .near_func.text    ro code  0x0099a1    0x2f  stm8s_tim1.o [1]
+  .near_func.text    ro code  0x0099d0    0x2f  stm8s_tim2.o [1]
+  .near_func.text    ro code  0x0099ff    0x2f  stm8s_tim2.o [1]
+  .near_func.text    ro code  0x009a2e    0x2f  stm8s_tim2.o [1]
+  .near_func.text    ro code  0x009a5d    0x2f  stm8s_tim2.o [1]
+  .near_func.text    ro code  0x009a8c    0x2e  transport.o [1]
+  .near_func.text    ro code  0x009aba    0x2d  stm8s_uart1.o [1]
+  .near_func.text    ro code  0x009ae7    0x28  timer_counter.o [1]
+  .near_func.text    ro code  0x009b0f    0x28  init_small.o [4]
+  .near_func.text    ro code  0x009b37    0x27  transport.o [1]
+  .near_func.text    ro code  0x009b5e    0x25  ir_transmitter.o [1]
+  .near_func.text    ro code  0x009b83    0x25  dc_util.o [4]
+  .near_func.text    ro code  0x009ba8    0x24  stm8s_it.o [1]
+  .near_func.text    ro code  0x009bcc    0x23  TaskManager.o [1]
+  .near_func.text    ro code  0x009bef    0x21  led_controller.o [1]
+  .iar.init_table    const    0x009c10    0x12  - Linker created -
+  .near_func.text    ro code  0x009c22    0x1f  move.o [4]
+  .near_func.text    ro code  0x009c41    0x1e  main.o [1]
+  .near_func.text    ro code  0x009c5f    0x1e  init_small.o [4]
+  .near_func.text    ro code  0x009c7d    0x1c  main.o [1]
+  .near_func.text    ro code  0x009c99    0x19  stm8s_it.o [1]
+  .near_func.text    ro code  0x009cb2    0x14  init.o [4]
+  .near_func.text    ro code  0x009cc6    0x14  __dbg_xxexit.o [3]
+  .near_func.text    ro code  0x009cda    0x13  cstartup.o [4]
+  .near_func.text    ro code  0x009ced    0x10  TaskManager.o [1]
+  .near_func.text    ro code  0x009cfd     0xf  timer_counter.o [1]
+  .near.rodata       const    0x009d0c     0xe  stm8s_uart1.o [1]
+  .near_func.text    ro code  0x009d1a     0xe  gpio_util.o [1]
+  .near.rodata       const    0x009d28     0xd  stm8s_adc1.o [1]
+  .near.rodata       const    0x009d35     0xd  stm8s_gpio.o [1]
+  .near.rodata       const    0x009d42     0xd  stm8s_tim1.o [1]
+  .near.rodata       const    0x009d4f     0xd  stm8s_tim2.o [1]
+  .near.rodata       const    0x009d5c     0xc  stm8s_clk.o [1]
+  .near_func.text    ro code  0x009d68     0xc  stm8s_tim2.o [1]
+  .near_func.text    ro code  0x009d74     0xb  gpio_util.o [1]
+  .near_func.text    ro code  0x009d7f     0x9  main.o [1]
+  .near_func.text    ro code  0x009d88     0x9  nodestatemanager.o [1]
+  .near_func.text    ro code  0x009d91     0x9  stm8s_tim2.o [1]
+  .near_func.text    ro code  0x009d9a     0x8  transport.o [1]
+  .near_func.text    ro code  0x009da2     0x8  transport.o [1]
+  .near_func.text    ro code  0x009daa     0x7  stm8s_gpio.o [1]
+  Initializer bytes  const    0x009db1     0x7  <for P2-1>
+  .near_func.text    ro code  0x009db8     0x6  timer_counter.o [1]
+  .near_func.text    ro code  0x009dbe     0x6  transport.o [1]
+  .near_func.text    ro code  0x009dc4     0x6  transport.o [1]
+  .near_func.text    ro code  0x009dca     0x5  stm8s_adc1.o [1]
+  .near_func.text    ro code  0x009dcf     0x5  cexit.o [4]
+  .near.rodata       const    0x009dd4     0x4  stm8s_clk.o [1]
+  .near_func.text    ro code  0x009dd8     0x4  ir_transmitter.o [1]
+  .near_func.text    ro code  0x009ddc     0x4  led_controller.o [1]
+  .near_func.text    ro code  0x009de0     0x4  stm8s_gpio.o [1]
+  .near_func.text    ro code  0x009de4     0x4  stm8s_uart1.o [1]
+  .near_func.text    ro code  0x009de8     0x4  stm8s_uart1.o [1]
+  .near_func.text    ro code  0x009dec     0x4  transport.o [1]
+  .near_func.text    ro code  0x009df0     0x3  gpio_util.o [1]
+  .near_func.text    ro code  0x009df3     0x3  gpio_util.o [1]
+  .near_func.text    ro code  0x009df6     0x3  nodestatemanager.o [1]
+  .near_func.text    ro code  0x009df9     0x3  interrupt.o [4]
+  .near_func.text    ro code  0x009dfc     0x3  low_level_init.o [4]
+  .near_func.text    ro code  0x009dff     0x3  exit.o [4]
+  .near_func.text    ro code  0x009e02     0x3  unhandled_exception.o [4]
+  .near_func.text    ro code  0x009e05     0x2  stm8s_gpio.o [1]
+  .near_func.text    ro code  0x009e07     0x1  ir_receiver.o [1]
+  .near_func.text    ro code  0x009e08     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e09     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e0a     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e0b     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e0c     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e0d     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e0e     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e0f     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e10     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e11     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e12     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e13     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e14     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e15     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e16     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e17     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e18     0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x009e19     0x1  __dbg_break.o [3]
+                            - 0x009e1a  0x1d9a
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
 
 
 *******************************************************************************
@@ -299,12 +450,16 @@ E:\03-DuAn\LedController\LedController\02-Software\RS485Master\Debug\Obj: [1]
     TaskManager.o               51                41
     commands.o                 147                22
     gpio_util.o                 82
+<<<<<<< HEAD
     ir_receiver.o              447                34
+=======
+    ir_receiver.o              390        5       34
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
     ir_transmitter.o            88        1        3
     led_controller.o            37                 1
     main.o                     253                 6
     nodecontrol.o               85               103
-    nodestatemanager.o          10                 2
+    nodestatemanager.o          12                 2
     stm8s_adc1.o             1 116       13
     stm8s_clk.o                287       16
     stm8s_gpio.o               285       13
@@ -316,7 +471,11 @@ E:\03-DuAn\LedController\LedController\02-Software\RS485Master\Debug\Obj: [1]
     timer_pwm.o                248        1       10
     transport.o                235               133
     ------------------------------------------------
+<<<<<<< HEAD
     Total:                   5 521       84      359
+=======
+    Total:                   5 458       89      339
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
 
 command line: [2]
     ------------------------------------------------
@@ -350,7 +509,11 @@ dlstm8smn.a: [4]
 
     Linker created                       18      256
 ----------------------------------------------------
+<<<<<<< HEAD
     Grand Total:             7 539      230      631
+=======
+    Grand Total:             7 471      235      611
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
 
 
 *******************************************************************************
@@ -492,6 +655,7 @@ ADC1_ConversionConfig   0x009134   0xbe  Code  Gb  stm8s_adc1.o [1]
 ADC1_ExternalTriggerConfig
                         0x0094a2   0x59  Code  Gb  stm8s_adc1.o [1]
 ADC1_GetConversionValue
+<<<<<<< HEAD
                         0x0095fc   0x55  Code  Gb  stm8s_adc1.o [1]
 ADC1_IRQHandler         0x009e55    0x1  Code  Gb  stm8s_it.o [1]
 ADC1_Init               0x008866  0x19a  Code  Gb  stm8s_adc1.o [1]
@@ -532,6 +696,49 @@ IR_Receiver_Task        0x008854   0x12  Code  Gb  ir_receiver.o [1]
 IR_Transmitter_GetMode  0x009e18    0x4  Code  Gb  ir_transmitter.o [1]
 IR_Transmitter_Init     0x009ba5   0x25  Code  Gb  ir_transmitter.o [1]
 IR_Transmitter_Task     0x0099b9   0x2f  Code  Gb  ir_transmitter.o [1]
+=======
+                        0x0095bd   0x55  Code  Gb  stm8s_adc1.o [1]
+ADC1_IRQHandler         0x009e16    0x1  Code  Gb  stm8s_it.o [1]
+ADC1_Init               0x0086a7  0x19a  Code  Gb  stm8s_adc1.o [1]
+ADC1_PrescalerConfig    0x009568   0x55  Code  Gb  stm8s_adc1.o [1]
+ADC1_SchmittTriggerConfig
+                        0x008d5e   0xfc  Code  Gb  stm8s_adc1.o [1]
+ADC1_StartConversion    0x009dca    0x5  Code  Gb  stm8s_adc1.o [1]
+AWU_IRQHandler          0x009e0a    0x1  Code  Gb  stm8s_it.o [1]
+CLK_GetClockFreq        0x0094bc   0x57  Code  Gb  stm8s_clk.o [1]
+CLK_HSIPrescalerConfig  0x009785   0x3d  Code  Gb  stm8s_clk.o [1]
+CLK_IRQHandler          0x009e0b    0x1  Code  Gb  stm8s_it.o [1]
+CLK_SYSCLKConfig        0x00930b   0x8b  Code  Gb  stm8s_clk.o [1]
+CSTACK$$Base            0x000300          --   Gb  - Linker created -
+CSTACK$$Limit           0x000400          --   Gb  - Linker created -
+Clock_Config            0x009d7f    0x9  Code  Gb  main.o [1]
+Command_Task            0x009612   0x54  Code  Gb  commands.o [1]
+EEPROM_EEC_IRQHandler   0x009e18    0x1  Code  Gb  stm8s_it.o [1]
+EXTI_PORTA_IRQHandler   0x009e0c    0x1  Code  Gb  stm8s_it.o [1]
+EXTI_PORTB_IRQHandler   0x009e0d    0x1  Code  Gb  stm8s_it.o [1]
+EXTI_PORTC_IRQHandler   0x009e0e    0x1  Code  Gb  stm8s_it.o [1]
+EXTI_PORTD_IRQHandler   0x009e0f    0x1  Code  Gb  stm8s_it.o [1]
+EXTI_PORTE_IRQHandler   0x009e10    0x1  Code  Gb  stm8s_it.o [1]
+GPIO_Init               0x008c4e  0x110  Code  Gb  stm8s_gpio.o [1]
+GPIO_ReadOutputData     0x009e05    0x2  Code  Gb  stm8s_gpio.o [1]
+GPIO_Util_Init_As_Out   0x009d74    0xb  Code  Gb  gpio_util.o [1]
+GPIO_Util_ReadValue     0x009d1a    0xe  Code  Gb  gpio_util.o [1]
+GPIO_Util_Toggle        0x0098db   0x33  Code  Gb  gpio_util.o [1]
+GPIO_Util_WriteHigh     0x009df0    0x3  Code  Gb  gpio_util.o [1]
+GPIO_Util_WriteLow      0x009df3    0x3  Code  Gb  gpio_util.o [1]
+GPIO_WriteHigh          0x009daa    0x7  Code  Gb  stm8s_gpio.o [1]
+GPIO_WriteLow           0x009de0    0x4  Code  Gb  stm8s_gpio.o [1]
+HSIDivFactor            0x009dd4    0x4  Data  Gb  stm8s_clk.o [1]
+I2C_IRQHandler          0x009e15    0x1  Code  Gb  stm8s_it.o [1]
+INTVEC$$Base            0x008000          --   Gb  - Linker created -
+INTVEC$$Limit           0x008080          --   Gb  - Linker created -
+IR_Receiver_GetState    0x009e07    0x1  Code  Gb  ir_receiver.o [1]
+IR_Receiver_Init        0x008956   0x5e  Code  Gb  ir_receiver.o [1]
+IR_Receiver_Task        0x0089b4   0x12  Code  Gb  ir_receiver.o [1]
+IR_Transmitter_GetMode  0x009dd8    0x4  Code  Gb  ir_transmitter.o [1]
+IR_Transmitter_Init     0x009b5e   0x25  Code  Gb  ir_transmitter.o [1]
+IR_Transmitter_Task     0x009972   0x2f  Code  Gb  ir_transmitter.o [1]
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
 IR_Transmitter_Task{1}{2}{3}{5}::counter
                         0x00016d    0x1  Data  Lc  ir_transmitter.o [1]
 Led_Control_GetMode     0x009e1c    0x4  Code  Gb  led_controller.o [1]
@@ -540,6 +747,7 @@ Node_Control_InitNodes  0x009552   0x55  Code  Gb  nodecontrol.o [1]
 Node_State_Manager_Init
                         0x009dcf    0x9  Code  Gb  nodestatemanager.o [1]
 Node_State_Manager_Task
+<<<<<<< HEAD
                         0x009e46    0x1  Code  Gb  nodestatemanager.o [1]
 RC                      0x00013f    0x4  Data  Gb  ir_receiver.o [1]
 Region$$Table$$Base     0x009c57          --   Gb  - Linker created -
@@ -553,10 +761,26 @@ TIM1_Cmd                0x0099e8   0x2f  Code  Gb  stm8s_tim1.o [1]
 TIM1_GetITStatus        0x0093d5   0x6d  Code  Gb  stm8s_tim1.o [1]
 TIM1_ITConfig           0x0096f8   0x4e  Code  Gb  stm8s_tim1.o [1]
 TIM1_TimeBaseInit       0x009442   0x60  Code  Gb  stm8s_tim1.o [1]
+=======
+                        0x009df6    0x3  Code  Gb  nodestatemanager.o [1]
+RC                      0x00012b    0x4  Data  Gb  ir_receiver.o [1]
+Region$$Table$$Base     0x009c10          --   Gb  - Linker created -
+Region$$Table$$Limit    0x009c22          --   Gb  - Linker created -
+SPI_IRQHandler          0x009e11    0x1  Code  Gb  stm8s_it.o [1]
+System_Init             0x009c41   0x1e  Code  Gb  main.o [1]
+TIM1_CAP_COM_IRQHandler
+                        0x009e12    0x1  Code  Gb  stm8s_it.o [1]
+TIM1_ClearFlag          0x0098a6   0x35  Code  Gb  stm8s_tim1.o [1]
+TIM1_Cmd                0x0099a1   0x2f  Code  Gb  stm8s_tim1.o [1]
+TIM1_GetITStatus        0x009396   0x6d  Code  Gb  stm8s_tim1.o [1]
+TIM1_ITConfig           0x009666   0x4e  Code  Gb  stm8s_tim1.o [1]
+TIM1_TimeBaseInit       0x009403   0x60  Code  Gb  stm8s_tim1.o [1]
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
 TIM1_UPD_OVF_TRG_BRK_IRQHandler
                         0x009bef   0x24  Code  Gb  stm8s_it.o [1]
 TIM2_ARRPreloadConfig   0x009a46   0x2f  Code  Gb  stm8s_tim2.o [1]
 TIM2_CAP_COM_IRQHandler
+<<<<<<< HEAD
                         0x009e53    0x1  Code  Gb  stm8s_it.o [1]
 TIM2_Cmd                0x009a17   0x2f  Code  Gb  stm8s_tim2.o [1]
 TIM2_OC1Init            0x0091f2   0xac  Code  Gb  stm8s_tim2.o [1]
@@ -573,6 +797,24 @@ TLI_IRQHandler          0x009e48    0x1  Code  Gb  stm8s_it.o [1]
 TRAP_IRQHandler         0x009e47    0x1  Code  Gb  stm8s_it.o [1]
 Task_Init               0x009955   0x32  Code  Gb  main.o [1]
 Task_Manager_AddTask    0x009d34   0x10  Code  Gb  TaskManager.o [1]
+=======
+                        0x009e14    0x1  Code  Gb  stm8s_it.o [1]
+TIM2_Cmd                0x0099d0   0x2f  Code  Gb  stm8s_tim2.o [1]
+TIM2_OC1Init            0x0091b3   0xac  Code  Gb  stm8s_tim2.o [1]
+TIM2_OC1PreloadConfig   0x009a2e   0x2f  Code  Gb  stm8s_tim2.o [1]
+TIM2_OC3Init            0x00925f   0xac  Code  Gb  stm8s_tim2.o [1]
+TIM2_OC3PreloadConfig   0x009a5d   0x2f  Code  Gb  stm8s_tim2.o [1]
+TIM2_SetCompare1        0x009d91    0x9  Code  Gb  stm8s_tim2.o [1]
+TIM2_TimeBaseInit       0x009d68    0xc  Code  Gb  stm8s_tim2.o [1]
+TIM2_UPD_OVF_BRK_IRQHandler
+                        0x009e13    0x1  Code  Gb  stm8s_it.o [1]
+TIM4_UPD_OVF_IRQHandler
+                        0x009e17    0x1  Code  Gb  stm8s_it.o [1]
+TLI_IRQHandler          0x009e09    0x1  Code  Gb  stm8s_it.o [1]
+TRAP_IRQHandler         0x009e08    0x1  Code  Gb  stm8s_it.o [1]
+Task_Init               0x00990e   0x32  Code  Gb  main.o [1]
+Task_Manager_AddTask    0x009ced   0x10  Code  Gb  TaskManager.o [1]
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
 Task_Manager_PerformTask
                         0x009c13   0x23  Code  Gb  TaskManager.o [1]
 Test_Task               0x009cc4   0x1c  Code  Gb  main.o [1]
@@ -602,6 +844,7 @@ UART1_DeInit            0x009b01   0x2d  Code  Gb  stm8s_uart1.o [1]
 UART1_GetITStatus       0x008f91   0xd3  Code  Gb  stm8s_uart1.o [1]
 UART1_ITConfig          0x009064   0xd0  Code  Gb  stm8s_uart1.o [1]
 UART1_Init              0x008485  0x222  Code  Gb  stm8s_uart1.o [1]
+<<<<<<< HEAD
 UART1_RX_IRQHandler     0x009ce0   0x19  Code  Gb  stm8s_it.o [1]
 UART1_ReceiveData8      0x009e24    0x4  Code  Gb  stm8s_uart1.o [1]
 UART1_SendData8         0x009e28    0x4  Code  Gb  stm8s_uart1.o [1]
@@ -649,6 +892,55 @@ commands                0x00011e   0x14  Data  Gb  commands.o [1]
 control_state           0x00016f    0x1  Data  Gb  nodecontrol.o [1]
 detected_time_stamp     0x000137    0x4  Data  Gb  ir_receiver.o [1]
 detecting_pulse         0x0086e5   0x53  Code  Gb  ir_receiver.o [1]
+=======
+UART1_RX_IRQHandler     0x009c99   0x19  Code  Gb  stm8s_it.o [1]
+UART1_ReceiveData8      0x009de4    0x4  Code  Gb  stm8s_uart1.o [1]
+UART1_SendData8         0x009de8    0x4  Code  Gb  stm8s_uart1.o [1]
+UART1_TX_IRQHandler     0x009838   0x39  Code  Gb  stm8s_it.o [1]
+__DebugBreak            0x009e19    0x1  Code  Gb  __dbg_break.o [3]
+__exit                  0x009cc6   0x14  Code  Gb  __dbg_xxexit.o [3]
+__iar_copy_init2        0x009b0f         Code  Gb  init_small.o [4]
+__iar_data_init2        0x009cb2   0x14  Code  Gb  init.o [4]
+__iar_program_start     0x009cda         Code  Gb  cstartup.o [4]
+__iar_unhandled_exception
+                        0x009e02         Code  Gb  unhandled_exception.o [4]
+__iar_zero_init2        0x009c5f         Code  Gb  init_small.o [4]
+__intvec                0x008000         Data  Gb  interrupt.o [4]
+__low_level_init        0x009dfc    0x3  Code  Gb  low_level_init.o [4]
+_exit                   0x009dcf         Code  Gb  cexit.o [4]
+_interrupt_1            0x009e08         Code  Gb  stm8s_it.o [1]
+_interrupt_12           0x009e11         Code  Gb  stm8s_it.o [1]
+_interrupt_13           0x009ba8         Code  Gb  stm8s_it.o [1]
+_interrupt_14           0x009e12         Code  Gb  stm8s_it.o [1]
+_interrupt_15           0x009e13         Code  Gb  stm8s_it.o [1]
+_interrupt_16           0x009e14         Code  Gb  stm8s_it.o [1]
+_interrupt_19           0x009838         Code  Gb  stm8s_it.o [1]
+_interrupt_2            0x009e09         Code  Gb  stm8s_it.o [1]
+_interrupt_20           0x009c99         Code  Gb  stm8s_it.o [1]
+_interrupt_21           0x009e15         Code  Gb  stm8s_it.o [1]
+_interrupt_24           0x009e16         Code  Gb  stm8s_it.o [1]
+_interrupt_25           0x009e17         Code  Gb  stm8s_it.o [1]
+_interrupt_26           0x009e18         Code  Gb  stm8s_it.o [1]
+_interrupt_3            0x009e0a         Code  Gb  stm8s_it.o [1]
+_interrupt_4            0x009e0b         Code  Gb  stm8s_it.o [1]
+_interrupt_5            0x009e0c         Code  Gb  stm8s_it.o [1]
+_interrupt_6            0x009e0d         Code  Gb  stm8s_it.o [1]
+_interrupt_7            0x009e0e         Code  Gb  stm8s_it.o [1]
+_interrupt_8            0x009e0f         Code  Gb  stm8s_it.o [1]
+_interrupt_9            0x009e10         Code  Gb  stm8s_it.o [1]
+active_period           0x00013f    0x4  Data  Gb  timer_pwm.o [1]
+alpha                   0x000133    0x4  Data  Gb  ir_receiver.o [1]
+assert_failed           0x009871   0x35  Code  Gb  main.o [1]
+assert_failed::counter  0x000137    0x4  Data  Lc  main.o [1]
+change_factor           0x000143    0x4  Data  Gb  timer_pwm.o [1]
+cmd_cnt                 0x000154    0x1  Data  Gb  commands.o [1]
+cmd_push                0x009746   0x3f  Code  Gb  commands.o [1]
+cmd_wr_idx              0x000153    0x1  Data  Gb  commands.o [1]
+commands                0x0000fb   0x14  Data  Gb  commands.o [1]
+control_state           0x00015b    0x1  Data  Gb  nodecontrol.o [1]
+detected_time_stamp     0x000123    0x4  Data  Gb  ir_receiver.o [1]
+detecting_pulse         0x008842   0x53  Code  Gb  ir_receiver.o [1]
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
 detecting_pulse::decrease_counter
                         0x00016a    0x1  Data  Lc  ir_receiver.o [1]
 detecting_pulse::direction
@@ -656,12 +948,21 @@ detecting_pulse::direction
 detecting_pulse::increase_counter
                         0x000169    0x1  Data  Lc  ir_receiver.o [1]
 detecting_pulse::previous_v
+<<<<<<< HEAD
                         0x00015f    0x2  Data  Lc  ir_receiver.o [1]
 dt                      0x000143    0x4  Data  Gb  ir_receiver.o [1]
 exit                    0x009e3c    0x3  Code  Gb  exit.o [4]
 gpio_state              0x000011    0x1  Data  Gb  timer_pwm.o [1]
 is_configured           0x000171    0x1  Data  Gb  timer_pwm.o [1]
 lowpass_filter          0x008738   0x48  Code  Gb  ir_receiver.o [1]
+=======
+                        0x00014b    0x2  Data  Lc  ir_receiver.o [1]
+dt                      0x00012f    0x4  Data  Gb  ir_receiver.o [1]
+exit                    0x009dff    0x3  Code  Gb  exit.o [4]
+gpio_state              0x000016    0x1  Data  Gb  timer_pwm.o [1]
+is_configured           0x00015d    0x1  Data  Gb  timer_pwm.o [1]
+lowpass_filter          0x008895   0x48  Code  Gb  ir_receiver.o [1]
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
 lowpass_filter::filtered_value
                         0x00015d    0x2  Data  Lc  ir_receiver.o [1]
 main                    0x0096a5   0x53  Code  Gb  main.o [1]
@@ -697,9 +998,15 @@ update_duty_cycle       0x008e99   0x13  Code  Gb  timer_pwm.o [1]
 [3] = dbgstm8smd.a
 [4] = dlstm8smn.a
 
+<<<<<<< HEAD
   7 539 bytes of readonly  code memory
     230 bytes of readonly  data memory
     631 bytes of readwrite data memory
+=======
+  7 471 bytes of readonly  code memory
+    235 bytes of readonly  data memory
+    611 bytes of readwrite data memory
+>>>>>>> 1d901f92701d2dabef10d5b6c8ba4bdceb926ba9
 
 Errors: none
 Warnings: none

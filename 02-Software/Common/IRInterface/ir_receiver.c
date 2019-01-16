@@ -28,15 +28,12 @@ typedef struct {
 } IR_Signal_Value_TypeDef;
 
 /* Private define ------------------------------------------------------------*/
-#define PARALLEL_LEDS            YES
 /* Private macro -------------------------------------------------------------*/
 #define MAX_STABLE_PULSE         1000
 
 //Macro for low pass filter
-#define SIGNAL_FREQUENCY        100
-#define F_CUT                   (SIGNAL_FREQUENCY*1.41)
+#define F_CUT                   (IR_RECEIVER_SIGNAL_FREQ)
 #define SAMPLE_RATE             1000    //1000 sample per second
-#define NUMBER_SAMPLE           20
 
 //For timeout service
 //#define MAX_TIME_OUT_MS         300
@@ -90,8 +87,7 @@ void process_ir_signal(void)
       if( timer_counter > (detected_time_stamp + TWO_PULSE_TIME_OUT_IN_MS) ){
         signal_state.pulse_counter = 0;
       }
-    }
-    
+    }   
     // making decision
     make_decision();
   } else {
@@ -201,7 +197,8 @@ void IR_Receiver_Task(void *args)
 
 IR_Signal_State_TypeDef IR_Receiver_GetState(void)
 {
-  return signal_state.state;
+
+  return signal_state.state; 
 }
 
 /**
