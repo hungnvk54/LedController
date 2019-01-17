@@ -54,7 +54,7 @@ void process_command(Command_TypeDef cmd)
       }
     case COMMAND_NODE_REQUEST_CHANGE_STATE:
       {
-        Node_State_SetOutputState(cmd.data);
+        Node_State_SetOutputState((GPIO_State_TypeDef)cmd.data);
         break;
       }
     }

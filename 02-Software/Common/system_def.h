@@ -70,7 +70,11 @@
 #define STATE_MANAGER_PARALLEL_LEDS            YES
 
 //Node Address
-#define NODE_ADDRESS                    1
+#define NODE_ADDRESS                            1
+
+//Led Output 
+#define LED_CONTROL_PORT                        GPIOA
+#define LED_CONTROL_PIN                         GPIO_PIN_3
 /* Exported functions ------------------------------------------------------- */
 
 #endif /* __SYSTEM_DEF_H */

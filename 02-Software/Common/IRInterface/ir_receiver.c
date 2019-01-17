@@ -142,7 +142,8 @@ int16_t lowpass_filter(uint16_t v)
 int16_t highpass_filter(uint16_t v)
 {
   static int16_t previous_x=0, previous_y=0;
-  previous_y = previous_y*alpha_h + alpha_h*(previous_x-v);
+  previous_y = (int16_t)((previous_y + v - previous_x)*alpha);
+  previous_x = v;
   return previous_y;
 }
 
@@ -213,7 +214,6 @@ void IR_Receiver_Task(void *args)
 
 IR_Signal_State_TypeDef IR_Receiver_GetState(void)
 {
-
   return signal_state.state; 
 }
 

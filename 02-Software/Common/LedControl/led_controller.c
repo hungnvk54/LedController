@@ -12,6 +12,7 @@
 #include "led_controller.h"
 #include "timer_pwm.h"
 #include "system_def.h"
+#include "nodestatemanager.h"
 /** @addtogroup Template_Project
   * @{
   */
@@ -37,7 +38,7 @@ void Led_Control_Immediate(GPIO_State_TypeDef state);
   * On/Off
   * @retval None
   */
-void Led_Control_Cmd( GPIO_TypeDef port, GPIO_Pin_TypeDef pin,\
+void Led_Control_Cmd( GPIO_TypeDef *port, GPIO_Pin_TypeDef pin,\
                       GPIO_State_TypeDef state
                     )
 {
@@ -54,10 +55,10 @@ void Led_Control_Immediate(GPIO_State_TypeDef state)
 {
   if( GPIO_STATE_ON == state)
   {
-    GPIO_WriteHigh(LED_PORT,LED_PIN);
+    GPIO_WriteLow(LED_PORT,LED_PIN);//Active in low level
   } else 
   {
-    GPIO_WriteLow(LED_PORT,LED_PIN);
+    GPIO_WriteHigh(LED_PORT,LED_PIN);
   }
 }
 
@@ -75,6 +76,13 @@ void Led_Control_Init(Control_Mode_TypeDef mode)
 Control_Mode_TypeDef Led_Control_GetMode(void)
 {
   return running_mode;
+}
+
+void Led_Control_Task(void *args)
+{
+  (void)args;
+  GPIO_State_TypeDef output_state = Node_State_GetOutputState();
+  Led_Control_Cmd(LED_CONTROL_PORT,LED_CONTROL_PIN,output_state);
 }
 
 /**

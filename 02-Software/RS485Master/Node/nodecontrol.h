@@ -14,12 +14,13 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "inc.h"
+#include "gpio_util.h"
 
 /* Exported types ------------------------------------------------------------*/
 typedef struct {
   uint8_t is_avaiable;
   uint8_t address;
-  uint8_t output_state;
+  GPIO_State_TypeDef output_state;
   uint8_t input_state;
 } Node_TypeDef;
 

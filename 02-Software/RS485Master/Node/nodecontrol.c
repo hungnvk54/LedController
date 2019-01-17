@@ -68,13 +68,13 @@ void query_node_state()
 void process_node_input_state(void)
 {
   uint8_t idx;
-  uint8_t output_state[MAX_NODES];
+  GPIO_State_TypeDef output_state[MAX_NODES];
   for(idx = 0; idx < MAX_NODES;++idx)
   {
     if( nodes[idx].input_state == OFF){
-      output_state[idx] = OFF;
+      output_state[idx] = GPIO_STATE_OFF;
     } else {
-      output_state[idx] = ON;
+      output_state[idx] = GPIO_STATE_ON;
     }
   }
   
@@ -86,7 +86,7 @@ void process_node_input_state(void)
       uint8_t node_counter = ARROUND_NODE_SIZE;
       while( (arround_node_idx >=0 )&& ( node_counter > 0) )
       {
-        output_state[arround_node_idx] = ON;
+        output_state[arround_node_idx] = GPIO_STATE_OFF;
         node_counter --;
         arround_node_idx--;
       }
@@ -94,7 +94,7 @@ void process_node_input_state(void)
       arround_node_idx = idx + 1;
       node_counter = ARROUND_NODE_SIZE;
       while( (arround_node_idx < MAX_NODES)&&(node_counter > 0)) {
-        output_state[arround_node_idx] = ON;
+        output_state[arround_node_idx] = GPIO_STATE_ON;
         node_counter --;
         arround_node_idx++;
       }
@@ -174,7 +174,7 @@ void Node_Control_InitNodes(void){
   for( node_index = 0 ; node_index < MAX_NODES; ++node_index){
     nodes[node_index].is_avaiable = NO;
     nodes[node_index].address = node_index;
-    nodes[node_index].output_state = OFF;
+    nodes[node_index].output_state = GPIO_STATE_OFF;
     nodes[node_index].input_state = OFF;
   }
   control_state = NODE_CONTROL_STATE_DETECTING;

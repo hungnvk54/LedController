@@ -18,8 +18,8 @@
 /* Exported types ------------------------------------------------------------*/
 
 typedef enum {
-  GPIO_STATE_ON,
-  GPIO_STATE_OFF
+  GPIO_STATE_ON = ON,
+  GPIO_STATE_OFF = OFF
 } GPIO_State_TypeDef;
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
