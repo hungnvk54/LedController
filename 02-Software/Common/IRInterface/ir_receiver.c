@@ -73,7 +73,7 @@ void process_ir_signal(void)
   {
     uint16_t v = ADC1_GetConversionValue();
     //Low pass filter
-//    v = highpass_filter(v);
+    v = highpass_filter(v);
     v = lowpass_filter(v);
     uint8_t has_pulse = detecting_pulse(v);
     
