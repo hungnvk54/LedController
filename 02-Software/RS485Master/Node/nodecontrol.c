@@ -11,6 +11,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "nodecontrol.h"
 #include "commands.h"
+#include "system_def.h"
+#include "nodestatemanager.h"
 /** @addtogroup Template_Project
   * @{
   */
@@ -71,6 +73,10 @@ void process_node_input_state(void)
   GPIO_State_TypeDef output_state[MAX_NODES];
   for(idx = 0; idx < MAX_NODES;++idx)
   {
+    if( MASTER_NODE_ADDRESS == idx )
+    {
+      nodes[idx].input_state = Node_State_GetInputState();
+    } 
     if( nodes[idx].input_state == OFF){
       output_state[idx] = GPIO_STATE_OFF;
     } else {
@@ -106,7 +112,12 @@ void process_node_input_state(void)
    // if(nodes[idx].is_avaiable == YES){
     if( nodes[idx].output_state != output_state[idx]) {
       nodes[idx].output_state = output_state[idx];
-      compose_command(idx,COMMAND_NODE_REQUEST_CHANGE_STATE,nodes[idx].output_state);
+      
+      if( idx == MASTER_NODE_ADDRESS ) {
+        Node_State_SetOutputState(nodes[idx].output_state);
+      } else {
+        compose_command(idx,COMMAND_NODE_REQUEST_CHANGE_STATE,nodes[idx].output_state);
+      }
     }
    // }
   }

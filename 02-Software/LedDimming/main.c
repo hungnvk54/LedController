@@ -87,7 +87,7 @@ void Test_Task(void *args)
 {
   static uint16_t counter = 0;
   if( ++counter == 500) {
-    GPIO_Util_Toggle(LED_PORT,LED_PIN);
+    GPIO_Util_Toggle(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
     counter = 0; 
   }
 }
@@ -97,10 +97,9 @@ void main(void)
   /* Infinite loop */
   System_Init();
   Task_Init();
-    GPIO_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
 
-//  GPIO_Util_Init();
-  GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
+  GPIO_Util_Init_As_Out(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   uint32_t previous_counter = 0;
   while (1)
@@ -137,7 +136,7 @@ void assert_failed(u8* file, u32 line)
   while (1)
   {
     if( ++counter == 10000) {
-    GPIO_Util_Toggle(LED_PORT,LED_PIN);
+    GPIO_Util_Toggle(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
     counter = 0; 
   }
   }

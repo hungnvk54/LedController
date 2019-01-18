@@ -23,6 +23,7 @@
 /* Private variables ---------------------------------------------------------*/
 static Control_Mode_TypeDef running_mode;
 /* Private function prototypes -----------------------------------------------*/
+void update_led_indicator(void);
 /* Private functions ---------------------------------------------------------*/
 void Led_Control_Immediate(GPIO_State_TypeDef state);
 /* Public functions ----------------------------------------------------------*/
@@ -55,10 +56,10 @@ void Led_Control_Immediate(GPIO_State_TypeDef state)
 {
   if( GPIO_STATE_ON == state)
   {
-    GPIO_WriteLow(LED_PORT,LED_PIN);//Active in low level
+    GPIO_Util_TurnOnLed(LED_CONTROL_PORT,LED_CONTROL_PIN);//Active in low level
   } else 
   {
-    GPIO_WriteHigh(LED_PORT,LED_PIN);
+    GPIO_Util_TurnOffLed(LED_CONTROL_PORT,LED_CONTROL_PIN);
   }
 }
 
@@ -83,6 +84,20 @@ void Led_Control_Task(void *args)
   (void)args;
   GPIO_State_TypeDef output_state = Node_State_GetOutputState();
   Led_Control_Cmd(LED_CONTROL_PORT,LED_CONTROL_PIN,output_state);
+  
+  //Update Led Indicator
+  update_led_indicator();
+}
+
+void update_led_indicator(void)
+{
+  GPIO_State_TypeDef output_state = Node_State_GetOutputState();
+  
+  if( GPIO_STATE_OFF == output_state) {
+    GPIO_Util_TurnOnLed(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  } else {
+    GPIO_Util_TurnOffLed(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  }
 }
 
 /**

@@ -34,7 +34,7 @@ void compose_command(uint8_t addr, Command_Code_TypeDef code, uint8_t state)
 
 void process_command(Command_TypeDef cmd)
 {
-  if( cmd.address == NODE_ADDRESS)//Chi xu ly ma lenh co dia chi
+  if( cmd.address == SLAVE_NODE_ADDRESS)//Chi xu ly ma lenh co dia chi
   {
     switch( cmd.code)
     {
@@ -42,14 +42,14 @@ void process_command(Command_TypeDef cmd)
       {
         //Received respond from slave node.
         uint8_t input_state = Node_State_GetInputState();
-        compose_command(NODE_ADDRESS,COMMAND_NODE_RESPOND,input_state);
+        compose_command(SLAVE_NODE_ADDRESS,COMMAND_NODE_RESPOND,input_state);
         break;
       }
     case COMMAND_NODE_QUERY_STATE:
       {
           //Received the previous request
         uint8_t input_state = Node_State_GetInputState();
-        compose_command(NODE_ADDRESS,COMMAND_NODE_REPORT_STATE,input_state);
+        compose_command(SLAVE_NODE_ADDRESS,COMMAND_NODE_REPORT_STATE,input_state);
         break;
       }
     case COMMAND_NODE_REQUEST_CHANGE_STATE:

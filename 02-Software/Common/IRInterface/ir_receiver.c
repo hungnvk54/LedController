@@ -101,24 +101,7 @@ void process_ir_signal(void)
     detected_time_stamp = timer_counter;
   }
 }
-void calculate_everage(uint16_t v)
-{
-  (void)v;
-//  if( ir_signal_value.size == 0) {
-//    ir_signal_value.everage_value = v;
-//    ir_signal_value.size = 1;
-//  } else {
-//    double size_inverse = 0;
-//    if( ir_signal_value.size == U16_MAX) {
-//      size_inverse = (1.0f/U16_MAX);
-//    } else {
-//      size_inverse = (1.0f/ir_signal_value.size);
-//      ir_signal_value.size += 1;
-//    }
-//    ir_signal_value.everage_value=(ir_signal_value.everage_value+v*size_inverse)\
-//                                  /(1+size_inverse);
-//  }
-}
+
 void make_decision(void)
 {
   if( signal_state.pulse_counter < IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER){

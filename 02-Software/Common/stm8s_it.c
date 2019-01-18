@@ -34,7 +34,11 @@
 #include "stm8s_tim1.h"
 #include "timer_counter.h"
 #include "stm8s_uart1.h"
+#if defined (DIMMING)
+   
+#else
 #include "transport.h"
+#endif
 #include "const.h"
 #include "gpio_util.h"
 #include "system_def.h"
@@ -243,7 +247,6 @@ INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
     TIM1_ClearFlag(TIM1_FLAG_UPDATE);
     // Counter up
     Timer_Counter_IncreaseCounter();
-//    GPIO_Util_Toggle(LED_PORT,LED_PIN);
   }
 }
 

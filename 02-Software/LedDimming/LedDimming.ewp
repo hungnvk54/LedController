@@ -829,7 +829,7 @@
                 <debug>0</debug>
                 <option>
                     <name>GenDeviceSelectMenu</name>
-                    <state></state>
+                    <state>UnspecifiedSTM8	STM8 - Unspecified</state>
                 </option>
                 <option>
                     <name>GenCodeModel</name>
@@ -873,7 +873,7 @@
                 </option>
                 <option>
                     <name>GenRTConfigPath</name>
-                    <state></state>
+                    <state>$TOOLKIT_DIR$\LIB\dlstm8smn.h</state>
                 </option>
                 <option>
                     <name>GenLibInFormatter</name>
@@ -968,12 +968,12 @@
                 </option>
                 <option>
                     <name>IccOptLevelSlave</name>
-                    <state>1</state>
+                    <state>3</state>
                 </option>
                 <option>
                     <name>IccOptAllowList</name>
                     <version>0</version>
-                    <state>111110</state>
+                    <state>111111</state>
                 </option>
                 <option>
                     <name>IccGenerateDebugInfo</name>
@@ -981,7 +981,7 @@
                 </option>
                 <option>
                     <name>IccOutputFile</name>
-                    <state></state>
+                    <state>$FILE_BNAME$.o</state>
                 </option>
                 <option>
                     <name>IccCodeModel</name>
@@ -1002,6 +1002,8 @@
                 <option>
                     <name>CCDefines</name>
                     <state>NDEBUG</state>
+                    <state>STM8S003</state>
+                    <state>DIMMING</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
@@ -1069,7 +1071,13 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
-                    <state></state>
+                    <state>$PROJ_DIR$\NodeStateManager</state>
+                    <state>$PROJ_DIR$\..\Common\IRInterface</state>
+                    <state>$PROJ_DIR$\..\Common\LedControl</state>
+                    <state>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\inc</state>
+                    <state>$PROJ_DIR$\..\Common\Task</state>
+                    <state>$PROJ_DIR$\..\Common\TimerUtil</state>
+                    <state>$PROJ_DIR$\..\Common</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -1355,7 +1363,7 @@
                 </option>
                 <option>
                     <name>IlinkOutputFile</name>
-                    <state>###Unitialized###</state>
+                    <state>LedDimming.out</state>
                 </option>
                 <option>
                     <name>IlinkDebugInfoEnable</name>
@@ -1655,9 +1663,6 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\src\stm8s_tim2.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\src\stm8s_uart1.c</name>
         </file>
     </group>
     <group>

@@ -30,11 +30,7 @@
   * 
   * @retval None
   */
-//void GPIO_Util_Init(void)
-//{
-//  //Only init the Necessary pin
-//  GPIO_Init(LED_PORT,LED_PIN,GPIO_MODE_OUT_OD_LOW_SLOW);
-//}
+
 void GPIO_Util_Init_As_Out(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
 {
   GPIO_Init(port,pin,GPIO_MODE_OUT_PP_LOW_FAST);
@@ -69,6 +65,16 @@ void GPIO_Util_Toggle(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
   } else {
     GPIO_Util_WriteLow(port,pin);
   }
+}
+
+void GPIO_Util_TurnOnLed(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
+{
+  GPIO_Util_WriteLow(port,pin);
+}
+
+void GPIO_Util_TurnOffLed(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
+{
+  GPIO_Util_WriteHigh(port,pin);
 }
 
 /**

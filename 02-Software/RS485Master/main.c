@@ -16,9 +16,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm8s.h"
-#include "stm8s_gpio.h"
 #include "stm8s_clk.h"
-#include "stm8s_tim2.h"
 #include "gpio_util.h"
 #include "timer_counter.h"
 #include "timer_pwm.h"
@@ -107,7 +105,7 @@ void Test_Task(void *args)
 {
   static uint16_t counter = 0;
   if( ++counter == 500) {
-    GPIO_Util_Toggle(LED_PORT,LED_PIN);
+    GPIO_Util_Toggle(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
     counter = 0; 
   }
 }
@@ -116,18 +114,18 @@ void Test_Uart(void *args)
 {
   if(GPIO_ReadInputData(GPIOA) & GPIO_PIN_1) {
     Transport_TxPush(1);
-//    GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+//    GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   } else {
     Transport_TxPush(0);
-//    GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+//    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
   }
   uint8_t data = 0;
   if( Transport_RxPop(&data) == SUCCESS) {
     if( data == 1 ) {
-      GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+      GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
     } else {
-      GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+      GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
     }
   }
 }
@@ -137,9 +135,9 @@ void Test_IR_Receiver(void *args)
   IR_Signal_State_TypeDef state = IR_Receiver_GetState();
   
   if( state == IR_HIDDEN ){//|| state == IR_LONG_PULSE 
-     GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+     GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
   } else {
-    GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
   }
 }
 
@@ -147,9 +145,9 @@ void Test_ADC(void *args)
 {
   uint16_t v = ADC1_GetConversionValue(); 
   if( v > 1000) {
-    GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
   } else if( v< 50) {
-    GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+    GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
     }
 }
 
@@ -159,9 +157,8 @@ void main(void)
   System_Init();
   Task_Init();
   /*For Test Only*/
-//  GPIO_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
-  GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
-  GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+  GPIO_Util_Init_As_Out(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   uint32_t previous_counter = 0;
   while (1)
@@ -198,7 +195,7 @@ void assert_failed(u8* file, u32 line)
   while (1)
   {
     if( ++counter == 10000) {
-    GPIO_Util_Toggle(LED_PORT,LED_PIN);
+    GPIO_Util_Toggle(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
     counter = 0; 
   }
   }

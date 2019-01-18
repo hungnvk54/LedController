@@ -95,7 +95,7 @@ void Test_Task(void *args)
 {
   static uint16_t counter = 0;
   if( ++counter == 500) {
-    GPIO_Util_Toggle(LED_PORT,LED_PIN);
+    GPIO_Util_Toggle(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
     counter = 0; 
   }
 }
@@ -104,18 +104,18 @@ void Test_Uart(void *args)
 {
   if(GPIO_ReadInputPin(GPIOA,GPIO_PIN_1) == SET) {
     Transport_TxPush(1);
-    GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+    GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   } else {
     Transport_TxPush(0);
-    GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
   }
   uint8_t data = 0;
   if( Transport_RxPop(&data) == SUCCESS) {
     if( data == 1 ) {
-      GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+      GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
     } else {
-      GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+      GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
     }
   }
 }
@@ -129,7 +129,7 @@ void main(void)
 //    GPIO_Init(,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
 
 //  GPIO_Util_Init();
-  GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
+  GPIO_Util_Init_As_Out(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   uint32_t previous_counter = 0;
   while (1)
@@ -166,7 +166,7 @@ void assert_failed(u8* file, u32 line)
   while (1)
   {
     if( ++counter == 10000) {
-    GPIO_Util_Toggle(LED_PORT,LED_PIN);
+    GPIO_Util_Toggle(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
     counter = 0; 
   }
   }
