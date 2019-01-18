@@ -347,6 +347,9 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
     /* In order to detect unexpected events during development,
        it is recommended to set a breakpoint on the following instruction.
     */
+#if defined (DIMMING)
+   
+#else
    if( UART1_GetITStatus( UART1_IT_TC ) == SET)
    {
    uint8_t data, ret;
@@ -359,6 +362,7 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
    }
 //   UART1_ClearFlag(UART1_FLAG_TC);//TC must be clear by software
    }
+#endif
  }
 
 /**
@@ -371,11 +375,15 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
     /* In order to detect unexpected events during development,
        it is recommended to set a breakpoint on the following instruction.
     */
+#if defined (DIMMING)
+   
+#else
    if( UART1_GetITStatus( UART1_IT_RXNE ) == SET)
    {
      uint8_t data = UART1_ReceiveData8();
      Transport_RxPush(data);
    }
+#endif
  }
 #endif /* (STM8S208) || (STM8S207) || (STM8S103) || (STM8S001) || (STM8S903) || (STM8AF62Ax) || (STM8AF52Ax) */
 

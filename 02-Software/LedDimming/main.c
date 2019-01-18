@@ -28,27 +28,23 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm8s.h"
-#include "stm8s_gpio.h"
 #include "stm8s_clk.h"
-#include "stm8s_tim2.h"
 #include "gpio_util.h"
 #include "timer_counter.h"
 #include "timer_pwm.h"
-#include "transport.h"
 #include "ir_transmitter.h"
 #include "ir_receiver.h"
 #include "taskmanager.h"
 #include "led_controller.h"
-#include "commands.h"
-#include "nodecontrol.h"
 #include "nodestatemanager.h"
+#include "system_def.h"
 /* Private defines -----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 void System_Init();
 void Clock_Config(void);
 void Task_Init(void);
+
 void Test_Task(void *args);
-void Test_Uart(void *args);
 /* Private functions ---------------------------------------------------------*/
 
 void System_Init()
@@ -56,13 +52,11 @@ void System_Init()
   Clock_Config();
   Timer_Counter_Init();
   Timer_PWM_Init();
-  Transport_Init();
   IR_Receiver_Init();
   IR_Transmitter_Init(IR_OUTPUT_MODE_PWM);
   Led_Control_Init(CONTROL_MODE_DIMMING);
   
   ///Init node control
-  Node_Control_InitNodes();
   Node_State_Manager_Init();
 }
     
@@ -81,13 +75,11 @@ void Task_Init(void)
     Task_Manager_AddTask(&IR_Transmitter_Task);
   }
   
-  Task_Manager_AddTask(&Command_Task); /* This task will get data from the 
-                                        RX buffer then process command */
-//  Task_Manager_AddTask(&Node_Control_Task); /*This task will process command
-//                                            which is received from Network */
   Task_Manager_AddTask(&Node_State_Manager_Task);
-  
-  //Task_Manager_AddTask(&Test_Task);
+  Task_Manager_AddTask(&Led_Control_Task);/* Control the output level base on current output*/
+  Task_Manager_AddTask(&IR_Receiver_Task);
+
+  Task_Manager_AddTask(&Test_Task);
 //  Task_Manager_AddTask(&Test_Uart);
 }
 
@@ -97,26 +89,6 @@ void Test_Task(void *args)
   if( ++counter == 500) {
     GPIO_Util_Toggle(LED_PORT,LED_PIN);
     counter = 0; 
-  }
-}
-
-void Test_Uart(void *args)
-{
-  if(GPIO_ReadInputPin(GPIOA,GPIO_PIN_1) == SET) {
-    Transport_TxPush(1);
-    GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
-
-  } else {
-    Transport_TxPush(0);
-    GPIO_Util_WriteLow(LED_PORT,LED_PIN);
-  }
-  uint8_t data = 0;
-  if( Transport_RxPop(&data) == SUCCESS) {
-    if( data == 1 ) {
-      GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
-    } else {
-      GPIO_Util_WriteLow(LED_PORT,LED_PIN);
-    }
   }
 }
 
@@ -135,9 +107,9 @@ void main(void)
   {
     if( previous_counter <= Timer_Counter_GetCounter() )
     {
-      if((Timer_Counter_GetCounter()  - previous_counter) > TICK_IN_MS) { //TICK_IN_MS
-        Task_Manager_PerformTask();
+      if((Timer_Counter_GetCounter()  - previous_counter) > TIMER_COUNTER_TICK_IN_MS) { //TICK_IN_MS
         previous_counter = Timer_Counter_GetCounter();
+        Task_Manager_PerformTask();
       }
     } else {
       ///Counter Overflow - Update the previous_counter value
