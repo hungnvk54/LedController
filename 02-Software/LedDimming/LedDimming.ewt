@@ -18,7 +18,7 @@
                     <analyzeTimeoutEnabled>1</analyzeTimeoutEnabled>
                     <analyzeTimeout>600</analyzeTimeout>
                     <enableParallel>0</enableParallel>
-                    <parallelThreads>2</parallelThreads>
+                    <parallelThreads>4</parallelThreads>
                     <enableFalsePositives>0</enableFalsePositives>
                     <messagesLimitEnabled>1</messagesLimitEnabled>
                     <messagesLimit>100</messagesLimit>
@@ -1066,7 +1066,7 @@
                     <analyzeTimeoutEnabled>1</analyzeTimeoutEnabled>
                     <analyzeTimeout>600</analyzeTimeout>
                     <enableParallel>0</enableParallel>
-                    <parallelThreads>2</parallelThreads>
+                    <parallelThreads>4</parallelThreads>
                     <enableFalsePositives>0</enableFalsePositives>
                     <messagesLimitEnabled>1</messagesLimitEnabled>
                     <messagesLimit>100</messagesLimit>
@@ -2098,12 +2098,6 @@
         </settings>
     </configuration>
     <group>
-        <name>Command</name>
-        <file>
-            <name>$PROJ_DIR$\..\Common\Command\commands.c</name>
-        </file>
-    </group>
-    <group>
         <name>IRInterface</name>
         <file>
             <name>$PROJ_DIR$\..\Common\IRInterface\ir_receiver.c</name>
@@ -2124,10 +2118,7 @@
     <group>
         <name>Node</name>
         <file>
-            <name>$PROJ_DIR$\Node\nodecontrol.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Common\NodeStateManager\nodestatemanager.c</name>
+            <name>$PROJ_DIR$\NodeStateManager\nodestatemanager.c</name>
         </file>
     </group>
     <group>
@@ -2164,12 +2155,6 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Common\TimerUtil\timer_pwm.c</name>
-        </file>
-    </group>
-    <group>
-        <name>Transport</name>
-        <file>
-            <name>$PROJ_DIR$\..\Common\Transport\transport.c</name>
         </file>
     </group>
     <file>

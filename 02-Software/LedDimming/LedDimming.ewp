@@ -190,6 +190,7 @@
                     <name>CCDefines</name>
                     <state>STM8S003</state>
                     <state>NDEBUG</state>
+                    <state>DIMMING</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
@@ -267,7 +268,7 @@
                     <state>$PROJ_DIR$\..\Common</state>
                     <state>$PROJ_DIR$\..\Common\Transport</state>
                     <state>$PROJ_DIR$\..\Common\Task</state>
-                    <state>$PROJ_DIR$\..\Common\NodeStateManager</state>
+                    <state>$PROJ_DIR$\NodeStateManager</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -498,7 +499,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>RS485Slave.hex</state>
+                    <state>LedDimming.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -1615,12 +1616,6 @@
         </settings>
     </configuration>
     <group>
-        <name>Command</name>
-        <file>
-            <name>$PROJ_DIR$\..\Common\Command\commands.c</name>
-        </file>
-    </group>
-    <group>
         <name>IRInterface</name>
         <file>
             <name>$PROJ_DIR$\..\Common\IRInterface\ir_receiver.c</name>
@@ -1641,10 +1636,7 @@
     <group>
         <name>Node</name>
         <file>
-            <name>$PROJ_DIR$\Node\nodecontrol.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Common\NodeStateManager\nodestatemanager.c</name>
+            <name>$PROJ_DIR$\NodeStateManager\nodestatemanager.c</name>
         </file>
     </group>
     <group>
@@ -1681,12 +1673,6 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Common\TimerUtil\timer_pwm.c</name>
-        </file>
-    </group>
-    <group>
-        <name>Transport</name>
-        <file>
-            <name>$PROJ_DIR$\..\Common\Transport\transport.c</name>
         </file>
     </group>
     <file>
