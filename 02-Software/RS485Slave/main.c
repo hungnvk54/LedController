@@ -146,7 +146,7 @@ void main(void)
 //    GPIO_Init(,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
 
 //  GPIO_Util_Init();
-  GPIO_Util_Init_As_Out(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_OD_LOW_FAST);
   GPIO_Util_TurnOffLed(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
   
   uint32_t previous_counter = 0;

@@ -24,8 +24,7 @@ typedef enum {
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-void GPIO_Util_Init_As_Out(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin);
-void GPIO_Util_Init_As_In(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin);
+void GPIO_Util_Init(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin,GPIO_Mode_TypeDef mode);
 
 void GPIO_Util_WriteValue(GPIO_TypeDef* port, uint8_t value);
 void GPIO_Util_WriteHigh(GPIO_TypeDef* port, GPIO_Pin_TypeDef pin);

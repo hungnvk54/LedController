@@ -157,8 +157,8 @@ void main(void)
   System_Init();
   Task_Init();
   /*For Test Only*/
-  GPIO_Util_Init_As_Out(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
-  GPIO_Util_Init_As_In(GPIOA,GPIO_PIN_1);
+  GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_OD_LOW_SLOW);
+  GPIO_Util_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_PU_NO_IT);
   GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   uint32_t previous_counter = 0;

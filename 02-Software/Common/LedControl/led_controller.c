@@ -67,7 +67,7 @@ void Led_Control_Init(Control_Mode_TypeDef mode)
 {
   if( CONTROL_MODE_IMMEDIATE == mode )
   {
-    GPIO_Util_Init_As_Out(LED_PORT,LED_PIN);
+    GPIO_Util_Init(LED_CONTROL_PORT,LED_CONTROL_PIN,GPIO_MODE_OUT_PP_HIGH_SLOW);
   } else {
     Timer_PWM_Init();
   }

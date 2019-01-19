@@ -31,13 +31,9 @@
   * @retval None
   */
 
-void GPIO_Util_Init_As_Out(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
+void GPIO_Util_Init(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin,GPIO_Mode_TypeDef mode)
 {
-  GPIO_Init(port,pin,GPIO_MODE_OUT_OD_LOW_FAST);
-}
-void GPIO_Util_Init_As_In(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
-{
-  GPIO_Init(port,pin,GPIO_MODE_IN_PU_NO_IT);
+  GPIO_Init(port,pin,mode);
 }
     
 void GPIO_Util_WriteValue(GPIO_TypeDef* port, uint8_t value)
