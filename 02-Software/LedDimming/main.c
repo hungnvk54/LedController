@@ -43,17 +43,20 @@
 void System_Init();
 void Clock_Config(void);
 void Task_Init(void);
+void Interrupt_Init(void);
 
 void Test_Task(void *args);
+void Test_IR_Receiver(void *args);
 /* Private functions ---------------------------------------------------------*/
 
 void System_Init()
 {
   Clock_Config();
+  Interrupt_Init();
   Timer_Counter_Init();
   Timer_PWM_Init();
   IR_Receiver_Init();
-  IR_Transmitter_Init(IR_OUTPUT_MODE_PWM);
+  IR_Transmitter_Init(IR_OUTPUT_MODE_IO);
   Led_Control_Init(CONTROL_MODE_DIMMING);
   
   ///Init node control
@@ -67,20 +70,27 @@ void Clock_Config(void) {
 
 void Task_Init(void)
 {
-  if( IR_OUTPUT_MODE_PWM == IR_Transmitter_GetMode()){
-    Task_Manager_AddTask(&Timer_PWM_Update_Period);
+  if( IR_OUTPUT_MODE_IO == IR_Transmitter_GetMode()){
+    Task_Manager_AddTask(&IR_Transmitter_Task);
   }
   if( CONTROL_MODE_DIMMING == Led_Control_GetMode())
   {
-    Task_Manager_AddTask(&IR_Transmitter_Task);
+    Task_Manager_AddTask(&Timer_PWM_Update_Period);
   }
   
   Task_Manager_AddTask(&Node_State_Manager_Task);
   Task_Manager_AddTask(&Led_Control_Task);/* Control the output level base on current output*/
   Task_Manager_AddTask(&IR_Receiver_Task);
 
-  Task_Manager_AddTask(&Test_Task);
-//  Task_Manager_AddTask(&Test_Uart);
+//  Task_Manager_AddTask(&Test_Task);
+//  Task_Manager_AddTask(&Test_IR_Receiver);
+}
+
+void Interrupt_Init()
+{
+  //Change Interrupt Of Timer 1
+  ITC_DeInit();//DeInit All Interrupt Priority
+  ITC_SetSoftwarePriority(ITC_IRQ_TIM1_OVF,ITC_PRIORITYLEVEL_2);
 }
 
 void Test_Task(void *args)
@@ -92,6 +102,17 @@ void Test_Task(void *args)
   }
 }
 
+void Test_IR_Receiver(void *args)
+{
+  IR_Signal_State_TypeDef state = IR_Receiver_GetState();
+  
+  if( state == IR_HIDDEN ){//|| state == IR_LONG_PULSE 
+     GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  } else {
+    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  }
+}
+
 void main(void)
 {
   /* Infinite loop */
@@ -99,6 +120,7 @@ void main(void)
   Task_Init();
 
   GPIO_Util_Init_As_Out(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  
   GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   uint32_t previous_counter = 0;

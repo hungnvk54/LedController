@@ -52,8 +52,8 @@
 #define IR_RECEIVER_LONG_PULSE_TIME_OUT_IN_MS           500
 #define IR_RECEIVER_SHORT_PULSE_PULSE_COUNTER           (IR_RECEIVER_SHORT_PULSE_TIME_OUT_IN_MS/IR_RECEIVER_PULSE_WITHD_IN_MS)
 #define IR_RECEIVER_LONG_PULSE_PULSE_COUNTER            (IR_RECEIVER_LONG_PULSE_TIME_OUT_IN_MS/IR_RECEIVER_PULSE_WITHD_IN_MS)
-#define IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER       10
-#define TWO_PULSE_TIME_OUT_IN_MS                        150
+#define IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER       20
+#define TWO_PULSE_TIME_OUT_IN_MS                        6
 
 
 //For RS485 Controller
@@ -66,7 +66,7 @@
 #define STATE_MANAGER_PARALLEL_LEDS             YES
 
 //Node Address
-#define SLAVE_NODE_ADDRESS                      1
+#define SLAVE_NODE_ADDRESS                      3
 #define MASTER_NODE_ADDRESS                     0
 
 //Led Output 

@@ -40,16 +40,19 @@ void Interrupt_Init(void);
 void Task_Init(void);
 void Test_Task(void *args);
 void Test_Uart(void *args);
+void Test_IR_Receiver(void *args);
+
 /* Private functions ---------------------------------------------------------*/
 
 void System_Init()
 {
   Clock_Config();
+  Interrupt_Init();
   Timer_Counter_Init();
   Timer_PWM_Init();
   Transport_Init();
   IR_Receiver_Init();
-  IR_Transmitter_Init(IR_OUTPUT_MODE_PWM);
+  IR_Transmitter_Init(IR_OUTPUT_MODE_IO);
   Led_Control_Init(CONTROL_MODE_DIMMING);
   
   ///Init node control
@@ -72,12 +75,12 @@ void Interrupt_Init(void)
 
 void Task_Init(void)
 {
-  if( IR_OUTPUT_MODE_PWM == IR_Transmitter_GetMode()){
-    Task_Manager_AddTask(&Timer_PWM_Update_Period);
+  if( IR_OUTPUT_MODE_IO == IR_Transmitter_GetMode()){
+    Task_Manager_AddTask(&IR_Transmitter_Task);
   }
   if( CONTROL_MODE_DIMMING == Led_Control_GetMode())
   {
-    Task_Manager_AddTask(&IR_Transmitter_Task);
+    Task_Manager_AddTask(&Timer_PWM_Update_Period);
   }
   Task_Manager_AddTask(&Led_Control_Task);
   
@@ -85,10 +88,14 @@ void Task_Init(void)
                                         RX buffer then process command */
   Task_Manager_AddTask(&Node_Control_Task); /*This task will process command
                                             which is received from Network */
+  Task_Manager_AddTask(&IR_Receiver_Task);
+//
   Task_Manager_AddTask(&Node_State_Manager_Task);
   
-  //Task_Manager_AddTask(&Test_Task);
+//  Task_Manager_AddTask(&Test_Task);
 //  Task_Manager_AddTask(&Test_Uart);
+//  Task_Manager_AddTask(&Test_IR_Receiver); //Done++++++++++++++++++++++++++++++++++
+
 }
 
 void Test_Task(void *args)
@@ -102,13 +109,13 @@ void Test_Task(void *args)
 
 void Test_Uart(void *args)
 {
-  if(GPIO_ReadInputPin(GPIOA,GPIO_PIN_1) == SET) {
-    Transport_TxPush(1);
-    GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  if(GPIO_ReadInputData(GPIOA)& GPIO_PIN_1) {
+//    Transport_TxPush(1);
+//    GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   } else {
-    Transport_TxPush(0);
-    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+//    Transport_TxPush(0);
+//    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
   }
   uint8_t data = 0;
   if( Transport_RxPop(&data) == SUCCESS) {
@@ -120,17 +127,28 @@ void Test_Uart(void *args)
   }
 }
 
+void Test_IR_Receiver(void *args)
+{
+  IR_Signal_State_TypeDef state = IR_Receiver_GetState();
+  
+  if( state == IR_HIDDEN ){//|| state == IR_LONG_PULSE 
+     GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  } else {
+    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  }
+}
+
 void main(void)
 {
   /* Infinite loop */
   System_Init();
   Task_Init();
-  Interrupt_Init();
 //    GPIO_Init(,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
 
 //  GPIO_Util_Init();
   GPIO_Util_Init_As_Out(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
-
+  GPIO_Util_TurnOffLed(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  
   uint32_t previous_counter = 0;
   while (1)
   {

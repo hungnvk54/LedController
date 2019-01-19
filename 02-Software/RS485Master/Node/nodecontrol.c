@@ -51,11 +51,11 @@ void query_node_state()
 {
  // uint8_t is_need_send = FALSE;
   //Change address to other node
-  while( (state_node_query_index < MAX_NODES)&& \
-    (nodes[state_node_query_index].is_avaiable == NO)) {
-      state_node_query_index++;
-    }
-  
+//  while( (++state_node_query_index < MAX_NODES)&& \
+//    (nodes[state_node_query_index].is_avaiable == NO)) {
+////      state_node_query_index++;
+//    }
+  state_node_query_index++;
   if( state_node_query_index >= MAX_NODES ) {
     state_node_query_index = 0;
     //Send Command to change the output node state
@@ -69,8 +69,9 @@ void query_node_state()
 
 void process_node_input_state(void)
 {
-  uint8_t idx;
+  int16_t idx;
   GPIO_State_TypeDef output_state[MAX_NODES];
+
   for(idx = 0; idx < MAX_NODES;++idx)
   {
     if( MASTER_NODE_ADDRESS == idx )
@@ -92,7 +93,7 @@ void process_node_input_state(void)
       uint8_t node_counter = ARROUND_NODE_SIZE;
       while( (arround_node_idx >=0 )&& ( node_counter > 0) )
       {
-        output_state[arround_node_idx] = GPIO_STATE_OFF;
+        output_state[arround_node_idx] = GPIO_STATE_ON;
         node_counter --;
         arround_node_idx--;
       }
@@ -106,11 +107,11 @@ void process_node_input_state(void)
       }
     }
   }
-  
+
   for(idx = 0; idx < MAX_NODES;++idx)
   {
    // if(nodes[idx].is_avaiable == YES){
-    if( nodes[idx].output_state != output_state[idx]) {
+    if( nodes[idx].output_state != output_state[idx] ) {
       nodes[idx].output_state = output_state[idx];
       
       if( idx == MASTER_NODE_ADDRESS ) {
@@ -134,10 +135,12 @@ void compose_command(uint8_t addr, Command_Code_TypeDef code, uint8_t state)
 
 void process_command(Command_TypeDef cmd)
 {
+  if( cmd.address >= MAX_NODES ) return;
   switch( cmd.code)
   {
     case COMMAND_NODE_RESPOND:
     {
+     
       //Received respond from slave node.
       nodes[cmd.address].is_avaiable = YES;
 //      nodes[cmd.address].output_state = ((cmd.data&UB_UINT8)==UB_UINT8);

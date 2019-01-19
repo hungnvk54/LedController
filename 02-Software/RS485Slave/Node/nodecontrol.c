@@ -12,7 +12,7 @@
 #include "nodecontrol.h"
 #include "commands.h"
 #include "system_def.h"
-#include "nodestatemanager.h"
+#include "nodestatemanager.h" 
 /** @addtogroup Template_Project
   * @{
   */
@@ -40,7 +40,7 @@ void process_command(Command_TypeDef cmd)
     {
       case COMMAND_NODE_QUERRY:
       {
-        //Received respond from slave node.
+        //Received respond from slave node
         uint8_t input_state = Node_State_GetInputState();
         compose_command(SLAVE_NODE_ADDRESS,COMMAND_NODE_RESPOND,input_state);
         break;
@@ -54,6 +54,7 @@ void process_command(Command_TypeDef cmd)
       }
     case COMMAND_NODE_REQUEST_CHANGE_STATE:
       {
+//        GPIO_Util_TurnOnLed(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
         Node_State_SetOutputState((GPIO_State_TypeDef)cmd.data);
         break;
       }

@@ -829,7 +829,7 @@
                 <debug>0</debug>
                 <option>
                     <name>GenDeviceSelectMenu</name>
-                    <state>UnspecifiedSTM8	STM8 - Unspecified</state>
+                    <state>STM8S003F3	STM8S003F3</state>
                 </option>
                 <option>
                     <name>GenCodeModel</name>
@@ -869,7 +869,7 @@
                 </option>
                 <option>
                     <name>GenRTDescription</name>
-                    <state></state>
+                    <state>Use the normal configuration of the C/EC++ runtime library. No locale interface, C locale, no file descriptor support, no multibytes in printf and scanf, and no hex floats in strtod.</state>
                 </option>
                 <option>
                     <name>GenRTConfigPath</name>
@@ -882,7 +882,7 @@
                 </option>
                 <option>
                     <name>GenLibInFormatterDescription</name>
-                    <state></state>
+                    <state>Full formatting, without multibytes.</state>
                 </option>
                 <option>
                     <name>GenLibOutFormatter</name>
@@ -891,15 +891,15 @@
                 </option>
                 <option>
                     <name>GenLibOutFormatterDescription</name>
-                    <state></state>
+                    <state>Full formatting, without multibytes.</state>
                 </option>
                 <option>
                     <name>GenStackSize</name>
-                    <state>###Uninitialized###</state>
+                    <state>0x100</state>
                 </option>
                 <option>
                     <name>GenHeapSize</name>
-                    <state>###Uninitialized###</state>
+                    <state>0x100</state>
                 </option>
                 <option>
                     <name>GeneralEnableMisra</name>
@@ -930,7 +930,7 @@
                 </option>
                 <option>
                     <name>GenMathFunctionDescription</name>
-                    <state></state>
+                    <state>Default variants of cos, sin, tan, log, log10, pow, and exp.</state>
                 </option>
             </data>
         </settings>
@@ -1300,15 +1300,15 @@
                 <option>
                     <name>OOCOutputFormat</name>
                     <version>2</version>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>OCOutputOverride</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state></state>
+                    <state>LedDimming.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -1316,7 +1316,7 @@
                 </option>
                 <option>
                     <name>OOCObjCopyEnable</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
             </data>
         </settings>
@@ -1427,7 +1427,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>lnk0t.icf</state>
+                    <state>$TOOLKIT_DIR$\config\lnkstm8.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -1491,7 +1491,7 @@
                 </option>
                 <option>
                     <name>IlinkProgramEntryLabel</name>
-                    <state></state>
+                    <state>__iar_program_start</state>
                 </option>
                 <option>
                     <name>DoFill</name>
@@ -1657,6 +1657,9 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\src\stm8s_gpio.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\src\stm8s_itc.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\src\stm8s_tim1.c</name>

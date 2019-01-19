@@ -828,7 +828,7 @@
                 <debug>0</debug>
                 <option>
                     <name>GenDeviceSelectMenu</name>
-                    <state>UnspecifiedSTM8	STM8 - Unspecified</state>
+                    <state>STM8S003F3	STM8S003F3</state>
                 </option>
                 <option>
                     <name>GenCodeModel</name>
@@ -1073,7 +1073,7 @@
                     <state>$PROJ_DIR$\NodeStateManager</state>
                     <state>$PROJ_DIR$</state>
                     <state>$PROJ_DIR$\..\Common</state>
-                    <state>E:\DATA\03-DuAn\02-LedController\LedController\02-Software\Common\Command</state>
+                    <state>$PROJ_DIR$\..\Common\Command</state>
                     <state>$PROJ_DIR$\..\Common\IRInterface</state>
                     <state>$PROJ_DIR$\..\Common\LedControl</state>
                     <state>$PROJ_DIR$\..\Common\STM8S_StdPeriph_Driver\inc</state>
@@ -1101,11 +1101,11 @@
                 </option>
                 <option>
                     <name>IccUseExtraOptions</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IccExtraOptions</name>
-                    <state></state>
+                    <state>--no_path_in_file_macros</state>
                 </option>
                 <option>
                     <name>IccLang</name>
@@ -1429,7 +1429,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>lnk0t.icf</state>
+                    <state>$TOOLKIT_DIR$\config\lnkstm8s003f3.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -1493,7 +1493,7 @@
                 </option>
                 <option>
                     <name>IlinkProgramEntryLabel</name>
-                    <state></state>
+                    <state>__iar_program_start</state>
                 </option>
                 <option>
                     <name>DoFill</name>

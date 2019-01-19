@@ -43,10 +43,10 @@ void Led_Control_Cmd( GPIO_TypeDef *port, GPIO_Pin_TypeDef pin,\
                       GPIO_State_TypeDef state
                     )
 {
-  if( CONTROL_MODE_DIMMING == running_mode )
+  if( CONTROL_MODE_IMMEDIATE == running_mode )
   {
     Led_Control_Immediate(state);
-  } else if( CONTROL_MODE_IMMEDIATE == running_mode )
+  } else if( CONTROL_MODE_DIMMING == running_mode )
   {
     Timer_PWM_Start(state);
   }
@@ -86,7 +86,7 @@ void Led_Control_Task(void *args)
   Led_Control_Cmd(LED_CONTROL_PORT,LED_CONTROL_PIN,output_state);
   
   //Update Led Indicator
-  update_led_indicator();
+//  update_led_indicator();
 }
 
 void update_led_indicator(void)

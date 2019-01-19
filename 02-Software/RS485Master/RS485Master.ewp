@@ -1308,7 +1308,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>RS485.hex</state>
+                    <state>RS485Master.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>

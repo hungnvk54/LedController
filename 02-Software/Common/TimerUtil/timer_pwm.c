@@ -22,7 +22,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-double active_period = 0;//[Value from 0 - 1]
+double active_period = 1;//[Value from 0 - 1]
 double change_factor = 0;
 GPIO_State_TypeDef gpio_state = GPIO_STATE_OFF;
 FunctionalState is_configured = DISABLE;
@@ -54,7 +54,6 @@ void Timer_PWM_Init()
   if( change_factor == 0 ) change_factor = 0.001;
   
 }
-
 void Timer_PWM_IR_Transmitter_Init()
 {
   //5KHz Pulse
@@ -79,11 +78,11 @@ void Timer_PWM_Start(GPIO_State_TypeDef state)
 void Timer_PWM_Update_Period(void *args)
 {
   (void)args;
-  if( GPIO_STATE_OFF == gpio_state )
+  if( GPIO_STATE_ON == gpio_state )
   {
     if( active_period >= 1 ) 
     {
-      gpio_state = GPIO_STATE_OFF;
+//      gpio_state = GPIO_STATE_OFF;
       return;
     }
     active_period += change_factor;
@@ -91,7 +90,7 @@ void Timer_PWM_Update_Period(void *args)
   {
     if( active_period <= 0 ) 
     {
-      gpio_state = GPIO_STATE_ON;
+//      gpio_state = GPIO_STATE_OFN;
       return;
     }
     active_period -= change_factor;

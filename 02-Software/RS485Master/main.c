@@ -82,9 +82,9 @@ void Task_Init(void)
                                             which is received from Network */
   Task_Manager_AddTask(&IR_Receiver_Task);
   Task_Manager_AddTask(&Node_State_Manager_Task);
-//  Task_Manager_AddTask(&Test_Task);
+//  Task_Manager_AddTask(&Test_Task); 
 //  Task_Manager_AddTask(&Test_Uart); //Done
-  Task_Manager_AddTask(&Test_IR_Receiver); //Done++++++++++++++++++++++++++++++++++
+//  Task_Manager_AddTask(&Test_IR_Receiver); //Done++++++++++++++++++++++++++++++++++
 //  Task_Manager_AddTask(&Test_ADC); //Done
 }
 
@@ -114,11 +114,11 @@ void Test_Uart(void *args)
 {
   if(GPIO_ReadInputData(GPIOA) & GPIO_PIN_1) {
     Transport_TxPush(1);
-//    GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+    GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   } else {
     Transport_TxPush(0);
-//    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
   }
   uint8_t data = 0;
   if( Transport_RxPop(&data) == SUCCESS) {
@@ -158,6 +158,7 @@ void main(void)
   Task_Init();
   /*For Test Only*/
   GPIO_Util_Init_As_Out(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  GPIO_Util_Init_As_In(GPIOA,GPIO_PIN_1);
   GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   uint32_t previous_counter = 0;
