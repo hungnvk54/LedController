@@ -162,13 +162,10 @@ uint8_t Transport_GetRxBufferSize(void)
 void Transport_OutputEnable(void)
 {
   GPIO_Util_WriteHigh(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
-  GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
-
 }
 void Transport_OutputDisable(void)
 {
   GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
-  GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 }
 /**
   * @}
