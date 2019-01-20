@@ -26,18 +26,18 @@
 /* Private variables ---------------------------------------------------------*/
 #if     (MAX_TX_BUFFER <=127)
 uint8_t tx_buff[MAX_TX_BUFFER];
-uint8_t tx_wr_idx = 0, tx_rd_idx= 0, tx_cnt = 0;
+volatile uint8_t tx_wr_idx = 0, tx_rd_idx= 0, tx_cnt = 0;
 #else
-uint16_t tx_buff[MAX_TX_BUFFER];
-uint16_t tx_wr_idx = 0, tx_rd_idx= 0, tx_cnt = 0;
+volatile uint16_t tx_buff[MAX_TX_BUFFER];
+volatile uint16_t tx_wr_idx = 0, tx_rd_idx= 0, tx_cnt = 0;
 #endif
 
 #if     (MAX_RX_BUFFER <=127)
-uint8_t rx_buff[MAX_RX_BUFFER];
-uint8_t rx_wr_idx= 0, rx_rd_idx= 0, rx_cnt = 0;
+volatile uint8_t rx_buff[MAX_RX_BUFFER];
+volatile uint8_t rx_wr_idx= 0, rx_rd_idx= 0, rx_cnt = 0;
 #else
 uint16_t rx_buff[MAX_RX_BUFFER];
-uint16_t rx_wr_idx= 0, rx_rd_idx= 0, rx_cnt = 0;
+volatile uint16_t rx_wr_idx= 0, rx_rd_idx= 0, rx_cnt = 0;
 #endif
 /* Private function prototypes -----------------------------------------------*/
 void tx_interrupt_config(FunctionalState state);
@@ -82,12 +82,12 @@ void Transport_Init(void)
 void Transport_TxPush(uint8_t data)
 {
   while( tx_cnt >= MAX_TX_BUFFER ); //Wait here until data is send
-  tx_interrupt_config(DISABLE);
   tx_buff[tx_wr_idx] = data;
+  tx_interrupt_config(DISABLE);
   ++tx_cnt;
+  tx_interrupt_config(ENABLE);
   ++tx_wr_idx;
   if( tx_wr_idx >= MAX_TX_BUFFER ) tx_wr_idx = 0;
-  tx_interrupt_config(ENABLE);
 }
 uint8_t Transport_TxPop(uint8_t *data)
 {
@@ -118,12 +118,13 @@ uint8_t Transport_RxPop(uint8_t *data)
   {
     return FAILED;
   }
-  rx_interrupt_config(DISABLE);
   *data = rx_buff[rx_rd_idx];
+  rx_interrupt_config(DISABLE);
   --rx_cnt;
+  rx_interrupt_config(ENABLE);
   ++rx_rd_idx;
   if( MAX_RX_BUFFER == rx_rd_idx ) rx_rd_idx = 0;
-  rx_interrupt_config(ENABLE);
+  
   return SUCCESS;
 }
 
@@ -157,6 +158,11 @@ uint16_t Transport_Read(uint8_t *data, uint16_t length)
 uint8_t Transport_GetRxBufferSize(void)
 {
   return rx_cnt;
+}
+
+uint8_t Transport_IsBufferEmpty(void)
+{
+  return tx_cnt>0?FALSE:TRUE;
 }
 
 void Transport_OutputEnable(void)

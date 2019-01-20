@@ -355,14 +355,15 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
 #else
    if( UART1_GetITStatus( UART1_IT_TC ) == SET)
    {
-   uint8_t data, ret;
-   ret = Transport_TxPop(&data);
-   if( ret == SUCCESS ) {
-    Transport_OutputEnable();
-    UART1_SendData8(data);
-   } else {
-    Transport_OutputDisable();
-   }
+     uint8_t data, ret;
+     ret = Transport_TxPop(&data);
+     if( ret == SUCCESS ) {
+      Transport_OutputEnable();
+      UART1_SendData8(data);
+     } else {
+      Transport_OutputDisable();
+      UART1_ClearFlag(UART1_FLAG_TC);//TC must be clear by software
+     }
 //   UART1_ClearFlag(UART1_FLAG_TC);//TC must be clear by software
    }
 #endif
