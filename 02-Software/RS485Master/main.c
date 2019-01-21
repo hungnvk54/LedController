@@ -168,6 +168,7 @@ void main(void)
     {
       if((Timer_Counter_GetCounter()  - previous_counter) >= TIMER_COUNTER_TICK_IN_MS) { //TICK_IN_MS
         previous_counter = Timer_Counter_GetCounter();
+//          GPIO_Util_Toggle(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
         Task_Manager_PerformTask();
       }
     } else {
