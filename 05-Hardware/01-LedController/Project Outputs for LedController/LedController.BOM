@@ -1,0 +1,19 @@
+Bill of Material for 
+On 1/22/2019 at 4:29:06 PM
+
+ Comment             Pattern     Quantity  Components
+------------------------------------------------------------------------------
+                     HDR1X4H          1    P3                           Header, 4-Pin, Right Angle 
+ 100R                RESC2608X06N     1    R2                           Thick Film Resistors - SMD 0603 100OHMS 5% 1/10WATT 
+ 10K                 RESC2608X06N     1    R1                           RES SMD 10K OHM 1% 1/4W 0603 
+ 1K                  RESC2608X06N     1    R4                           Thick Film Resistors - SMD 0603 1kOHMS 5% 1/10WATT 
+ 1N4007              SODFL504X244-2N    1    D3                           1N4007_SMD           
+ 470R                RESC2608X06N     1    R3                           Thick Film Resistors - SMD 470 ohm 5% 
+ AO3400              SOT95P278X125-3N    1    Q1                           AO3400  MOSFET SOT23-3 
+ Header 2            HDR1X2           1    P2                           Header, 2-Pin        
+ Header 4            HDR1X4           1    P1                           Header, 4-Pin        
+ LED0603             DIOC1608X06N     1    D2                                                
+ LM117-5V            SOT230P700X180-4N    1    U3                                                
+ MAX485              SOIC127P600X175-8N    1    U2                           IC TXRX RS485/RS422 LOWPWR 8SOIC 
+ STM8S003            TSOP65P640X120-20N    1    U1                           MCU 8-bit STM8S STM8 CISC 8KB Flash 3.3V/5V 20-Pin TSSOP T/R 
+ TCRT5000            TCRT5000         1    D1                                                
