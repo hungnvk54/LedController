@@ -30,14 +30,14 @@ void IR_Transmitter_Init(IR_Output_Mode_TypeDef mode)
 {
   if( IR_OUTPUT_MODE_IO == mode )
   {
-    GPIO_Util_Init(IR_TRANSMITTER_PORT,IR_TRANSMITTER_PIN,GPIO_MODE_OUT_PP_LOW_SLOW);
-  } else if( IR_OUTPUT_MODE_PWM == mode )
+    GPIO_Util_Init(IR_TRANSMITTER_PORT,IR_TRANSMITTER_PIN,GPIO_MODE_OUT_PP_LOW_FAST);
+  } else if( IR_OUTPUT_MODE_PWM == mode ) 
   {
     Timer_PWM_IR_Transmitter_Init();
   }
   running_mode = mode;
 }
-
+ 
 void IR_Transmitter_Task(void *args)
 {
   ///This task is peridically called in 1ms, so The max frequency is 500Hz

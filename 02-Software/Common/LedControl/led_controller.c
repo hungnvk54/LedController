@@ -71,6 +71,7 @@ void Led_Control_Init(Control_Mode_TypeDef mode)
   } else {
     Timer_PWM_Init();
   }
+  GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_OD_LOW_FAST);
   running_mode = mode;
 }
 

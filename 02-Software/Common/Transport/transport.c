@@ -39,6 +39,9 @@ volatile uint8_t rx_wr_idx= 0, rx_rd_idx= 0, rx_cnt = 0;
 uint16_t rx_buff[MAX_RX_BUFFER];
 volatile uint16_t rx_wr_idx= 0, rx_rd_idx= 0, rx_cnt = 0;
 #endif
+
+volatile uint8_t debug_variable = 0;
+
 /* Private function prototypes -----------------------------------------------*/
 void tx_interrupt_config(FunctionalState state);
 void rx_interrupt_config(FunctionalState state);
@@ -75,19 +78,29 @@ void Transport_Init(void)
     UART1_ITConfig(UART1_IT_RXNE_OR, ENABLE);
     
     /* Config Driver Pin to Control MAX485 IC */
-    GPIO_Util_Init(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN,GPIO_MODE_OUT_PP_LOW_FAST);
-    GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+    GPIO_Util_Init(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN,GPIO_MODE_OUT_PP_LOW_FAST);//GPIO_MODE_OUT_OD_LOW_FAST
+//    GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
 }
 
 void Transport_TxPush(uint8_t data)
 {
   while( tx_cnt >= MAX_TX_BUFFER ); //Wait here until data is send
-  tx_buff[tx_wr_idx] = data;
-  tx_interrupt_config(DISABLE);
-  ++tx_cnt;
-  tx_interrupt_config(ENABLE);
-  ++tx_wr_idx;
-  if( tx_wr_idx >= MAX_TX_BUFFER ) tx_wr_idx = 0;
+//  if( tx_cnt )
+//  {
+    tx_buff[tx_wr_idx] = data;
+    tx_interrupt_config(DISABLE);
+//    disableInterrupts();
+    ++tx_cnt;
+    tx_interrupt_config(ENABLE);
+//    enableInterrupts();
+    ++tx_wr_idx;
+    if( tx_wr_idx >= MAX_TX_BUFFER ) tx_wr_idx = 0;
+//  } else {
+//    Transport_OutputEnable();
+//    UART1_SendData8(data);
+//    tx_interrupt_config(ENABLE);
+//  }
+    tx_interrupt_config(ENABLE);
 }
 uint8_t Transport_TxPop(uint8_t *data)
 {
@@ -168,9 +181,13 @@ uint8_t Transport_IsBufferEmpty(void)
 void Transport_OutputEnable(void)
 {
   GPIO_Util_WriteHigh(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+//    GPIO_Util_WriteHigh(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+  debug_variable = 1;
 }
 void Transport_OutputDisable(void)
 {
+  debug_variable = 0;
+//  GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
   GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
 }
 /**

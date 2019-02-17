@@ -31,7 +31,7 @@ typedef enum {
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-void Node_State_Manager_Init(void);
+void Node_State_Manager_Init(Node_State_Output_Mode_TypeDef outputMode);
 void Node_State_Manager_Task(void *args);
 uint8_t Node_State_GetInputState(void);
 GPIO_State_TypeDef Node_State_GetOutputState(void);

@@ -78,7 +78,6 @@ void Command_Task(void *args)
         cmd.code = (Command_Code_TypeDef)data;
         Transport_RxPop(&data);
         cmd.data = data;
-        
         cmd_push(cmd);
       }
     }

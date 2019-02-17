@@ -23,7 +23,7 @@
 #define SYSTEM_CLK                      16000000        //16MHz
 
 //For IR Transmitter
-#define IR_TRANSMITTER_FREQ             200     //100Hz
+#define IR_TRANSMITTER_FREQ             225     //100Hz
 #define IR_TRANSMITTER_PORT             GPIOA
 #define IR_TRANSMITTER_PIN              GPIO_PIN_3
 
@@ -48,12 +48,12 @@
 
 //For IR Receiver
 #define IR_RECEIVER_PULSE_WITHD_IN_MS                   (1000/IR_TRANSMITTER_FREQ/2)
-#define IR_RECEIVER_SHORT_PULSE_TIME_OUT_IN_MS          70
+#define IR_RECEIVER_SHORT_PULSE_TIME_OUT_IN_MS          80
 #define IR_RECEIVER_LONG_PULSE_TIME_OUT_IN_MS           400
 #define IR_RECEIVER_SHORT_PULSE_PULSE_COUNTER           (IR_RECEIVER_SHORT_PULSE_TIME_OUT_IN_MS/IR_RECEIVER_PULSE_WITHD_IN_MS)
 #define IR_RECEIVER_LONG_PULSE_PULSE_COUNTER            (IR_RECEIVER_LONG_PULSE_TIME_OUT_IN_MS/IR_RECEIVER_PULSE_WITHD_IN_MS)
-#define IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER       10
-#define TWO_PULSE_TIME_OUT_IN_MS                        5
+#define IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER       15
+#define TWO_PULSE_TIME_OUT_IN_MS                        4
 
 
 //For RS485 Controller
@@ -74,7 +74,7 @@
 #define LED_CONTROL_PIN                         GPIO_PIN_4
 
 #define INDICATOR_LED_PORT                      GPIOB
-#define INDICATOR_LED_PIN                       GPIO_PIN_5
+#define INDICATOR_LED_PIN                       GPIO_PIN_4
 
 //For Debug Purpose
 #define LED_PORT                                GPIOB

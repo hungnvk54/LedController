@@ -54,7 +54,6 @@ void process_command(Command_TypeDef cmd)
       }
     case COMMAND_NODE_REQUEST_CHANGE_STATE:
       {
-//        GPIO_Util_TurnOnLed(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
         Node_State_SetOutputState((GPIO_State_TypeDef)cmd.data);
         break;
       }

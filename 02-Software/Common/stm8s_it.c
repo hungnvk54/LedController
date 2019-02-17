@@ -362,9 +362,7 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
       UART1_SendData8(data);
      } else {
       Transport_OutputDisable();
-      UART1_ClearFlag(UART1_FLAG_TC);//TC must be clear by software
      }
-//   UART1_ClearFlag(UART1_FLAG_TC);//TC must be clear by software
    }
 #endif
  }

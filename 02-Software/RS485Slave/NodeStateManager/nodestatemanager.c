@@ -73,7 +73,7 @@ void Node_State_Manager_Task(void *args)
 #endif
   
   //Update output
-  //update_output(input_state);
+//  update_output(input_state); 
   Node_State_SetInputState(input_state);
 }
 

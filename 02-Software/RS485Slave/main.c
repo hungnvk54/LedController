@@ -32,6 +32,7 @@
 #include "nodestatemanager.h"
 #include "system_def.h"
 /* Private defines -----------------------------------------------------------*/
+    extern uint8_t debug_variable;
 /* Private function prototypes -----------------------------------------------*/
 void System_Init();
 void Clock_Config(void);
@@ -43,7 +44,7 @@ void Test_Uart(void *args);
 void Test_IR_Receiver(void *args);
 
 /* Private functions ---------------------------------------------------------*/
-
+ 
 void System_Init()
 {
   Clock_Config();
@@ -89,7 +90,7 @@ void Task_Init(void)
   Task_Manager_AddTask(&Node_Control_Task); /*This task will process command
                                             which is received from Network */
   Task_Manager_AddTask(&IR_Receiver_Task);
-//
+
   Task_Manager_AddTask(&Node_State_Manager_Task);
   
 //  Task_Manager_AddTask(&Test_Task);
@@ -101,8 +102,14 @@ void Task_Init(void)
 void Test_Task(void *args)
 {
   static uint16_t counter = 0;
-  if( ++counter == 500) {
-    GPIO_Util_Toggle(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+  static uint8_t mask = 0;
+  if( ++counter == 1000) {
+    if( mask == 0 ){
+      GPIO_Util_TurnOnLed(LED_PORT,LED_PIN);
+    } else {
+      GPIO_Util_TurnOffLed(LED_PORT,LED_PIN);
+    }
+    mask = (!mask);
     counter = 0; 
   }
 }
@@ -143,12 +150,9 @@ void main(void)
   /* Infinite loop */
   System_Init();
   Task_Init();
-//    GPIO_Init(,GPIO_PIN_1,GPIO_MODE_IN_FL_NO_IT);
 
-//  GPIO_Util_Init();
-  GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_OD_LOW_FAST);
-  GPIO_Util_TurnOffLed(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
-  
+  GPIO_Util_Init(LED_PORT,LED_PIN,GPIO_MODE_OUT_OD_LOW_FAST);
+  GPIO_Util_TurnOffLed(LED_PORT,LED_PIN);
   uint32_t previous_counter = 0;
   while (1)
   {
@@ -161,6 +165,19 @@ void main(void)
     } else {
       ///Counter Overflow - Update the previous_counter value
         previous_counter = Timer_Counter_GetCounter();
+    }
+    
+    if( debug_variable == 1){//readPin & GPIO_PIN_2){ //
+      GPIO_Util_WriteHigh(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+    } else {
+      GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+    }
+    
+    uint8_t readPin = GPIO_ReadOutputData(GPIOA);
+    if( readPin & GPIO_PIN_2){ //
+      GPIO_Util_TurnOnLed(LED_PORT,LED_PIN);
+    } else {
+      GPIO_Util_TurnOffLed(LED_PORT,LED_PIN);
     }
   }
 }

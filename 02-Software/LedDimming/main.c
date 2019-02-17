@@ -60,14 +60,14 @@ void System_Init()
   Led_Control_Init(CONTROL_MODE_DIMMING);
   
   ///Init node control
-  Node_State_Manager_Init();
+  Node_State_Manager_Init(OUTPUT_TOGGLE_WHEN_INPUT_ON);//OUTPUT_TOGGLE_WHEN_INPUT_ON);//OUTPUT_AS_INPUT);
 }
     
 void Clock_Config(void) { 
   CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
   CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
 }
-
+ 
 void Task_Init(void)
 {
   if( IR_OUTPUT_MODE_IO == IR_Transmitter_GetMode()){
@@ -121,7 +121,7 @@ void main(void)
 
   GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_OD_LOW_SLOW);
   
-  GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+//  GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   uint32_t previous_counter = 0;
   while (1)

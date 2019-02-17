@@ -51,7 +51,6 @@ void System_Init()
   Transport_Init();
   IR_Receiver_Init();
   IR_Transmitter_Init(IR_OUTPUT_MODE_IO);
-//  IR_Transmitter_SetPrescaler(U8_MAX);
   Led_Control_Init(CONTROL_MODE_DIMMING);
   
   ///Init node control
@@ -157,10 +156,11 @@ void main(void)
   System_Init();
   Task_Init();
   /*For Test Only*/
-  GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_OD_LOW_SLOW);
-  GPIO_Util_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_PU_NO_IT);
-  GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
-
+//  GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_OD_LOW_SLOW);
+//  GPIO_Util_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_PU_NO_IT);
+  GPIO_Util_Init(LED_PORT,LED_PIN,GPIO_MODE_OUT_OD_LOW_FAST);
+  GPIO_Util_TurnOffLed(LED_PORT,LED_PIN);
+  
   uint32_t previous_counter = 0;
   while (1)
   {
@@ -168,12 +168,17 @@ void main(void)
     {
       if((Timer_Counter_GetCounter()  - previous_counter) >= TIMER_COUNTER_TICK_IN_MS) { //TICK_IN_MS
         previous_counter = Timer_Counter_GetCounter();
-//          GPIO_Util_Toggle(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
         Task_Manager_PerformTask();
       }
     } else {
       ///Counter Overflow - Update the previous_counter value
         previous_counter = Timer_Counter_GetCounter();
+    }
+        uint8_t readPin = GPIO_ReadOutputData(GPIOA);
+    if( readPin & GPIO_PIN_2){
+      GPIO_Util_TurnOnLed(LED_PORT,LED_PIN);
+    } else {
+      GPIO_Util_TurnOffLed(LED_PORT,LED_PIN);
     }
   }
 }
