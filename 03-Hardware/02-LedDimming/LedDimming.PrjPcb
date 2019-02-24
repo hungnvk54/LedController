@@ -44,7 +44,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=2
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -53,6 +53,61 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=EJTXXADY
+
+[Document2]
+DocumentPath=LedDimming.PcbDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=JAJKNEIR
+
+[Document3]
+DocumentPath=Controller.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=0
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=USHVEKNE
+
+[Document4]
+DocumentPath=IRController.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=VQEMFATV
+
+[GeneratedDocument1]
+DocumentPath=Project Outputs for LedDimming\Footprint Comparison - LedDimming.html
+DItemRevisionGUID=
 
 [Configuration1]
 Name=Sources
@@ -244,6 +299,8 @@ OutputDocumentPath9=
 OutputVariantName9=
 OutputDefault9=0
 PageOptions9=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
+Configuration9_Name1=OutputConfigurationParameter1
+Configuration9_Item1=Record=SchPrintView|ShowNoERC=True|ShowParamSet=True|ShowProbe=True|ShowBlanket=True|NoERCSymbolsToShow="Thin Cross","Thick Cross","Small Cross",Checkbox,Triangle|ShowNote=True|ShowNoteCollapsed=True|ShowOpenEnds=True|ExpandDesignator=True|ExpandNetLabel=False|ExpandPort=False|ExpandSheetNum=False|ExpandDocNum=False|PrintArea=0|PrintAreaRect.X1=0|PrintAreaRect.Y1=0|PrintAreaRect.X2=0|PrintAreaRect.Y2=0
 OutputType10=SimView Print
 OutputName10=SimView Prints
 OutputDocumentPath10=
@@ -976,6 +1033,24 @@ NetClassSeparateForBusSections=0
 SelectedOnly=0
 UpdateVariants=1
 PartTypes=0
+ComponentLibIdentifierKind0=Library Name And Type
+ComponentLibraryIdentifier0=Integrated_Library1.IntLib
+ComponentDesignItemID0=1N4007_SMD Diode
+ComponentSymbolReference0=1N4007_SMD Diode
+ComponentUpdate0=1
+ComponentIsDeviceSheet0=0
+ComponentLibIdentifierKind1=Library Name And Type
+ComponentLibraryIdentifier1=Integrated_Library1.IntLib
+ComponentDesignItemID1=LM117-5V
+ComponentSymbolReference1=LM117-5V
+ComponentUpdate1=1
+ComponentIsDeviceSheet1=0
+ComponentLibIdentifierKind2=Library Name And Type
+ComponentLibraryIdentifier2=Miscellaneous Connectors.IntLib
+ComponentDesignItemID2=Header 4H
+ComponentSymbolReference2=Header 4H
+ComponentUpdate2=1
+ComponentIsDeviceSheet2=0
 FullReplace=1
 UpdateDesignatorLock=1
 UpdatePartIDLock=1
@@ -989,6 +1064,36 @@ RemoveParameters=0
 AddModels=1
 RemoveModels=1
 UpdateCurrentModels=1
+ParameterName0=Comment
+ParameterUpdate0=1
+ParameterName1=Component Kind
+ParameterUpdate1=1
+ParameterName2=Description
+ParameterUpdate2=1
+ParameterName3=LatestRevisionDate
+ParameterUpdate3=1
+ParameterName4=LatestRevisionNote
+ParameterUpdate4=1
+ParameterName5=Library Reference
+ParameterUpdate5=1
+ParameterName6=Publisher
+ParameterUpdate6=1
+ModelTypeGroup0=PCBLIB
+ModelTypeUpdate0=1
+ModelType0=PCBLIB
+ModelName0=HDR1X4H
+ModelUpdate0=1
+ModelType1=PCBLIB
+ModelName1=SODFL504X244-2N
+ModelUpdate1=1
+ModelType2=PCBLIB
+ModelName2=SOT230P700X180-4N
+ModelUpdate2=1
+ModelTypeGroup1=SI
+ModelTypeUpdate1=1
+ModelType3=SI
+ModelName3=Connector
+ModelUpdate3=1
 
 [DatabaseUpdateOptions]
 SelectedOnly=0
