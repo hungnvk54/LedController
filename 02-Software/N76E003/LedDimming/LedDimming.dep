@@ -1,115 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>4</fileVersion>
-    <fileChecksum>1039858385</fileChecksum>
+    <fileChecksum>216880902</fileChecksum>
     <configuration>
         <name>Debug</name>
         <outputs>
-            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
-            <file>$PROJ_DIR$\..\Common\TimerUtil\timer_counter.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-            <file>$PROJ_DIR$\..\Common\TimerUtil\timer_pwm.h</file>
-            <file>$PROJ_DIR$\Debug\Exe\LedDimming.d51</file>
-            <file>$PROJ_DIR$\Debug\Obj\LedDimming.pbd</file>
-            <file>$PROJ_DIR$\main.c</file>
-            <file>$PROJ_DIR$\Debug\Exe\LedDimming.hex</file>
-            <file>$PROJ_DIR$\..\Common\LedControl\gpio_util.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\n76e003_gpio.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\n76e003_gpio.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\n76e003_gpio.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\Delay.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\gpio_util.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\Common.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\Delay.r51</file>
-            <file>$PROJ_DIR$\..\Common\TimerUtil\timer_pwm.c</file>
-            <file>$PROJ_DIR$\..\Common\TimerUtil\timer_counter.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\Common.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\Delay.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\Common.r51</file>
-            <file>$PROJ_DIR$\..\Common\system_def.h</file>
-            <file>$PROJ_DIR$\..\Common\inc.h</file>
-            <file>$PROJ_DIR$\..\Common\const.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_pwm.c</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_pwm.h</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_adc.c</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_adc.h</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_tim3.h</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_tim3.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_tim3.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_tim3.pbi</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_uart0.h</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_uart0.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_uart0.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_uart0.r51</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\ystdio.h</file>
-            <file>$PROJ_DIR$\..\Common\StdPeripheral\Common.c</file>
-            <file>$PROJ_DIR$\..\Common\StdPeripheral\Common.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\timer_counter.pbi</file>
-            <file>$PROJ_DIR$\..\Common\StdPeripheral\Delay.h</file>
-            <file>$PROJ_DIR$\..\Common\StdPeripheral\Function_define.h</file>
-            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_iar.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\gpio_util.__cstat.et</file>
             <file>$PROJ_DIR$\Debug\Obj\timer_counter.r51</file>
-            <file>$PROJ_DIR$\..\Common\StdPeripheral\Delay.c</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\gpio_util.r51</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\timer_pwm.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\gpio_util.pbi</file>
-            <file>$PROJ_DIR$\..\Common\StdPeripheral\SFR_Macro.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\stdio.h</file>
-            <file>$TOOLKIT_DIR$\lib\dlib\dl8051Normal.h</file>
-            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003.h</file>
             <file>$PROJ_DIR$\Debug\Obj\timer_pwm.r51</file>
-            <file>$PROJ_DIR$\..\Common\LedControl\gpio_util.h</file>
-            <file>$PROJ_DIR$\Debug\Exe\LedDimming.a51</file>
-            <file>$PROJ_DIR$\..\Common\StdPeripheral\n76e003_gpio.h</file>
-            <file>$PROJ_DIR$\..\Common\StdPeripheral\n76e003_gpio.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\Delay.r51</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dl8051Normal.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\timer_counter.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdio.h</file>
             <file>$TOOLKIT_DIR$\config\devices\Nuvoton\lnk51ew_N76E003.xcl</file>
             <file>$PROJ_DIR$\Debug\List\LedDimming.map</file>
+            <file>$PROJ_DIR$\Debug\Obj\Common.r51</file>
+            <file>$PROJ_DIR$\..\Common\const.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\Common.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\Delay.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
             <file>$TOOLKIT_DIR$\lib\dlib\dl-pli-nlpd-2h16incn.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\gpio_util.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\timer_pwm.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\gpio_util.r51</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\Common.pbi</file>
+            <file>$PROJ_DIR$\..\Common\system_def.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_it.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_it.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_pwm.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_pwm.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_adc.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_adc.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\LedDimming.pbd</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\n76e003_gpio.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\n76e003_gpio.pbi</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\Delay.c</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003.h</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\Function_define.h</file>
+            <file>$PROJ_DIR$\..\Common\TimerUtil\timer_counter.c</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\n76e003_gpio.c</file>
+            <file>$PROJ_DIR$\..\Common\LedControl\gpio_util.c</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\Common.h</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\Common.c</file>
+            <file>$PROJ_DIR$\..\Common\TimerUtil\timer_pwm.c</file>
+            <file>$PROJ_DIR$\..\Common\inc.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
+            <file>$PROJ_DIR$\..\Common\LedControl\gpio_util.h</file>
+            <file>$PROJ_DIR$\..\Common\TimerUtil\timer_counter.h</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\Delay.h</file>
+            <file>$PROJ_DIR$\Debug\Exe\LedDimming.hex</file>
+            <file>$PROJ_DIR$\Debug\Obj\n76e003_gpio.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\n76e003_gpio.__cstat.et</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_iar.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\Delay.__cstat.et</file>
+            <file>$PROJ_DIR$\..\Common\StdPeripheral\SFR_Macro.h</file>
+            <file>$PROJ_DIR$\..\Common\TimerUtil\timer_pwm.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\main.c</file>
+            <file>$PROJ_DIR$\..\Common\N76E003_it.c</file>
+            <file>$PROJ_DIR$\..\Common\N76E003_it.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_adc.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_pwm.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_tim3.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_uart0.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\timer_pwm.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\N76E003_it.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\timer_counter.__cstat.et</file>
         </outputs>
         <file>
-            <name>$PROJ_DIR$\Debug\Exe\LedDimming.d51</name>
-            <inputs>
-                <tool>
-                    <name>XLINK</name>
-                    <file> 53 21 16 38 0 9 55</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\main.c</name>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_pwm.c</name>
             <outputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 0</file>
+                    <file> 42</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 2</file>
+                    <file> 43</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 15</file>
+                    <file> 75</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 24 33 42 32 45 25 44 43 46 39 34 37 26 27 29 31 49 23 51</file>
+                    <file> 1 58 25 55 68 51 21 34 38 33 18 15 37 28 39 12 66 47 4</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 24 29 42 49 26 33 32 31 25 43 37 44 45 27 34 46 39 23 51</file>
+                    <file> 1 51 58 55 47 39 25 68 66 4 21 34 33 28 38 12 37 18 15</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\Debug\Exe\LedDimming.hex</name>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_adc.c</name>
             <outputs>
                 <tool>
-                    <name>XLINK</name>
-                    <file> 54</file>
+                    <name>ICC8051</name>
+                    <file> 44</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 45</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 74</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
-                    <name>XLINK</name>
-                    <file> 53 21 16 38 0 9 55</file>
+                    <name>ICC8051</name>
+                    <file> 3 58 25 55 68 51 21 34 38 33 18 15 37 28 39 12 66 47 4 1</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 47 58 39 55 37 51 1 34 33 18 25 68 66 4 21 38 12 15 3 28</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_tim3.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 6</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 7</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 76</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 4 58 25 55 68 51 21 34 38 33 18 15 37 28 39 12 66 47 1</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 4 12 34 68 15 58 25 66 21 38 55 51 47 1 39 33 37 18 28</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_uart0.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 11</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 10</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 77</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 8 58 25 55 68 51 21 34 38 33 18 15 37 28 39 12 66 47 4 1</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 68 4 12 34 37 25 66 21 38 18 58 55 51 47 1 39 33 15 8 28</file>
                 </tool>
             </inputs>
         </file>
@@ -118,20 +200,101 @@
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 7 54</file>
+                    <file> 63 23</file>
                 </tool>
             </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\Delay.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 17</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 27</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 67</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 66 55 62 68 51 21 34 38 33 18 15 37 28 39 12</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 51 12 62 34 37 15 55 68 21 38 18 66 39 33 28</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\TimerUtil\timer_counter.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 14</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 20</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 80</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 61 58 25 55 68 51 21 34 38 33 18 15 37 28 39 12 66 47 4 1 36</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 1 58 51 34 33 36 55 47 39 4 25 68 66 21 38 12 28 61 37 18 15</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\n76e003_gpio.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 64</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 48</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 65</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 47 58 25 55 68 51 21 34 38 33 18 15 37 28 39 12 66 4 1</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 1 58 15 51 38 55 47 25 68 66 4 21 12 34 37 18 39 33 28</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Common\LedControl\gpio_util.c</name>
             <outputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 38</file>
+                    <file> 32</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 41</file>
+                    <file> 30</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
@@ -141,49 +304,11 @@
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 49 23 24 29 33 51</file>
+                    <file> 60 58 25 55 68 51 21 34 38 33 18 15 37 28 39 12 66 47 4 1</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 24 33 23 49 29 51</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Common\TimerUtil\timer_pwm.c</name>
-            <outputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 48</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 40</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 33 23 24 49 29 51 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Common\TimerUtil\timer_counter.c</name>
-            <outputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 35</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 30</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 23 51 22 29 24 33 1</file>
+                    <file> 4 58 34 38 68 33 28 25 66 21 55 51 47 1 39 60 12 37 18 15</file>
                 </tool>
             </inputs>
         </file>
@@ -192,30 +317,30 @@
             <outputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 21</file>
+                    <file> 24</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 19</file>
+                    <file> 35</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 14</file>
+                    <file> 26</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 33 29 31 42 32 45 25 44 43 46 39 34 37 26 27</file>
+                    <file> 66 55 62 68 51 21 34 38 33 18 15 37 28 39 12</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 32 31 26 29 42 25 43 37 44 33 45 27 34 46 39</file>
+                    <file> 51 62 39 55 68 34 33 28 38 66 21 12 37 18 15</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Common\StdPeripheral\Delay.c</name>
+            <name>$PROJ_DIR$\..\Common\TimerUtil\timer_pwm.c</name>
             <outputs>
                 <tool>
                     <name>ICC8051</name>
@@ -223,64 +348,93 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 20</file>
+                    <file> 31</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 12</file>
+                    <file> 78</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 33 29 31 42 32 45 25 44 43 46 39 34 37 26 27</file>
+                    <file> 69 58 25 55 68 51 21 34 38 33 18 15 37 28 39 12 66 47 4 1 60</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 32 27 31 25 34 39 29 42 45 44 46 33 26 43 37</file>
+                    <file> 18 68 4 12 34 58 25 66 21 38 37 60 55 51 47 1 39 33 15 69 28</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\Debug\Exe\LedDimming.a51</name>
+            <name>$PROJ_DIR$\Debug\Exe\LedDimming.hex</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 23</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 53 21 16 38 0 9 55</file>
+                    <file> 22 24 17 32 59 44 64 41 42 6 11 14 16 29</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Common\StdPeripheral\n76e003_gpio.c</name>
+            <name>$PROJ_DIR$\main.c</name>
             <outputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 9</file>
+                    <file> 59</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 10</file>
+                    <file> 70</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 11</file>
+                    <file> 19</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 51 23 24 29 33</file>
+                    <file> 25 66 68 51 21 34 38 33 18 15 37 28 39 12 55 62 60 58 47 4 1</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 29 23 51 24 33</file>
+                    <file> 55 25 68 60 39 66 51 62 21 34 33 28 38 4 12 37 18 15 58 47 1</file>
                 </tool>
             </inputs>
         </file>
-        <forcedrebuild>
-            <name>[MULTI_TOOL]</name>
-            <tool>XLINK</tool>
-        </forcedrebuild>
+        <file>
+            <name>$PROJ_DIR$\..\Common\N76E003_it.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 41</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 40</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 79</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 73</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 73</file>
+                </tool>
+            </inputs>
+        </file>
     </configuration>
     <configuration>
         <name>Release</name>

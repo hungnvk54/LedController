@@ -32,8 +32,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "const.h"
 #include "Common.h"
+#include "SFR_Macro.h"
+#include "Function_define.h"
 #include "N76E003_iar.h"
 #include "n76e003_gpio.h"
+#include "N76E003_tim3.h"
+#include "N76E003_pwm.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/

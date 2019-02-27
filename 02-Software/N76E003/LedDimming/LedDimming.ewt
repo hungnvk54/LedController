@@ -2189,6 +2189,12 @@
             <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_adc.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_adc.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\Common\StdPeripheral\n76e003_gpio.c</name>
         </file>
         <file>
@@ -2196,6 +2202,24 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_iar.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_pwm.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_pwm.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_tim3.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_tim3.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_uart0.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\StdPeripheral\N76E003_uart0.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Common\StdPeripheral\SFR_Macro.h</name>
@@ -2224,5 +2248,11 @@
     </file>
     <file>
         <name>$PROJ_DIR$\main.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\..\Common\N76E003_it.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\..\Common\N76E003_it.h</name>
     </file>
 </project>

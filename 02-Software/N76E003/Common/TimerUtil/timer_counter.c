@@ -10,7 +10,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "timer_counter.h"
-#include "stm8s_tim1.h"
+//#include "stm8s_tim1.h"
+#include "N76E003_tim3.h"
 #include "system_def.h"
 /** @addtogroup Template_Project
   * @{
@@ -31,11 +32,9 @@ void Timer_Connter_Init_Timer()
    * Period = 1000
    * Prescale = 16 ==> Interrupt Period 1ms
  */
-  TIM1_TimeBaseInit((TIMER_COUNTER_PRESCALER-1), TIM1_COUNTERMODE_UP, TIMER_COUNTER_CMP, 0);
-  TIM1_ITConfig(TIM1_IT_UPDATE, ENABLE);
-  TIM1_Cmd(ENABLE);
-  
-  enableInterrupts();
+  TIM3_TimeBaseInit(TIMER_COUNTER_PRESCALER,TIMER_COUNTER_CMP);
+  TIM3_ITConfig( ENABLE);
+  TIM3_Cmd(ENABLE);  
 }
 /* Public functions ----------------------------------------------------------*/
 

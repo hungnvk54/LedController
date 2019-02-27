@@ -9,7 +9,7 @@
   */ 
 
 /* Includes ------------------------------------------------------------------*/
-#include "template.h"
+#include "N76S003_tim3.h"
 /** @addtogroup Template_Project
   * @{
   */

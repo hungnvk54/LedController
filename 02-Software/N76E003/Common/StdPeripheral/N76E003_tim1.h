@@ -9,8 +9,8 @@
   */ 
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __TEMPLATE_H
-#define __TEMPLATE_H
+#ifndef __N76S003_TIM1_H
+#define __N76S003_TIM1_H
 
 /* Includes ------------------------------------------------------------------*/
 
@@ -20,5 +20,5 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
-#endif /* __TEMPLATE_H */
+#endif /* __N76S003_TIM1_H */
 

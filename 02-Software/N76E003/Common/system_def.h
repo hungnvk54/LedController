@@ -14,7 +14,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "inc.h"
-#include "stm8s_adc1.h"
+//#include "stm8s_adc1.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
@@ -31,8 +31,9 @@
 #define IR_RECEIVER_ADC_CHANNEL         ADC1_CHANNEL_4          //AIN4 channel4
 #define IR_RECEIVER_SIGNAL_FREQ         IR_TRANSMITTER_FREQ
 //For timer counter
-#define TIMER_COUNTER_PRESCALER         16
-#define TIMER_COUNTER_CLK               (SYSTEM_CLK/TIMER_COUNTER_PRESCALER)
+#define TIMER_COUNTER_PRESCALER         TIM3_PRESCALE_16
+#define TIMER_COUNTER_PRESCALER_FACTOR  (1>>((uint8_t)TIM3_PRESCALE_16))
+#define TIMER_COUNTER_CLK               (SYSTEM_CLK/TIMER_COUNTER_PRESCALER_FACTOR)
 #define TIMER_COUNTER_CMP               100
 #define TIMER_COUNTER_TICK_IN_SECOND    (TIMER_COUNTER_CLK/TIMER_COUNTER_CMP)
 #define TIMER_COUNTER_TICK_IN_MS        (TIMER_COUNTER_TICK_IN_SECOND/1000)
