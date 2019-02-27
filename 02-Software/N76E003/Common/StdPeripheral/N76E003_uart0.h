@@ -33,7 +33,6 @@ typedef enum
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 void UART0_Init(UART0_Mode_TypeDef mode, uint16_t baud);
-void UART0_Cmd(FunctionalState state);
 void UART0_ITConfig(FunctionalState state);
 ITStatus UART0_GetITStatus(UART0_IT_Flags_TypeDef flag);
 void UART0_SetITStatus(UART0_IT_Flags_TypeDef flag);

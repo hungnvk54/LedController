@@ -10,6 +10,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "N76E003_it.h"
+#include "timer_counter.h"
 /** @addtogroup Template_Project
   * @{
   */
@@ -175,7 +176,8 @@ __interrupt void UART1_ISR (void)
 #pragma vector=0x83
 __interrupt void Timer3_ISR (void)
 {
-  
+  // Interrupt flag was clear by hardware
+  Timer_Counter_IncreaseCounter();
 }
 
 

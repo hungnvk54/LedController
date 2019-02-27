@@ -24,15 +24,15 @@
 
 //For IR Transmitter
 #define IR_TRANSMITTER_FREQ             225     //100Hz
-#define IR_TRANSMITTER_PORT             GPIOA
-#define IR_TRANSMITTER_PIN              GPIO_PIN_3
+#define IR_TRANSMITTER_PORT             PORT_1
+#define IR_TRANSMITTER_PIN              GPIO_PIN_1
 
 //For IR Reciever
 #define IR_RECEIVER_ADC_CHANNEL         ADC1_CHANNEL_4          //AIN4 channel4
 #define IR_RECEIVER_SIGNAL_FREQ         IR_TRANSMITTER_FREQ
 //For timer counter
 #define TIMER_COUNTER_PRESCALER         TIM3_PRESCALE_16
-#define TIMER_COUNTER_PRESCALER_FACTOR  (1>>((uint8_t)TIM3_PRESCALE_16))
+#define TIMER_COUNTER_PRESCALER_FACTOR  (1<<((uint8_t)TIM3_PRESCALE_16))
 #define TIMER_COUNTER_CLK               (SYSTEM_CLK/TIMER_COUNTER_PRESCALER_FACTOR)
 #define TIMER_COUNTER_CMP               100
 #define TIMER_COUNTER_TICK_IN_SECOND    (TIMER_COUNTER_CLK/TIMER_COUNTER_CMP)
@@ -71,14 +71,14 @@
 #define MASTER_NODE_ADDRESS                     0
 
 //Led Output 
-#define LED_CONTROL_PORT                        GPIOD
-#define LED_CONTROL_PIN                         GPIO_PIN_4
+#define LED_CONTROL_PORT                        PORT_1
+#define LED_CONTROL_PIN                         GPIO_PIN_2
 
-#define INDICATOR_LED_PORT                      GPIOB
-#define INDICATOR_LED_PIN                       GPIO_PIN_4
+#define INDICATOR_LED_PORT                      PORT_1
+#define INDICATOR_LED_PIN                       GPIO_PIN_5
 
 //For Debug Purpose
-#define LED_PORT                                GPIOB
+#define LED_PORT                                PORT_1
 #define LED_PIN                                 GPIO_PIN_5
 
 /* Exported functions ------------------------------------------------------- */

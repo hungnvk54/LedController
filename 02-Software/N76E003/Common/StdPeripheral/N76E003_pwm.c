@@ -28,8 +28,8 @@ void PWM_Init( PWM_Prescaler_TypeDef prescale, uint16_t comapre, uint16_t duty,P
   
   //2. Setup Clock Source and Prescale
   PWM_CLOCK_FSYS;
-  PWMCON1 |= (uint8_t)prescale;
   PWMCON1 &= (~(uint8_t)prescale);
+  PWMCON1 |= (uint8_t)prescale;
   
   //3.Setup period
   PWMPH = (uint8_t)(comapre>>8);
@@ -38,31 +38,37 @@ void PWM_Init( PWM_Prescaler_TypeDef prescale, uint16_t comapre, uint16_t duty,P
   //4.Settup Duty
   if( channel & PWM_PIO0)
   {
+     P12_Quasi_Mode;
      PWM0H = (uint8_t)(duty >> 8);
      PWM0L = (uint8_t)(duty &0xFF);
   }
   if( channel & PWM_PIO1)
   {
+     P11_Quasi_Mode;
      PWM1H = (uint8_t)(duty >> 8);
      PWM1L = (uint8_t)(duty &0xFF);
   }
   if( channel & PWM_PIO2)
   {
+     P10_Quasi_Mode;
      PWM2H = (uint8_t)(duty >> 8);
      PWM2L = (uint8_t)(duty &0xFF);
   }
   if( channel & PWM_PIO3)
   {
+    P00_Quasi_Mode;
      PWM3H = (uint8_t)(duty >> 8);
      PWM3L = (uint8_t)(duty &0xFF);
   }
   if( channel & PWM_PIO4)
   {
+    P01_Quasi_Mode;
      PWM4H = (uint8_t)(duty >> 8);
      PWM4L = (uint8_t)(duty &0xFF);
   }
   if( channel & PWM_PIO5)
   {
+    P03_Quasi_Mode;
      PWM5H = (uint8_t)(duty >> 8);
      PWM5L = (uint8_t)(duty &0xFF);
   }
@@ -117,6 +123,9 @@ void PWM_UpdateDuty(uint16_t duty, PWM_Channel_TypeDef channel)
   }
   //2. Notify the duty has been changed
   PWMCON0 |= SET_BIT6;
+  
+  //3. Enable Output To the uC Pin
+  PWM_CmdChannel(ENABLE,channel);
 }
 
 void PWM_CmdChannel(FunctionalState state, PWM_Channel_TypeDef channel)

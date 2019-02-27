@@ -521,7 +521,7 @@
                 </option>
                 <option>
                     <name>IccCDialect</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IccAllowVLA</name>
@@ -2234,6 +2234,18 @@
     </configuration>
     <group>
         <name>IRInterface</name>
+        <file>
+            <name>$PROJ_DIR$\..\Common\IRInterface\ir_receiver.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\IRInterface\ir_receiver.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\IRInterface\ir_transmitter.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\IRInterface\ir_transmitter.h</name>
+        </file>
     </group>
     <group>
         <name>LedControl</name>
@@ -2243,9 +2255,21 @@
         <file>
             <name>$PROJ_DIR$\..\Common\LedControl\gpio_util.h</name>
         </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\LedControl\led_controller.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\LedControl\led_controller.h</name>
+        </file>
     </group>
     <group>
         <name>Node</name>
+        <file>
+            <name>$PROJ_DIR$\NodeStateManager\nodestatemanager.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\NodeStateManager\nodestatemanager.h</name>
+        </file>
     </group>
     <group>
         <name>StdPeripheral</name>
@@ -2306,6 +2330,15 @@
     </group>
     <group>
         <name>TaskManager</name>
+        <file>
+            <name>$PROJ_DIR$\..\Common\Task\Task.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\Task\TaskManager.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Common\Task\taskmanager.h</name>
+        </file>
     </group>
     <group>
         <name>TimerUtil</name>

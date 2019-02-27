@@ -1,9 +1,9 @@
-"E:\03-DuAn\LedController\LedController\02-Software\N76E003\Common\TimerUtil\timer_pwm.c"
+"E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\NodeStateManager\nodestatemanager.c"
 -std=c99
 -ferror-limit=0
 -fbracket-depth=512
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\Common\TimerUtil
+E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\NodeStateManager
 -I
 E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\..\Common\TimerUtil
 -I

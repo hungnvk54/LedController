@@ -33,7 +33,7 @@ void GPIO_Init(GPIO_TypeDef port, GPIO_Pin_TypeDef pin, GPIO_Mode_TypeDef mode)
         P0M1 &= ~((uint8_t)pin);
         P0M2|=(uint8_t)pin;
       } else {
-        //Open Drain
+        //Drain
         P0M1|=(uint8_t)pin;
         P0M2|=(uint8_t)pin;
       }
@@ -47,7 +47,7 @@ void GPIO_Init(GPIO_TypeDef port, GPIO_Pin_TypeDef pin, GPIO_Mode_TypeDef mode)
     if( ((uint8_t)mode & (uint8_t)0x80 ) != (uint8_t)0) {
       ///Output
       if(((uint8_t)mode & (uint8_t)0x40) != (uint8_t)0){
-        //Open push-pull
+        //push-pull
         P1M1 &= ~((uint8_t)pin);
         P1M2|=(uint8_t)pin;
       } else {

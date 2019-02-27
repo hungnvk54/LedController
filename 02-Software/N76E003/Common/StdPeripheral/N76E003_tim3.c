@@ -46,8 +46,8 @@ void TIM3_TimeBaseInit(TIM3_Prescaler_TypeDef prescaler , uint16_t reload)
   T3CON = ((T3CON & 0xF8) | ((uint8_t)prescaler&0x07));
   
   //Set Reload Time
-  RH3 = ((65536 - reload)>>8)&0xFF;
-  RL3 = (65536 - reload)&0xFF;
+  RH3 = ((65535 - reload  )>>8)&0xFF;
+  RL3 = (65535 - reload  )&0xFF;
 }
 /**
   * @}

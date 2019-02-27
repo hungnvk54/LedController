@@ -60,13 +60,49 @@ void UART0_Init(UART0_Mode_TypeDef mode, uint16_t baud)
   clr_RI;
   clr_TI;
 }
-void UART0_Cmd(FunctionalState state);
-void UART0_ITConfig(FunctionalState state);
-ITStatus UART0_GetITStatus(UART0_IT_Flags_TypeDef flag);
-void UART0_SetITStatus(UART0_IT_Flags_TypeDef flag);
-void UART0_ClearITStatus(UART0_IT_Flags_TypeDef flag);
-void UART0_SendData(uint8_t data);
-uint8_t UART0_GetData(void);
+
+void UART0_ITConfig(FunctionalState state)
+{
+  if( ENABLE == state ){
+    set_ES;
+  } else {
+    clr_ES;
+  }
+}
+ITStatus UART0_GetITStatus(UART0_IT_Flags_TypeDef flag)
+{
+  ITStatus status = RESET;
+  if( UART0_RI == flag ) {
+    status = (ITStatus)(RI);
+  } else if( UART0_TI == flag){
+    status = (ITStatus)(TI);
+  }
+  return status;
+}
+void UART0_SetITStatus(UART0_IT_Flags_TypeDef flag)
+{
+  if( UART0_RI == flag ) {
+    set_RI;
+  } else if( UART0_TI == flag){
+    set_TI;
+  }
+}
+void UART0_ClearITStatus(UART0_IT_Flags_TypeDef flag)
+{
+  if( UART0_RI == flag ) {
+    clr_RI;
+  } else if( UART0_TI == flag){
+    clr_TI;
+  }
+}
+void UART0_SendData(uint8_t data)
+{
+  SBUF = data;
+}
+uint8_t UART0_GetData(void)
+{
+  return (uint8_t)SBUF;
+}
 
 /**
   * @}

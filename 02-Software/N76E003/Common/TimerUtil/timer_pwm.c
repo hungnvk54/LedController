@@ -88,7 +88,7 @@ void Timer_PWM_Update_Period(void *args)
   {
     if( active_period >= 1 ) 
     {
-//      gpio_state = GPIO_STATE_OFF;
+      //gpio_state = GPIO_STATE_OFF;
       return;
     }
     active_period += change_factor;
@@ -96,7 +96,7 @@ void Timer_PWM_Update_Period(void *args)
   {
     if( active_period <= 0 ) 
     {
-//      gpio_state = GPIO_STATE_OFN;
+      //gpio_state = GPIO_STATE_ON;
       return;
     }
     active_period -= change_factor;

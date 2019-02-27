@@ -39,7 +39,7 @@ void Led_Control_Immediate(GPIO_State_TypeDef state);
   * On/Off
   * @retval None
   */
-void Led_Control_Cmd( GPIO_TypeDef *port, GPIO_Pin_TypeDef pin,\
+void Led_Control_Cmd( GPIO_TypeDef port, GPIO_Pin_TypeDef pin,\
                       GPIO_State_TypeDef state
                     )
 {

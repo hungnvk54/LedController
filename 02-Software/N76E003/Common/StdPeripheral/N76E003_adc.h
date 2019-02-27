@@ -42,6 +42,6 @@ void ADC_Init(ADC_Trigger_Source_TypeDef triggerSrc,ADC_Channel_TypeDef channel)
 void ADC_SwitchChannel(ADC_Channel_TypeDef channel);
 void ADC_Cmd(FunctionalState state);
 void ADC_StartConversation(void);
-uint16_t ADC_GetResult(void);
+uint16_t ADC_GetConversionValue(void);
 #endif /* __N76E003_ADC_H */
 

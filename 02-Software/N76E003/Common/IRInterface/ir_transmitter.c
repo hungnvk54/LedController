@@ -30,7 +30,7 @@ void IR_Transmitter_Init(IR_Output_Mode_TypeDef mode)
 {
   if( IR_OUTPUT_MODE_IO == mode )
   {
-    GPIO_Util_Init(IR_TRANSMITTER_PORT,IR_TRANSMITTER_PIN,GPIO_MODE_OUT_PP_LOW_FAST);
+    GPIO_Util_Init(IR_TRANSMITTER_PORT,IR_TRANSMITTER_PIN,GPIO_MODE_OUT_PP_LOW_SLOW);
   } else if( IR_OUTPUT_MODE_PWM == mode ) 
   {
     Timer_PWM_IR_Transmitter_Init();

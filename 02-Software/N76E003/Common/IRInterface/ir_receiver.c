@@ -10,7 +10,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "ir_receiver.h"
-#include "stm8s_adc1.h"
+//#include "stm8s_adc1.h"
+#include "N76E003_adc.h"
 #include "const.h"
 #include "system_def.h"
 /** @addtogroup Template_Project
@@ -71,10 +72,11 @@ void process_ir_signal(void)
   static uint16_t stable_marker = 0;
   if( stable_marker >= MAX_STABLE_PULSE )
   {
-    uint16_t v = ADC1_GetConversionValue();
+    uint16_t v = ADC_GetConversionValue();
+    ADC_StartConversation();//Start Conversion 
     //Low pass filter
-    v = highpass_filter(v);
     v = lowpass_filter(v);
+    v = highpass_filter(v);
     uint8_t has_pulse = detecting_pulse(v);
     
     if(has_pulse == YES) {
@@ -118,7 +120,8 @@ void make_decision(void)
 int16_t lowpass_filter(uint16_t v)
 {
   static uint16_t filtered_value = 0;
-  filtered_value = (uint16_t)(alpha*v + (1-alpha)*filtered_value);
+  //filtered_value = (uint16_t)(alpha*v + (1-alpha)*filtered_value);
+  filtered_value = (uint16_t)(alpha*((int16_t)v-(int16_t)filtered_value) + filtered_value);
   return filtered_value;
 }
 
@@ -165,16 +168,19 @@ uint8_t detecting_pulse(int16_t v)
 void IR_Receiver_Init(void)
 {
   //Init ADC
-  ADC1_Init(ADC1_CONVERSIONMODE_CONTINUOUS,
-            IR_RECEIVER_ADC_CHANNEL,
-            ADC1_PRESSEL_FCPU_D2,
-            ADC1_EXTTRIG_TIM,
-            DISABLE,
-            ADC1_ALIGN_LEFT,
-            ADC1_SCHMITTTRIG_CHANNEL2,
-            DISABLE);
-  ADC1_StartConversion();
-  uint16_t v = ADC1_GetConversionValue();
+//  ADC1_Init(ADC1_CONVERSIONMODE_CONTINUOUS,
+//            IR_RECEIVER_ADC_CHANNEL,
+//            ADC1_PRESSEL_FCPU_D2,
+//            ADC1_EXTTRIG_TIM,
+//            DISABLE,
+//            ADC1_ALIGN_LEFT,
+//            ADC1_SCHMITTTRIG_CHANNEL2,
+//            DISABLE);
+  ADC_Init(ADC_ADCS,ADC_AIN5);
+  ADC_Cmd(ENABLE);
+  ADC_StartConversation();
+  //ADC1_StartConversion();
+  //uint16_t v = ADC1_GetConversionValue();
   
   //Init lowpass filter
   RC = 1.0f/(F_CUT*2*3.1415);

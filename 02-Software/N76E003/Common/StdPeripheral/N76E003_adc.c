@@ -111,7 +111,7 @@ void ADC_StartConversation(void)
   
   set_ADCS;
 }
-uint16_t ADC_GetResult(void)
+uint16_t ADC_GetConversionValue(void)
 {
   uint16_t result;
   
