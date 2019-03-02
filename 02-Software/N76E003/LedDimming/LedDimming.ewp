@@ -298,6 +298,7 @@
                     <name>CCDefines</name>
                     <state>FOSC_160000=1</state>
                     <state>N76E003</state>
+                    <state>DIMMING</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>

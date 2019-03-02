@@ -10,9 +10,11 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "transport.h"
-#include "stm8s_uart1.h"
+//#include "stm8s_uart1.h"
+#include "N76E003_uart0.h"
 #include "gpio_util.h"
 #include "system_def.h"
+
 /** @addtogroup Template_Project
   * @{
   */
@@ -48,11 +50,13 @@ void rx_interrupt_config(FunctionalState state);
 /* Private functions ---------------------------------------------------------*/
 void tx_interrupt_config(FunctionalState state)
 {
-    UART1_ITConfig(UART1_IT_TC, state);
+    //UART1_ITConfig(UART1_IT_TC, state);
+  UART0_ITConfig(state);
 }
 void rx_interrupt_config(FunctionalState state)
 {
-    UART1_ITConfig(UART1_IT_RXNE_OR, state);
+    //UART1_ITConfig(UART1_IT_RXNE_OR, state);
+  UART0_ITConfig(state);
 }
 
 /* Public functions ----------------------------------------------------------*/
@@ -60,7 +64,7 @@ void Transport_Init(void)
 {
   //Init transmit channel
     /* Deinitializes the UART1 and UART3 peripheral */
-    UART1_DeInit();
+    //UART1_DeInit();
     /* UART1 configuration -------------------------------------------------*/
     /* UART1 configured as follow:
           - BaudRate = 9600 baud  
@@ -71,11 +75,14 @@ void Transport_Init(void)
           - UART1 Clock disabled
      */
     /* Configure the UART1 */
-    UART1_Init((uint32_t)TRANSPORT_BAUDRATE, UART1_WORDLENGTH_8D, UART1_STOPBITS_1, UART1_PARITY_NO,
-                UART1_SYNCMODE_CLOCK_DISABLE, UART1_MODE_TXRX_ENABLE);
-    /* Enable UART1 Transmit interrupt*/
-    UART1_ITConfig(UART1_IT_TC, ENABLE);
-    UART1_ITConfig(UART1_IT_RXNE_OR, ENABLE);
+//    UART1_Init((uint32_t)TRANSPORT_BAUDRATE, UART1_WORDLENGTH_8D, UART1_STOPBITS_1, UART1_PARITY_NO,
+//                UART1_SYNCMODE_CLOCK_DISABLE, UART1_MODE_TXRX_ENABLE);
+//    /* Enable UART1 Transmit interrupt*/
+//    UART1_ITConfig(UART1_IT_TC, ENABLE);
+//    UART1_ITConfig(UART1_IT_RXNE_OR, ENABLE);
+  UART0_ITConfig(ENABLE);
+  UART0_Init(UART0_Mode1, TRANSPORT_BAUDRATE);
+  
     
     /* Config Driver Pin to Control MAX485 IC */
     GPIO_Util_Init(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN,GPIO_MODE_OUT_PP_LOW_FAST);//GPIO_MODE_OUT_OD_LOW_FAST
@@ -85,28 +92,24 @@ void Transport_Init(void)
 void Transport_TxPush(uint8_t data)
 {
   while( tx_cnt >= MAX_TX_BUFFER ); //Wait here until data is send
-//  if( tx_cnt )
-//  {
+  if( tx_cnt )
+  {
     tx_buff[tx_wr_idx] = data;
     tx_interrupt_config(DISABLE);
-//    disableInterrupts();
     ++tx_cnt;
     tx_interrupt_config(ENABLE);
-//    enableInterrupts();
     ++tx_wr_idx;
     if( tx_wr_idx >= MAX_TX_BUFFER ) tx_wr_idx = 0;
-//  } else {
-//    Transport_OutputEnable();
-//    UART1_SendData8(data);
-//    tx_interrupt_config(ENABLE);
-//  }
-    tx_interrupt_config(ENABLE);
+  } else {
+    Transport_OutputEnable();
+    UART0_SendData8(data);
+  } 
 }
 uint8_t Transport_TxPop(uint8_t *data)
 {
     if(tx_cnt == 0 )
     {
-      tx_interrupt_config(DISABLE);
+      //tx_interrupt_config(DISABLE);
       return FAILED;
     }
     *data = tx_buff[tx_rd_idx];
@@ -181,13 +184,11 @@ uint8_t Transport_IsBufferEmpty(void)
 void Transport_OutputEnable(void)
 {
   GPIO_Util_WriteHigh(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
-//    GPIO_Util_WriteHigh(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
   debug_variable = 1;
 }
 void Transport_OutputDisable(void)
 {
   debug_variable = 0;
-//  GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
   GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
 }
 /**

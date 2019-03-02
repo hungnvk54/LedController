@@ -1,27 +1,27 @@
-"E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\main.c"
+"E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming\main.c"
 -std=c99
 -ferror-limit=0
 -fbracket-depth=512
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\..\Common\TimerUtil
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming\..\Common\TimerUtil
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\..\Common\IRInterface
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming\..\Common\IRInterface
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\..\Common\LedControl
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming\..\Common\LedControl
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\..\Common\Task
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming\..\Common\Task
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\Node
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming\Node
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\NodeStateManager
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming\NodeStateManager
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\..\Common\StdPeripheral
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming\..\Common\StdPeripheral
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\..\Common
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming\..\Common
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\8051\inc
 -I
@@ -29,23 +29,23 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\8051\lib\dlib
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\8051\inc\dlib\c
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\Common\TimerUtil
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\Common\TimerUtil
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\Common\IRInterface
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\Common\IRInterface
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\Common\LedControl
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\Common\LedControl
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\Common\Task
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\Common\Task
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\Node
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming\Node
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming\NodeStateManager
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming\NodeStateManager
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\Common\StdPeripheral
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\Common\StdPeripheral
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\Common
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\Common
 -I
-E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming
+E:\DATA\03-DuAn\02-LedController\LedController\02-Software\N76E003\LedDimming
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
@@ -372,6 +372,7 @@ E:\03-DuAn\LedController\LedController\02-Software\N76E003\LedDimming
 -D__EDG_CPP11_IL_EXTENSIONS_SUPPORTED=1
 -DFOSC_160000=1
 -DN76E003=1
+-DDIMMING=1
 -D_DLIB_CONFIG_FILE_HEADER_NAME="C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\8051\LIB\DLIB\dl8051Normal.h"
 -D_DLIB_CONFIG_FILE_STRING="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\8051\\LIB\\DLIB\\dl8051Normal.h"
 -D__VERSION__="IAR C/C++ Compiler V10.30.1.6000 for 8051"

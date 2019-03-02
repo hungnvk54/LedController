@@ -11,6 +11,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "N76E003_it.h"
 #include "timer_counter.h"
+#include "inc.h"
+
+#ifdef DIMMING
+#else
+#include "transport.h"
+#endif
 /** @addtogroup Template_Project
   * @{
   */
@@ -62,7 +68,29 @@ __interrupt void Timer1_ISR (void)
 #pragma vector=0x23
 __interrupt void UART0_ISR (void)
 {
-  
+#if defined (DIMMING)
+   
+#else
+  if( SET == UART0_GetITStatus(UART0_TI) )
+  {
+    uint8_t data, ret;
+    ret = Transport_TxPop(&data);
+    if( ret == SUCCESS ) {
+      Transport_OutputEnable();
+      UART0_SendData8(data);
+    } else {
+      Transport_OutputDisable();
+    }
+    //Clear IT Flag
+    UART0_ClearITStatus(UART0_TI);
+  } 
+  if( SET == UART0_GetITStatus(UART0_RI)) {\
+    uint8_t data = UART0_ReceiveData8();
+    Transport_RxPush(data);
+    //Clear Interrupt Flag
+    UART0_ClearITStatus(UART0_RI);
+  }
+#endif
 }
 
 /************************************************************************************************************

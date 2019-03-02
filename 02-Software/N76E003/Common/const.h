@@ -10,7 +10,7 @@
 #define YES		TRUE
 #define NO		FALSE
 
-//#define FAILED	FALSE
+#define FAILED	FALSE
 //#define SUCCESS	TRUE
 
 #define LB_UINT8	0x0F

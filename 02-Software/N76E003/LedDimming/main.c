@@ -180,23 +180,5 @@ void assert_failed(u8* file, u32 line)
 }
 #endif
 
-//#include "const.h"
-//#include "N76E003_iar.h"
-//#include "SFR_Macro.h"
-//#include "Function_define.h"
-//#include "Common.h"
-//#include "Delay.h"
-//#include "gpio_util.h"
-//void main(){
-//  GPIO_Util_Init(PORT_1,GPIO_PIN_5,GPIO_MODE_OUT_PP_LOW_FAST);
-//  while(1)
-//  {
-//     GPIO_Util_Toggle(PORT_1,GPIO_PIN_5);		// Tiny board GPIO1 LED define
-//     Timer0_Delay1ms(200);
-////     GPIO_Util_WriteLow(PORT_1,GPIO_PIN_5);	
-////     Timer0_Delay1ms(500);
-//  }
-//}
-
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

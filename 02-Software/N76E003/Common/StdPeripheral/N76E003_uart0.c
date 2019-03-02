@@ -95,11 +95,11 @@ void UART0_ClearITStatus(UART0_IT_Flags_TypeDef flag)
     clr_TI;
   }
 }
-void UART0_SendData(uint8_t data)
+void UART0_SendData8(uint8_t data)
 {
   SBUF = data;
 }
-uint8_t UART0_GetData(void)
+uint8_t UART0_ReceiveData8(void)
 {
   return (uint8_t)SBUF;
 }

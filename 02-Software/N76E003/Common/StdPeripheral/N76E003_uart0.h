@@ -37,7 +37,7 @@ void UART0_ITConfig(FunctionalState state);
 ITStatus UART0_GetITStatus(UART0_IT_Flags_TypeDef flag);
 void UART0_SetITStatus(UART0_IT_Flags_TypeDef flag);
 void UART0_ClearITStatus(UART0_IT_Flags_TypeDef flag);
-void UART0_SendData(uint8_t data);
-uint8_t UART0_GetData(void);
+void UART0_SendData8(uint8_t data);
+uint8_t UART0_ReceiveData8(void);
 #endif /* __N76E003_UART0_H */
 

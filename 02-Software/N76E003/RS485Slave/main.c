@@ -15,10 +15,10 @@
 
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm8s.h"
-#include "stm8s_gpio.h"
-#include "stm8s_clk.h"
-#include "stm8s_tim2.h"
+//#include "stm8s.h"
+//#include "stm8s_gpio.h"
+//#include "stm8s_clk.h"
+//#include "stm8s_tim2.h"
 #include "gpio_util.h"
 #include "timer_counter.h"
 #include "timer_pwm.h"
@@ -31,11 +31,12 @@
 #include "nodecontrol.h"
 #include "nodestatemanager.h"
 #include "system_def.h"
+#include "inc.h"
 /* Private defines -----------------------------------------------------------*/
-    extern uint8_t debug_variable;
+volatile extern uint8_t debug_variable;
 /* Private function prototypes -----------------------------------------------*/
 void System_Init();
-void Clock_Config(void);
+//void Clock_Config(void);
 void Interrupt_Init(void);
 
 void Task_Init(void);
@@ -47,7 +48,7 @@ void Test_IR_Receiver(void *args);
  
 void System_Init()
 {
-  Clock_Config();
+  //Clock_Config();
   Interrupt_Init();
   Timer_Counter_Init();
   Timer_PWM_Init();
@@ -61,17 +62,18 @@ void System_Init()
   Node_State_Manager_Init();
 }
     
-void Clock_Config(void) { 
-  CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
-  CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
-}
+//void Clock_Config(void) { 
+//  CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
+//  CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
+//}
 
 void Interrupt_Init(void)
 {
   //Change Interrupt Of Timer 1
-  ITC_DeInit();//DeInit All Interrupt Priority
-  ITC_SetSoftwarePriority(ITC_IRQ_TIM1_OVF,ITC_PRIORITYLEVEL_2);
-  ITC_SetSoftwarePriority(ITC_IRQ_UART1_TX,ITC_PRIORITYLEVEL_1);
+//  ITC_DeInit();//DeInit All Interrupt Priority
+//  ITC_SetSoftwarePriority(ITC_IRQ_TIM1_OVF,ITC_PRIORITYLEVEL_2);
+//  ITC_SetSoftwarePriority(ITC_IRQ_UART1_TX,ITC_PRIORITYLEVEL_1);
+  set_EA;
 }
 
 void Task_Init(void)
@@ -116,14 +118,14 @@ void Test_Task(void *args)
 
 void Test_Uart(void *args)
 {
-  if(GPIO_ReadInputData(GPIOA)& GPIO_PIN_1) {
+  //if(GPIO_ReadInputData(TRANSPORT_OUTPUT_DRIVER_PORT)& GPIO_PIN_1) {
 //    Transport_TxPush(1);
 //    GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
-  } else {
+//  } else {
 //    Transport_TxPush(0);
 //    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
-  }
+//  }
   uint8_t data = 0;
   if( Transport_RxPop(&data) == SUCCESS) {
     if( data == 1 ) {
@@ -173,7 +175,7 @@ void main(void)
       GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
     }
     
-    uint8_t readPin = GPIO_ReadOutputData(GPIOA);
+    uint8_t readPin = GPIO_ReadOutputData(TRANSPORT_OUTPUT_DRIVER_PORT);
     if( readPin & GPIO_PIN_2){ //
       GPIO_Util_TurnOnLed(LED_PORT,LED_PIN);
     } else {

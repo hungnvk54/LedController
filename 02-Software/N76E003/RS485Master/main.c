@@ -15,8 +15,8 @@
 
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm8s.h"
-#include "stm8s_clk.h"
+//#include "stm8s.h"
+//#include "stm8s_clk.h"
 #include "gpio_util.h"
 #include "timer_counter.h"
 #include "timer_pwm.h"
@@ -32,7 +32,7 @@
 /* Private defines -----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 void System_Init();
-void Clock_Config(void);
+//void Clock_Config(void);
 void Task_Init(void);
 void Interrupt_Init(void);
 
@@ -44,7 +44,7 @@ void Test_ADC(void *args);
 
 void System_Init()
 {
-  Clock_Config();
+//  Clock_Config();
   Interrupt_Init();
   Timer_Counter_Init();
   Timer_PWM_Init();
@@ -58,10 +58,10 @@ void System_Init()
   Node_State_Manager_Init();
 }
     
-void Clock_Config(void) { 
-  CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
-  CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
-}
+//void Clock_Config(void) { 
+//  CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
+//  CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
+//}
 
 void Task_Init(void)
 {
@@ -95,9 +95,10 @@ void Task_Init(void)
 void Interrupt_Init()
 {
   //Change Interrupt Of Timer 1
-  ITC_DeInit();//DeInit All Interrupt Priority
-  ITC_SetSoftwarePriority(ITC_IRQ_TIM1_OVF,ITC_PRIORITYLEVEL_2);
-  ITC_SetSoftwarePriority(ITC_IRQ_UART1_TX,ITC_PRIORITYLEVEL_1);
+//  ITC_DeInit();//DeInit All Interrupt Priority
+//  ITC_SetSoftwarePriority(ITC_IRQ_TIM1_OVF,ITC_PRIORITYLEVEL_2);
+//  ITC_SetSoftwarePriority(ITC_IRQ_UART1_TX,ITC_PRIORITYLEVEL_1);
+  set_EA;
 }
 
 void Test_Task(void *args)
@@ -111,22 +112,22 @@ void Test_Task(void *args)
 
 void Test_Uart(void *args)
 {
-  if(GPIO_ReadInputData(GPIOA) & GPIO_PIN_1) {
-    Transport_TxPush(1);
-    GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
-
-  } else {
-    Transport_TxPush(0);
-    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
-  }
-  uint8_t data = 0;
-  if( Transport_RxPop(&data) == SUCCESS) {
-    if( data == 1 ) {
-      GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
-    } else {
-      GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
-    }
-  }
+//  if(GPIO_ReadInputData(GPIOA) & GPIO_PIN_1) {
+//    Transport_TxPush(1);
+//    GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+//
+//  } else {
+//    Transport_TxPush(0);
+//    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+//  }
+//  uint8_t data = 0;
+//  if( Transport_RxPop(&data) == SUCCESS) {
+//    if( data == 1 ) {
+//      GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+//    } else {
+//      GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+//    }
+//  }
 }
 
 void Test_IR_Receiver(void *args)
@@ -142,7 +143,7 @@ void Test_IR_Receiver(void *args)
 
 void Test_ADC(void *args)
 {
-  uint16_t v = ADC1_GetConversionValue(); 
+  uint16_t v = ADC_GetConversionValue(); 
   if( v > 1000) {
     GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
   } else if( v< 50) {
@@ -174,12 +175,12 @@ void main(void)
       ///Counter Overflow - Update the previous_counter value
         previous_counter = Timer_Counter_GetCounter();
     }
-        uint8_t readPin = GPIO_ReadOutputData(GPIOA);
-    if( readPin & GPIO_PIN_2){
-      GPIO_Util_TurnOnLed(LED_PORT,LED_PIN);
-    } else {
-      GPIO_Util_TurnOffLed(LED_PORT,LED_PIN);
-    }
+//        uint8_t readPin = GPIO_ReadOutputData(GPIOA);
+//    if( readPin & GPIO_PIN_2){
+//      GPIO_Util_TurnOnLed(LED_PORT,LED_PIN);
+//    } else {
+//      GPIO_Util_TurnOffLed(LED_PORT,LED_PIN);
+//    }
   }
 }
 

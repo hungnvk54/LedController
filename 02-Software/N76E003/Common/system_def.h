@@ -60,7 +60,7 @@
 //For RS485 Controller
 #define TRANSPORT_BAUDRATE                      57600
     
-#define TRANSPORT_OUTPUT_DRIVER_PORT            GPIOA
+#define TRANSPORT_OUTPUT_DRIVER_PORT            PORT_0
 #define TRANSPORT_OUTPUT_DRIVER_PIN             GPIO_PIN_2
 
 //For state manager
