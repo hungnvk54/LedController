@@ -26,11 +26,12 @@
   */ 
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __STM8S_IT_H
-#define __STM8S_IT_H
+#ifndef __STM8S_INC_H
+#define __STM8S_INC_H
 
 /* Includes ------------------------------------------------------------------*/
 #include "const.h"
+#include "system_def.h"
 #include "Common.h"
 #include "SFR_Macro.h"
 #include "Function_define.h"
@@ -45,7 +46,7 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
-#endif /* __STM8S_IT_H */
+#endif /* __STM8S_INC_H */
 
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

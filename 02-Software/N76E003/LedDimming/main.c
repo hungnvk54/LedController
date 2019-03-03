@@ -84,7 +84,7 @@ void Task_Init(void)
   Task_Manager_AddTask(&Led_Control_Task);/* Control the output level base on current output*/
   Task_Manager_AddTask(&IR_Receiver_Task);
 
-  //Task_Manager_AddTask(&Test_Task);
+//  Task_Manager_AddTask(&Test_Task);
   //Task_Manager_AddTask(&Test_ADC);
   //Task_Manager_AddTask(&Test_IR_Receiver);
 }
@@ -135,7 +135,8 @@ void main(void)
   Task_Init();
 
   GPIO_Util_Init(LED_PORT,LED_PIN,GPIO_MODE_OUT_PP_LOW_SLOW);
-  
+  GPIO_Util_Init(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN,GPIO_MODE_OUT_PP_LOW_SLOW);
+  GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
 //  GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
 
   uint32_t previous_counter = 0;
@@ -143,7 +144,7 @@ void main(void)
   {
     if( previous_counter <= Timer_Counter_GetCounter() )
     {
-      if((Timer_Counter_GetCounter()  - previous_counter) > TIMER_COUNTER_TICK_IN_MS) { //TICK_IN_MS
+      if((Timer_Counter_GetCounter()  - previous_counter) >= TIMER_COUNTER_TICK_IN_MS) { //TICK_IN_MS
         previous_counter = Timer_Counter_GetCounter();
         Task_Manager_PerformTask();
       }

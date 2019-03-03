@@ -169,18 +169,18 @@ void main(void)
         previous_counter = Timer_Counter_GetCounter();
     }
     
-    if( debug_variable == 1){//readPin & GPIO_PIN_2){ //
-      GPIO_Util_WriteHigh(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
-    } else {
-      GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
-    }
-    
-    uint8_t readPin = GPIO_ReadOutputData(TRANSPORT_OUTPUT_DRIVER_PORT);
-    if( readPin & GPIO_PIN_2){ //
-      GPIO_Util_TurnOnLed(LED_PORT,LED_PIN);
-    } else {
-      GPIO_Util_TurnOffLed(LED_PORT,LED_PIN);
-    }
+//    if( debug_variable == 1){//readPin & GPIO_PIN_2){ //
+//      GPIO_Util_WriteHigh(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+//    } else {
+//      GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+//    }
+//    
+//    uint8_t readPin = GPIO_ReadOutputData(TRANSPORT_OUTPUT_DRIVER_PORT);
+//    if( readPin & GPIO_PIN_2){ //
+//      GPIO_Util_TurnOnLed(LED_PORT,LED_PIN);
+//    } else {
+//      GPIO_Util_TurnOffLed(LED_PORT,LED_PIN);
+//    }
   }
 }
 

@@ -750,16 +750,16 @@
                 <debug>1</debug>
                 <option>
                     <name>XOutOverride</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>OutputFile</name>
-                    <state>RS485Master.d51</state>
+                    <state>RS485Master.hex</state>
                 </option>
                 <option>
                     <name>OutputFormat</name>
                     <version>11</version>
-                    <state>23</state>
+                    <state>22</state>
                 </option>
                 <option>
                     <name>FormatVariant</name>
@@ -932,7 +932,7 @@
                 </option>
                 <option>
                     <name>DebugInformation</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>RuntimeControl</name>

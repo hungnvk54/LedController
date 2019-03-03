@@ -80,43 +80,47 @@ void Transport_Init(void)
 //    /* Enable UART1 Transmit interrupt*/
 //    UART1_ITConfig(UART1_IT_TC, ENABLE);
 //    UART1_ITConfig(UART1_IT_RXNE_OR, ENABLE);
-  UART0_ITConfig(ENABLE);
   UART0_Init(UART0_Mode1, TRANSPORT_BAUDRATE);
-  
+  UART0_ClearITStatus(UART0_TI);
+  UART0_ClearITStatus(UART0_RI);
     
     /* Config Driver Pin to Control MAX485 IC */
-    GPIO_Util_Init(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN,GPIO_MODE_OUT_PP_LOW_FAST);//GPIO_MODE_OUT_OD_LOW_FAST
-//    GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+   UART0_ITConfig(ENABLE);
+   GPIO_Util_Init(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN,GPIO_MODE_OUT_PP_LOW_FAST);//GPIO_MODE_OUT_OD_LOW_FAST
+   GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
 }
 
 void Transport_TxPush(uint8_t data)
 {
   while( tx_cnt >= MAX_TX_BUFFER ); //Wait here until data is send
-  if( tx_cnt )
-  {
-    tx_buff[tx_wr_idx] = data;
-    tx_interrupt_config(DISABLE);
-    ++tx_cnt;
-    tx_interrupt_config(ENABLE);
-    ++tx_wr_idx;
-    if( tx_wr_idx >= MAX_TX_BUFFER ) tx_wr_idx = 0;
-  } else {
-    Transport_OutputEnable();
-    UART0_SendData8(data);
-  } 
+  //if( tx_cnt | (SET != UART0_GetITStatus(UART0_TI)))
+  tx_buff[tx_wr_idx] = data;
+  ++tx_wr_idx;
+  if( tx_wr_idx >= MAX_TX_BUFFER ) tx_wr_idx = 0;
+  tx_interrupt_config(DISABLE);
+     ++tx_cnt;
+  if( tx_cnt == 1 ) {
+    UART0_SetITStatus(UART0_TI);
+  }
+  tx_interrupt_config(ENABLE);
+
+// else {
+//    Transport_OutputEnable();
+//    UART0_SendData8(data);
+//  } 
 }
 uint8_t Transport_TxPop(uint8_t *data)
 {
     if(tx_cnt == 0 )
     {
       //tx_interrupt_config(DISABLE);
-      return FAILED;
+      return ERROR;
     }
     *data = tx_buff[tx_rd_idx];
     --tx_cnt;
     ++tx_rd_idx;
     if( MAX_TX_BUFFER == tx_rd_idx ) tx_rd_idx = 0;
-    return SUCCESS;
+    return (uint8_t)SUCCESS;
 }
 
 void Transport_RxPush(uint8_t data)
@@ -184,12 +188,16 @@ uint8_t Transport_IsBufferEmpty(void)
 void Transport_OutputEnable(void)
 {
   GPIO_Util_WriteHigh(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+  //GPIO_Util_Toggle(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+  //GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+
   debug_variable = 1;
 }
 void Transport_OutputDisable(void)
 {
   debug_variable = 0;
   GPIO_Util_WriteLow(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
+  //GPIO_Util_Toggle(TRANSPORT_OUTPUT_DRIVER_PORT,TRANSPORT_OUTPUT_DRIVER_PIN);
 }
 /**
   * @}

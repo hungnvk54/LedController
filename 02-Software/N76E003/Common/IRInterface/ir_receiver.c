@@ -120,8 +120,8 @@ void make_decision(void)
 int16_t lowpass_filter(uint16_t v)
 {
   static uint16_t filtered_value = 0;
-  //filtered_value = (uint16_t)(alpha*v + (1-alpha)*filtered_value);
-  filtered_value = (uint16_t)(alpha*((int16_t)v-(int16_t)filtered_value) + filtered_value);
+  filtered_value = (uint16_t)(alpha*v + (1-alpha)*filtered_value);
+  //filtered_value = (uint16_t)(alpha*((int16_t)v-(int16_t)filtered_value) + filtered_value);
   return filtered_value;
 }
 
@@ -141,7 +141,7 @@ uint8_t detecting_pulse(int16_t v)
   const uint8_t INCREASE =0, DECREASE =1;
   static uint8_t direction = 0;
   uint8_t is_has_pulse = NO;
-  if( previous_v > (v+20) ) {
+  if( previous_v > (v+40) ) {
 //    increase_counter += 1;
     if( (direction == INCREASE) ) {//&& (increase_counter >= 2)
       direction = DECREASE;
@@ -149,7 +149,7 @@ uint8_t detecting_pulse(int16_t v)
       //Reset paramter
 //      decrease_counter = 0 ;
     }
-  } else if((previous_v +20) < v){
+  } else if((previous_v +40) < v){
 //    decrease_counter +=1;
     if((direction == DECREASE)) { // && (decrease_counter >= 2)
       direction = INCREASE;

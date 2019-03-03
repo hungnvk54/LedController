@@ -38,8 +38,6 @@
 
 "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\8051\config\devices\Nuvoton\ioN76E003.ddf" 
 
-"--proc_pc_readonly" 
-
 "--proc_driver" 
 
 "sim" 

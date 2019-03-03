@@ -11,6 +11,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "N76E003_it.h"
 #include "timer_counter.h"
+#include "gpio_util.h"
 #include "inc.h"
 
 #ifdef DIMMING
@@ -74,17 +75,19 @@ __interrupt void UART0_ISR (void)
   if( SET == UART0_GetITStatus(UART0_TI) )
   {
     uint8_t data, ret;
+    //Clear IT Flag
+    UART0_ClearITStatus(UART0_TI);
     ret = Transport_TxPop(&data);
-    if( ret == SUCCESS ) {
+    if( ret == (uint8_t)SUCCESS ) 
+    {
       Transport_OutputEnable();
       UART0_SendData8(data);
     } else {
       Transport_OutputDisable();
     }
-    //Clear IT Flag
-    UART0_ClearITStatus(UART0_TI);
   } 
-  if( SET == UART0_GetITStatus(UART0_RI)) {\
+  if( SET == UART0_GetITStatus(UART0_RI)) {
+    GPIO_Util_Toggle(LED_PORT, LED_PIN);
     uint8_t data = UART0_ReceiveData8();
     Transport_RxPush(data);
     //Clear Interrupt Flag
@@ -206,6 +209,7 @@ __interrupt void Timer3_ISR (void)
 {
   // Interrupt flag was clear by hardware
   Timer_Counter_IncreaseCounter();
+  //GPIO_Util_Toggle(LED_PORT,LED_PIN);
 }
 
 

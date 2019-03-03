@@ -42,6 +42,7 @@ void UART0_Init(UART0_Mode_TypeDef mode, uint16_t baud)
     TMOD |= 0x20; //Set Timer as Timer mode (Mode 1)
     set_T1M; //The clock source of Timer 1 is direct the system clock
     clr_BRCK;
+    set_TR1;
     //2.3
     break;
   case UART0_Mode2:

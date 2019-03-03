@@ -23,9 +23,9 @@
 #define SYSTEM_CLK                      16000000        //16MHz
 
 //For IR Transmitter
-#define IR_TRANSMITTER_FREQ             225     //100Hz
+#define IR_TRANSMITTER_FREQ             150     //100Hz
 #define IR_TRANSMITTER_PORT             PORT_1
-#define IR_TRANSMITTER_PIN              GPIO_PIN_1
+#define IR_TRANSMITTER_PIN              GPIO_PIN_0
 
 //For IR Reciever
 #define IR_RECEIVER_ADC_CHANNEL         ADC1_CHANNEL_4          //AIN4 channel4
@@ -58,10 +58,10 @@
 
 
 //For RS485 Controller
-#define TRANSPORT_BAUDRATE                      57600
+#define TRANSPORT_BAUDRATE                      38400
     
 #define TRANSPORT_OUTPUT_DRIVER_PORT            PORT_0
-#define TRANSPORT_OUTPUT_DRIVER_PIN             GPIO_PIN_2
+#define TRANSPORT_OUTPUT_DRIVER_PIN             GPIO_PIN_5
 
 //For state manager
 #define STATE_MANAGER_PARALLEL_LEDS             YES
@@ -75,7 +75,7 @@
 #define LED_CONTROL_PIN                         GPIO_PIN_2
 
 #define INDICATOR_LED_PORT                      PORT_1
-#define INDICATOR_LED_PIN                       GPIO_PIN_5
+#define INDICATOR_LED_PIN                       GPIO_PIN_6
 
 //For Debug Purpose
 #define LED_PORT                                PORT_1

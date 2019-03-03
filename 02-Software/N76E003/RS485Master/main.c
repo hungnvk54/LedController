@@ -81,7 +81,7 @@ void Task_Init(void)
                                             which is received from Network */
   Task_Manager_AddTask(&IR_Receiver_Task);
   Task_Manager_AddTask(&Node_State_Manager_Task);
-//  Task_Manager_AddTask(&Test_Task); 
+  Task_Manager_AddTask(&Test_Task); 
 //  Task_Manager_AddTask(&Test_Uart); //Done
 //  Task_Manager_AddTask(&Test_IR_Receiver); //Done++++++++++++++++++++++++++++++++++
 //  Task_Manager_AddTask(&Test_ADC); //Done
@@ -105,7 +105,7 @@ void Test_Task(void *args)
 {
   static uint16_t counter = 0;
   if( ++counter == 500) {
-    GPIO_Util_Toggle(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+    GPIO_Util_Toggle(LED_PORT,LED_PIN);
     counter = 0; 
   }
 }
@@ -159,8 +159,7 @@ void main(void)
   /*For Test Only*/
 //  GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_OD_LOW_SLOW);
 //  GPIO_Util_Init(GPIOA,GPIO_PIN_1,GPIO_MODE_IN_PU_NO_IT);
-  GPIO_Util_Init(LED_PORT,LED_PIN,GPIO_MODE_OUT_OD_LOW_FAST);
-  GPIO_Util_TurnOffLed(LED_PORT,LED_PIN);
+  GPIO_Util_Init(LED_PORT,LED_PIN,GPIO_MODE_OUT_PP_LOW_SLOW);
   
   uint32_t previous_counter = 0;
   while (1)
