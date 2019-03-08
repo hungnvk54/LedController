@@ -1,0 +1,17 @@
+﻿Field=#~Integer~#~50|Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~LedController.PrjPCB|ReportField=ProjectFullPath~E:\DATA\03-DuAn\02-LedController\LedController\03-Hardware\01-LedController\LedController.PrjPCB|ReportField=Title~Bill of Materials For Project [LedController.PrjPCB] (No PCB Document Selected)|ReportField=TotalQuantity~18|ReportField=ReportTime~4:38:55 PM|ReportField=ReportDate~3/4/2019|ReportField=ReportDateTime~3/4/2019 4:38:55 PM|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~3/4/2019|ReportField=CurrentTime~4:35:17 PM|ReportField=Date~|ReportField=DocumentFullPathAndName~E:\DATA\03-DuAn\02-LedController\LedController\03-Hardware\01-LedController\Power.SchDoc|ReportField=DocumentName~Power.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~3/4/2019|ReportField=Organization~|ReportField=ProjectName~LedController.PrjPCB|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~LedController.PrjPCB|ReportField=DataSourceFullPath~E:\DATA\03-DuAn\02-LedController\LedController\03-Hardware\01-LedController\LedController.PrjPCB|ReportField=PCBConfigurationName~Default Configuration|ReportField=Item~|ReportField=ItemRevision~|ReportField=ItemAndRevision~|ReportField=ItemRevisionBase~|ReportField=ItemRevisionLevel1~|ReportField=ItemRevisionLevel2~|ReportField=ItemRevisionLevel1AndBase~|ReportField=ItemRevisionLevel2AndLevel1~
+1|LED0603|LED0603|D1|DIOC1608X06N|LED0603|1
+2|TCRT5000||D2|TCRT5000|TCRT5000|1
+3|1N4007|1N4007_SMD|D3|SODFL504X244-2N|1N4007_SMD Diode|1
+4||Header, 2-Pin|P1|HDR1X2|Header 2|1
+5||Header, 4-Pin|P2|HDR1X4|Header 4|1
+6||Header, 4-Pin, Right Angle|P3|HDR1X4H|Header 4H|1
+7|AO3400|AO3400  MOSFET SOT23-3|Q1|SOT95P278X125-3N|AO3400  MOSFET SOT23-3|1
+8|S9013|SOT-23 Plastic-Encapsulate Transistors|Q2|SOT95P278X125-3N|Transitor S9013 NPN|1
+9|100R|Thick Film Resistors - SMD 0603 100OHMS 5% 1/10WATT|R1|RESC2608X06N_0603|R100_0603_5%|1
+10|1K|Thick Film Resistors - SMD 0603 1kOHMS 5% 1/10WATT|R2, R4|RESC2608X06N_0603|1k_0603_5%|2
+11|470R|Thick Film Resistors - SMD 470 ohm 5%|R3, R6|RESC2608X06N_0603|R470_0603_5%|2
+12|10K|RES SMD 10K OHM 1% 1/4W 0603|R5|RESC2608X06N_0603|R10k_0603_5%|1
+13|CJA1117B-5.0 SOT89|CJA1117B-5.0 SOT89 Power IC 1A 5V_IC|U1|SOT89-150P409X160-3N|CJA1117B-5.0 SOT89|1
+14|MAX485|IC TXRX RS485/RS422 LOWPWR 8SOIC|U2|SOIC127P600X175-8N|Max485SOIC8P|1
+15|N76E003|IC MCU 8BIT 18KB FLASH 20TSSOP|U3|TSOP65P640X120-20N|N76E003|1
+16|1K|Varistor 3x3 SMD 1KOhm 5% 1/10WATT|VR1|Var_SMD_3x3|Varistor 3x3 SMD 1KOhm|1

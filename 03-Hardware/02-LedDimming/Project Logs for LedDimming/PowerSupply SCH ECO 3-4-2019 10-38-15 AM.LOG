@@ -1,0 +1,4 @@
+Replace Part D3 1N4007_SMD Diode in E:\DATA\03-DuAn\02-LedController\LedController\03-Hardware\02-LedDimming\PowerSupply.SchDoc with 1N4007_SMD Diode from Integrated_Library1.IntLib
+Replace Part D4 1N4148_SMD in E:\DATA\03-DuAn\02-LedController\LedController\03-Hardware\02-LedDimming\PowerSupply.SchDoc with 1N4148_SMD from Integrated_Library1.IntLib
+Replace Part P1 Header 4H in E:\DATA\03-DuAn\02-LedController\LedController\03-Hardware\02-LedDimming\PowerSupply.SchDoc with Header 4H from Miscellaneous Connectors.IntLib
+Replace Part U? CJA1117B-5.0 SOT89 in E:\DATA\03-DuAn\02-LedController\LedController\03-Hardware\02-LedDimming\PowerSupply.SchDoc with CJA1117B-5.0 SOT89 from Integrated_Library1.IntLib

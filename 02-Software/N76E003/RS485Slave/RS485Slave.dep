@@ -693,4 +693,11 @@
         </file>
     </configuration>
     <configuration>
-        <name>Rel
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>
