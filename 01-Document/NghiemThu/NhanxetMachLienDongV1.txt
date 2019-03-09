@@ -1,0 +1,4 @@
+Nhận xét mạch liên động
+1. Đường dây VCC vào LM7805, cần cho to hơn để đảm bảo nguồn điện hoạt động
+2. Đường nối Diode ngõ ra chưa nối với Pad ngõ ra.
+3. Net GND nối Q1 chưa nối hết
