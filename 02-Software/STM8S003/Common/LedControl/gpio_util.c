@@ -72,6 +72,14 @@ uint8_t GPIO_Util_ReadInputData(GPIO_TypeDef* GPIOx)
 {
   return GPIO_ReadInputData(GPIOx);
 }
+void GPIO_Util_TurnOnActiveHighLed(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
+{
+  GPIO_Util_WriteHigh(port,pin);
+}
+void GPIO_Util_TurnOffActiveHighLed(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
+{
+  GPIO_Util_WriteLow(port,pin);
+}
 
 /**
   * @}

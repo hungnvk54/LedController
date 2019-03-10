@@ -51,7 +51,8 @@ void Timer_PWM_Init()
         is_configured = ENABLE;
   }
   TIM2_Cmd(ENABLE);
-  if( change_factor == 0 ) change_factor = 0.001;
+//  if( change_factor == 0 ) change_factor = 0.001;
+  Timer_PWM_SetChangePeriod(DIMMING_PERIOD_IN_MS_SECOND);
   
 }
 void Timer_PWM_IR_Transmitter_Init()
@@ -85,7 +86,7 @@ void Timer_PWM_Update_Period(void *args)
 //      gpio_state = GPIO_STATE_OFF;
       return;
     }
-    active_period += change_factor;
+    active_period += 0.8*change_factor;
   } else
   {
     if( active_period <= 0 ) 
@@ -93,7 +94,7 @@ void Timer_PWM_Update_Period(void *args)
 //      gpio_state = GPIO_STATE_OFN;
       return;
     }
-    active_period -= change_factor;
+    active_period -= 2*change_factor;
   }
   update_duty_cycle();
 }

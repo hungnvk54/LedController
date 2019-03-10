@@ -25,6 +25,8 @@
 #define SLAVE_NODE_ADDRESS                      1
 #define MASTER_NODE_ADDRESS                     0
 
+#define DIMMING_PERIOD_IN_MS_SECOND             1000     ///500ms
+
 /*-------------------------------Do not change the value----------------------*/
 
 //System
@@ -60,8 +62,8 @@
 #define IR_RECEIVER_LONG_PULSE_TIME_OUT_IN_MS           400
 #define IR_RECEIVER_SHORT_PULSE_PULSE_COUNTER           (IR_RECEIVER_SHORT_PULSE_TIME_OUT_IN_MS/IR_RECEIVER_PULSE_WITHD_IN_MS)
 #define IR_RECEIVER_LONG_PULSE_PULSE_COUNTER            (IR_RECEIVER_LONG_PULSE_TIME_OUT_IN_MS/IR_RECEIVER_PULSE_WITHD_IN_MS)
-#define IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER       15
-#define TWO_PULSE_TIME_OUT_IN_MS                        4
+#define IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER       20
+#define TWO_PULSE_TIME_OUT_IN_MS                        3
 
 
 //For RS485 Controller
@@ -78,7 +80,7 @@
 #define LED_CONTROL_PIN                         GPIO_PIN_4
 
 #define INDICATOR_LED_PORT                      GPIOB
-#define INDICATOR_LED_PIN                       GPIO_PIN_4
+#define INDICATOR_LED_PIN                       GPIO_PIN_5
 
 #define DIGITAL_INPUT_PORT                      GPIOA
 #define DIGITAL_INPUT_PIN                       GPIO_PIN_2

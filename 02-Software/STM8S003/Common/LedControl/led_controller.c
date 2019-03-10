@@ -57,10 +57,10 @@ void Led_Control_Immediate(GPIO_State_TypeDef state)
 {
   if( GPIO_STATE_ON == state)
   {
-    GPIO_Util_TurnOnLed(LED_CONTROL_PORT,LED_CONTROL_PIN);//Active in low level
+    GPIO_Util_TurnOnActiveHighLed(LED_CONTROL_PORT,LED_CONTROL_PIN);//Active in low level
   } else 
   {
-    GPIO_Util_TurnOffLed(LED_CONTROL_PORT,LED_CONTROL_PIN);
+    GPIO_Util_TurnOffActiveHighLed(LED_CONTROL_PORT,LED_CONTROL_PIN);
   }
 }
 
@@ -70,7 +70,7 @@ void Led_Control_Init(Control_Mode_TypeDef mode)
   Generate_TestingSignal();
   if( CONTROL_MODE_IMMEDIATE == mode )
   {
-    GPIO_Util_Init(LED_CONTROL_PORT,LED_CONTROL_PIN,GPIO_MODE_OUT_PP_HIGH_SLOW);
+    GPIO_Util_Init(LED_CONTROL_PORT,LED_CONTROL_PIN,GPIO_MODE_OUT_PP_LOW_SLOW);
   } else {
     Timer_PWM_Init();
   }

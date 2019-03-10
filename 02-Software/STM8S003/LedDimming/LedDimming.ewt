@@ -2163,4 +2163,7 @@
     <file>
         <name>$PROJ_DIR$\..\Common\stm8s_it.c</name>
     </file>
+    <file>
+        <name>$PROJ_DIR$\..\Common\util.c</name>
+    </file>
 </project>

@@ -38,6 +38,7 @@
 #include "led_controller.h"
 #include "nodestatemanager.h"
 #include "system_def.h"
+#include "util.h"
 /* Private defines -----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 void System_Init();
@@ -53,11 +54,10 @@ void System_Init()
 {
   Clock_Config();
   Interrupt_Init();
+  Led_Control_Init(CONTROL_MODE_DIMMING);//CONTROL_MODE_IMMEDIATE
   Timer_Counter_Init();
-  Timer_PWM_Init();
   IR_Receiver_Init();
   IR_Transmitter_Init(IR_OUTPUT_MODE_IO);
-  Led_Control_Init(CONTROL_MODE_DIMMING);
   
   ///Init node control
   Node_State_Manager_Init(OUTPUT_TOGGLE_WHEN_INPUT_ON);//OUTPUT_TOGGLE_WHEN_INPUT_ON);//OUTPUT_AS_INPUT);
@@ -97,7 +97,7 @@ void Test_Task(void *args)
 {
   static uint16_t counter = 0;
   if( ++counter == 500) {
-    GPIO_Util_Toggle(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+    GPIO_Util_Toggle(LED_PORT,LED_PIN);
     counter = 0; 
   }
 }
@@ -107,9 +107,16 @@ void Test_IR_Receiver(void *args)
   IR_Signal_State_TypeDef state = IR_Receiver_GetState();
   
   if( state == IR_HIDDEN ){//|| state == IR_LONG_PULSE 
-     GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+     GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
   } else {
-    GPIO_Util_WriteLow(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+    GPIO_Util_WriteLow(LED_PORT,LED_PIN);
+  }
+}
+
+void Delay_Uss(uint32_t t)
+{
+  while( t != 0){
+    t--;
   }
 }
 
@@ -119,9 +126,9 @@ void main(void)
   System_Init();
   Task_Init();
 
-  GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_OD_LOW_SLOW);
-  
-//  GPIO_Util_WriteHigh(INDICATOR_LED_PORT,INDICATOR_LED_PIN);
+//  GPIO_Util_Init(LED_PORT,LED_PIN,GPIO_MODE_OUT_PP_LOW_SLOW);
+//  
+//  GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
 
   uint32_t previous_counter = 0;
   while (1)
@@ -137,6 +144,7 @@ void main(void)
         previous_counter = Timer_Counter_GetCounter();
     }
   }
+
 }
 
 #ifdef USE_FULL_ASSERT
