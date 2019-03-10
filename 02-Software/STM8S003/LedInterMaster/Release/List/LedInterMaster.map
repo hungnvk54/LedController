@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V3.10.1.201 for STM8                     10/Mar/2019  20:04:36
+# IAR ELF Linker V3.10.1.201 for STM8                     10/Mar/2019  20:55:37
 # Copyright 2010-2017 IAR Systems AB.
 #
 #    Output file  =  
@@ -8,7 +8,7 @@
 #    Map file     =  
 #        E:\03-DuAn\LedController\LedController\02-Software\STM8S003\LedInterMaster\Release\List\LedInterMaster.map
 #    Command line =  
-#        -f C:\Users\hungn\AppData\Local\Temp\EWB2C9.tmp
+#        -f C:\Users\hungn\AppData\Local\Temp\EW6882.tmp
 #        (E:\03-DuAn\LedController\LedController\02-Software\STM8S003\LedInterMaster\Release\Obj\gpio_util.o
 #        E:\03-DuAn\LedController\LedController\02-Software\STM8S003\LedInterMaster\Release\Obj\ir_receiver.o
 #        E:\03-DuAn\LedController\LedController\02-Software\STM8S003\LedInterMaster\Release\Obj\ir_transmitter.o
