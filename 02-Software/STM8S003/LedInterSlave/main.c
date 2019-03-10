@@ -52,11 +52,10 @@ void System_Init()
 {
   Clock_Config();
   Interrupt_Init();
+  Led_Control_Init(CONTROL_MODE_DIMMING);
   Timer_Counter_Init();
-  Timer_PWM_Init();
   IR_Receiver_Init();
   IR_Transmitter_Init(IR_OUTPUT_MODE_IO);
-  Led_Control_Init(CONTROL_MODE_DIMMING);
   Node_Inter_Conn_Init();
   ///Init node control
   Node_State_Manager_Init(OUTPUT_TOGGLE_WHEN_INPUT_ON);//OUTPUT_TOGGLE_WHEN_INPUT_ON);//OUTPUT_AS_INPUT);

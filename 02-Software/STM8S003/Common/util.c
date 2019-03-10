@@ -22,16 +22,17 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /* Public functions ----------------------------------------------------------*/
-void Delay_Us(uint32_t t)
+uint32_t Delay_Us(uint32_t t)
 {
-  t = t >> 1;
-  while(t != 0){
-    t--;
+  volatile uint32_t result = t >> 2;
+  while(result != 0){
+    result--;
   }
+  return result;
 }
 void Generate_TestingSignal(void)
 {
-  uint8_t n = 6;
+  uint8_t n = 4;
   //Get Current mode of the Controller
   GPIO_Util_Init(LED_CONTROL_PORT,LED_CONTROL_PIN,GPIO_MODE_OUT_PP_HIGH_SLOW);
   GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_PP_LOW_FAST);

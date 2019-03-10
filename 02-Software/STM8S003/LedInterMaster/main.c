@@ -56,7 +56,6 @@ void System_Init()
   Interrupt_Init();
   Led_Control_Init(CONTROL_MODE_DIMMING);
   Timer_Counter_Init();
-  Timer_PWM_Init();
   IR_Receiver_Init();
   IR_Transmitter_Init(IR_OUTPUT_MODE_IO);
   Node_Inter_Conn_Init();

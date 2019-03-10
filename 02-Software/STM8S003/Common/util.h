@@ -19,7 +19,7 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-void Delay_Us(uint32_t t);
+uint32_t Delay_Us(uint32_t t);
 void Generate_TestingSignal(void);
 void Wait_SystemStable(void);
 #endif /* __TEMPLATE_H */

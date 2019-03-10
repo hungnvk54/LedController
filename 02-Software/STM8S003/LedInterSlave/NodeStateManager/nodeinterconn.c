@@ -20,7 +20,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-GPIO_State_TypeDef pre_digital_input_state = GPIO_STATE_OFF;
+//GPIO_State_TypeDef pre_digital_input_state = GPIO_STATE_OFF;
 /* Private function prototypes -----------------------------------------------*/
 GPIO_State_TypeDef get_input_state(void);
 void process_digital_input();
@@ -40,15 +40,16 @@ void process_digital_input()
 {
   // If any change from  Low to High - Toggle the output of the master node
   GPIO_State_TypeDef current_input_state = get_input_state();
-  if(current_input_state != pre_digital_input_state)
-  {
-    pre_digital_input_state = current_input_state;
-    if( GPIO_STATE_ON == current_input_state )
-    {
-      //Toggle the output
-      Node_State_ToggleOutputState();
-    }
-  }
+//  if(current_input_state != pre_digital_input_state)
+//  {
+//    pre_digital_input_state = current_input_state;
+//    if( GPIO_STATE_ON == current_input_state )
+//    {
+//      //Toggle the output
+//      Node_State_ToggleOutputState();
+//    }
+//  }
+  Node_State_SetOutputState(current_input_state);
 }
 
 void process_ditital_output()
