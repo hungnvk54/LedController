@@ -13,6 +13,7 @@
 #include "timer_pwm.h"
 #include "system_def.h"
 #include "nodestatemanager.h"
+#include "util.h"
 /** @addtogroup Template_Project
   * @{
   */
@@ -65,6 +66,8 @@ void Led_Control_Immediate(GPIO_State_TypeDef state)
 
 void Led_Control_Init(Control_Mode_TypeDef mode)
 {
+  //Generate Testing signal
+  Generate_TestingSignal();
   if( CONTROL_MODE_IMMEDIATE == mode )
   {
     GPIO_Util_Init(LED_CONTROL_PORT,LED_CONTROL_PIN,GPIO_MODE_OUT_PP_HIGH_SLOW);

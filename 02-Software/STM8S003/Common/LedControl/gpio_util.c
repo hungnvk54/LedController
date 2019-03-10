@@ -68,6 +68,11 @@ void GPIO_Util_TurnOffLed(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
   GPIO_Util_WriteHigh(port,pin);
 }
 
+uint8_t GPIO_Util_ReadInputData(GPIO_TypeDef* GPIOx)
+{
+  return GPIO_ReadInputData(GPIOx);
+}
+
 /**
   * @}
   */

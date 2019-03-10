@@ -19,6 +19,14 @@
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
+
+/*--------------------------------USER CONFIGABLE-----------------------------*/
+//Node Address
+#define SLAVE_NODE_ADDRESS                      1
+#define MASTER_NODE_ADDRESS                     0
+
+/*-------------------------------Do not change the value----------------------*/
+
 //System
 #define SYSTEM_CLK                      16000000        //16MHz
 
@@ -65,10 +73,6 @@
 //For state manager
 #define STATE_MANAGER_PARALLEL_LEDS             YES
 
-//Node Address
-#define SLAVE_NODE_ADDRESS                      1
-#define MASTER_NODE_ADDRESS                     0
-
 //Led Output 
 #define LED_CONTROL_PORT                        GPIOD
 #define LED_CONTROL_PIN                         GPIO_PIN_4
@@ -76,9 +80,15 @@
 #define INDICATOR_LED_PORT                      GPIOB
 #define INDICATOR_LED_PIN                       GPIO_PIN_4
 
+#define DIGITAL_INPUT_PORT                      GPIOA
+#define DIGITAL_INPUT_PIN                       GPIO_PIN_2
+#define DIGITAL_OUTPUT_PORT                     GPIOA
+#define DIGITAL_OUTPUT_PIN                      GPIO_PIN_1
+
 //For Debug Purpose
 #define LED_PORT                                GPIOB
 #define LED_PIN                                 GPIO_PIN_5
+
 
 /* Exported functions ------------------------------------------------------- */
 
