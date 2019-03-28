@@ -1,0 +1,3 @@
+Removed Member From Class: ClassName=LedDimming Member=C1
+Change Component Comment : Designator=D4 Old Comment=LED0603 New Comment=LED IR 3mm
+Change Component Comment : Designator=Q2 Old Comment=LED0603 New Comment=LED IR 3mm

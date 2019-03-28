@@ -1,0 +1,5 @@
+Added Component: Designator=C1(CAPC2012X12N)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=VCC_5V Pin=C1-2
+Change Net Name : Old Net Name=NetQ3_2 New Net Name=NetQ3_3

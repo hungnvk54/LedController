@@ -1,0 +1,35 @@
+Added Component: Designator=C1(Point)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P1(Point)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P2(Point)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P3(Point)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P4(Point)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P5(Point)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P6(Point)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P7(Point)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P8(Point)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=VCC_12V Pin=P1-1
+Added Pin To Net: NetName=GND Pin=P2-1
+Added Pin To Net: NetName=NetP3_1 Pin=P3-1
+Added Pin To Net: NetName=VCC_12V Pin=P4-1
+Added Pin To Net: NetName=SWIM Pin=P5-1
+Added Pin To Net: NetName=RESET Pin=P6-1
+Added Pin To Net: NetName=D_Output Pin=P7-1
+Added Pin To Net: NetName=D_Input Pin=P8-1
+Added Member To Class: ClassName=LedDimming Member=Component C1 P
+Added Member To Class: ClassName=LedDimming Member=Component P1 P
+Added Member To Class: ClassName=LedDimming Member=Component P2 P
+Added Member To Class: ClassName=LedDimming Member=Component P3 P
+Added Member To Class: ClassName=LedDimming Member=Component P4 P
+Added Member To Class: ClassName=LedDimming Member=Component P5 P
+Added Member To Class: ClassName=LedDimming Member=Component P6 P
+Added Member To Class: ClassName=LedDimming Member=Component P7 P
+Added Member To Class: ClassName=LedDimming Member=Component P8 P

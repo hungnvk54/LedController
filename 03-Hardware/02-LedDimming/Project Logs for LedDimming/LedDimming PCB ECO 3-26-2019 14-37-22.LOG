@@ -1,0 +1,133 @@
+Added Component: Designator=D1(SODFL504X244-2N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "1N4148UR-1-ND"; VariantName = "[No Variations]"
+Added Component: Designator=D2(DIOMELF3515N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "1N4148UR-1-ND"; VariantName = "[No Variations]"
+Added Component: Designator=D3(DIOC1608X06N)
+Add component. Clean all parameters for all variants
+Added Component: Designator=D4(DIOC1608X06N)
+Add component. Clean all parameters for all variants
+Added Component: Designator=Q1(SOT95P278X125-3N)
+Add component. Clean all parameters for all variants
+Added Component: Designator=Q2(DIOC1608X06N)
+Add component. Clean all parameters for all variants
+Added Component: Designator=Q3(SOT95P278X125-3N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-101ELFCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=R1(RESC2608X06N_0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-101ELFCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "541-10.0KSCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=R2(RESC2608X06N_0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "541-10.0KSCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "541-10.0KSCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=R3(RESC2608X06N_0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "541-10.0KSCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-101ELFCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=R4(RESC2608X06N_0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-101ELFCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-471ELFCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=R5(RESC2608X06N_0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-471ELFCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-101ELFCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=R6(RESC2608X06N_0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-101ELFCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-101ELFCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=R7(Var_SMD_3x3)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-101ELFCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=U1(SOT89-150P409X160-3N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "497-18051-1-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "STM8S003F3"; VariantName = "[No Variations]"
+Added Component: Designator=U2(TSOP65P640X120-20N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "497-18051-1-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "STM8S003F3"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=D_Input Pin=R3-2
+Added Pin To Net: NetName=D_Input Pin=U2-6
+Added Net: Name=D_Input
+Added Pin To Net: NetName=D_Output Pin=D2-1
+Added Net: Name=D_Output
+Added Pin To Net: NetName=GND Pin=Q1-3
+Added Pin To Net: NetName=GND Pin=Q3-3
+Added Pin To Net: NetName=GND Pin=R2-1
+Added Pin To Net: NetName=GND Pin=R3-1
+Added Pin To Net: NetName=GND Pin=U1-1
+Added Pin To Net: NetName=GND Pin=U2-7
+Added Net: Name=GND
+Added Pin To Net: NetName=NetD1_1 Pin=D1-1
+Added Pin To Net: NetName=NetD1_1 Pin=U1-3
+Added Net: Name=NetD1_1
+Added Pin To Net: NetName=NetD2_2 Pin=D2-2
+Added Pin To Net: NetName=NetD2_2 Pin=U2-5
+Added Net: Name=NetD2_2
+Added Pin To Net: NetName=NetD3_2 Pin=D3-2
+Added Pin To Net: NetName=NetD3_2 Pin=R5-1
+Added Net: Name=NetD3_2
+Added Pin To Net: NetName=NetD4_1 Pin=D4-1
+Added Pin To Net: NetName=NetD4_1 Pin=R7-1
+Added Pin To Net: NetName=NetD4_1 Pin=R7-2
+Added Net: Name=NetD4_1
+Added Pin To Net: NetName=NetP3_1 Pin=Q1-2
+Added Net: Name=NetP3_1
+Added Pin To Net: NetName=NetQ1_1 Pin=Q1-1
+Added Pin To Net: NetName=NetQ1_1 Pin=R1-2
+Added Net: Name=NetQ1_1
+Added Pin To Net: NetName=NetQ2_2 Pin=Q2-2
+Added Pin To Net: NetName=NetQ2_2 Pin=R2-2
+Added Pin To Net: NetName=NetQ2_2 Pin=U2-20
+Added Net: Name=NetQ2_2
+Added Pin To Net: NetName=NetQ3_1 Pin=Q3-1
+Added Pin To Net: NetName=NetQ3_1 Pin=R4-2
+Added Net: Name=NetQ3_1
+Added Pin To Net: NetName=NetQ3_2 Pin=Q3-2
+Added Pin To Net: NetName=NetQ3_2 Pin=R6-1
+Added Net: Name=NetQ3_2
+Added Pin To Net: NetName=NetR1_1 Pin=R1-1
+Added Pin To Net: NetName=NetR1_1 Pin=U2-1
+Added Net: Name=NetR1_1
+Added Pin To Net: NetName=NetR4_1 Pin=R4-1
+Added Pin To Net: NetName=NetR4_1 Pin=U2-10
+Added Net: Name=NetR4_1
+Added Pin To Net: NetName=NetR5_2 Pin=R5-2
+Added Pin To Net: NetName=NetR5_2 Pin=U2-11
+Added Net: Name=NetR5_2
+Added Pin To Net: NetName=NetR6_2 Pin=R6-2
+Added Pin To Net: NetName=NetR6_2 Pin=R7-3
+Added Net: Name=NetR6_2
+Added Pin To Net: NetName=RESET Pin=U2-4
+Added Net: Name=RESET
+Added Pin To Net: NetName=SWIM Pin=U2-18
+Added Net: Name=SWIM
+Added Pin To Net: NetName=VCC_5V Pin=D4-2
+Added Pin To Net: NetName=VCC_5V Pin=Q2-1
+Added Pin To Net: NetName=VCC_5V Pin=U1-2
+Added Pin To Net: NetName=VCC_5V Pin=U2-9
+Added Net: Name=VCC_5V
+Added Pin To Net: NetName=VCC_12V Pin=D1-2
+Added Net: Name=VCC_12V
+Added Class: Name=LedDimming
+Added Room: Name=LedDimming
