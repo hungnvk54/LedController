@@ -1,0 +1,18 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: LedDimming.PcbDoc   3/28/2019  11:09:52
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : LedDimming-RoundHoles.TXT
+ASCII SquareHoles File : LedDimming-SquareHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      16mil (0.399mm)                                           Round             6         PTH        0.97inch (24.56mm)
+T2      24mil (0.599mm)                                           Round             8         PTH        2.44inch (61.94mm)
+T3      30mil (0.762mm)                                           Round             3         PTH        0.77inch (19.66mm)
+T4      30mil (0.762mm)                                           Square            2         PTH        0.20inch (5.06mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              19
+
+Total Processing Time (hh:mm:ss) : 00:00:00
