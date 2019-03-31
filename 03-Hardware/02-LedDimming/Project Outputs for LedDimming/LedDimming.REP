@@ -404,7 +404,7 @@ Used DCodes :
 Generating : Drill Drawing
       File : LedDimming.GD1
 
-    Adding Drill Pair : Bottom Layer-Top Layer
+    Adding Drill Pair : Top Layer-Bottom Layer
 
     Adding Layer      : Drill Drawing
 
@@ -418,7 +418,7 @@ Used DCodes :
 Generating : Drill Guide
       File : LedDimming.GG1
 
-    Adding Drill Pair : Bottom Layer-Top Layer
+    Adding Drill Pair : Top Layer-Bottom Layer
 
     Adding Layer      : Drill Guide
 
