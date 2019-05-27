@@ -1,6 +1,6 @@
-DRC Rules Export File for PCB: E:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming\LedDimming.PcbDoc
-RuleKind=Width|RuleName=Power|Scope=Board|Minimum=10.00
-RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=7.87
-RuleKind=Width|RuleName=Width|Scope=Board|Minimum=7.87
-RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
+DRC Rules Export File for PCB: D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming\LedDimming.PcbDoc
 RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=7.87
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=7.87
+RuleKind=Width|RuleName=Power|Scope=Board|Minimum=10.00

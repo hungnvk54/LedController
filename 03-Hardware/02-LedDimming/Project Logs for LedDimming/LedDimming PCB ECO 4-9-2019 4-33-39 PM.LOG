@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=NetR5_2 Pin=U2-11
+Change Component Comment : Designator=R5 Old Comment=470R New Comment=1K
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-101ELFCT-ND"; VariantName = "[No Variations]"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-101ELFCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=C2(CAPC2012X12N)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=GND Pin=C2-1
+Added Pin To Net: NetName=NetR5_2 Pin=U2-13
+Added Pin To Net: NetName=NetC2_2 Pin=C2-2
+Added Pin To Net: NetName=NetC2_2 Pin=U2-8
+Added Net: Name=NetC2_2
+Added Member To Class: ClassName=LedDimming Member=Component C1 106
+Added Member To Class: ClassName=LedDimming Member=Component C2 104

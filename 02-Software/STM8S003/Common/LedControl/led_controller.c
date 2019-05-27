@@ -49,6 +49,10 @@ void Led_Control_Cmd( GPIO_TypeDef *port, GPIO_Pin_TypeDef pin,\
     Led_Control_Immediate(state);
   } else if( CONTROL_MODE_DIMMING == running_mode )
   {
+    if(( state == GPIO_STATE_DIM_UP)||(state == GPIO_STATE_DIM_DOWN))
+    {
+      Timer_PWM_Set_Active_Period(Node_State_GetActivePeriod());
+    }
     Timer_PWM_Start(state);
   }
 }
@@ -74,7 +78,7 @@ void Led_Control_Init(Control_Mode_TypeDef mode)
   } else {
     Timer_PWM_Init();
   }
-  GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_OD_LOW_FAST);
+  GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_PP_LOW_FAST);
   running_mode = mode;
 }
 
@@ -88,6 +92,7 @@ void Led_Control_Task(void *args)
   (void)args;
   GPIO_State_TypeDef output_state = Node_State_GetOutputState();
   Led_Control_Cmd(LED_CONTROL_PORT,LED_CONTROL_PIN,output_state);
+  
   
   //Update Led Indicator
   update_led_indicator();

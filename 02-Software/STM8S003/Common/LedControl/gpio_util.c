@@ -60,12 +60,12 @@ void GPIO_Util_Toggle(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
 
 void GPIO_Util_TurnOnLed(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
 {
-  GPIO_Util_WriteLow(port,pin);
+  GPIO_Util_WriteHigh(port,pin);
 }
 
 void GPIO_Util_TurnOffLed(GPIO_TypeDef *port, GPIO_Pin_TypeDef pin)
 {
-  GPIO_Util_WriteHigh(port,pin);
+  GPIO_Util_WriteLow(port,pin);
 }
 
 uint8_t GPIO_Util_ReadInputData(GPIO_TypeDef* GPIOx)

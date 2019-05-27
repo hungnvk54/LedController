@@ -3,6 +3,9 @@
 
 #define ON		1
 #define OFF		0
+#define DIM_UP          2
+#define DIM_DOWN        3
+#define DIM             4
 
 #define	FALSE	0
 #define TRUE	1

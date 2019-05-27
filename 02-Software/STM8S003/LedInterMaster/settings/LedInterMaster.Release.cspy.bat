@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\03-DuAn\LedController\LedController\02-Software\STM8S003\LedInterMaster\settings\LedInterMaster.Release.general.xcl" --backend -f "E:\03-DuAn\LedController\LedController\02-Software\STM8S003\LedInterMaster\settings\LedInterMaster.Release.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LedInterMaster\settings\LedInterMaster.Release.general.xcl" --backend -f "E:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LedInterMaster\settings\LedInterMaster.Release.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\03-DuAn\LedController\LedController\02-Software\STM8S003\LedInterMaster\settings\LedInterMaster.Release.general.xcl" "--debug_file=%~1" --backend -f "E:\03-DuAn\LedController\LedController\02-Software\STM8S003\LedInterMaster\settings\LedInterMaster.Release.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LedInterMaster\settings\LedInterMaster.Release.general.xcl" "--debug_file=%~1" --backend -f "E:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LedInterMaster\settings\LedInterMaster.Release.driver.xcl" 
 
 @echo off 
 :end

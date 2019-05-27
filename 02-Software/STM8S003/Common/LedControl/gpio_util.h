@@ -19,7 +19,9 @@
 
 typedef enum {
   GPIO_STATE_ON = ON,
-  GPIO_STATE_OFF = OFF
+  GPIO_STATE_OFF = OFF,
+  GPIO_STATE_DIM_UP = DIM_UP,
+  GPIO_STATE_DIM_DOWN = DIM_DOWN
 } GPIO_State_TypeDef;
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/

@@ -22,6 +22,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+double max_active_period = 1; // will be read from static rom
 double active_period = 1;//[Value from 0 - 1]
 double change_factor = 0;
 GPIO_State_TypeDef gpio_state = GPIO_STATE_OFF;
@@ -87,7 +88,11 @@ void Timer_PWM_Update_Period(void *args)
       return;
     }
     active_period += 0.8*change_factor;
-  } else
+    if( active_period > max_active_period) {
+            active_period = max_active_period;
+    }
+    update_duty_cycle();
+  } else if (GPIO_STATE_OFF == gpio_state)
   {
     if( active_period <= 0 ) 
     {
@@ -95,13 +100,36 @@ void Timer_PWM_Update_Period(void *args)
       return;
     }
     active_period -= 2*change_factor;
-  }
-  update_duty_cycle();
+    if( active_period < 0) {
+            active_period = 0;
+    }
+    update_duty_cycle();
+  } 
 }
 
 void Timer_PWM_SetChangePeriod(uint16_t period_in_ms)
 {
   change_factor = 1.0f/period_in_ms;
+}
+
+void Timer_PWM_Set_Active_Period(double act_prd)
+{
+  active_period = act_prd;
+  max_active_period = act_prd;
+  update_duty_cycle();
+}
+
+double Timer_PWM_Get_Active_Period(void)
+{
+  return active_period;
+}
+double Timer_PWM_Get_Max_Active_Period(void)
+{
+  return max_active_period;
+}
+void Timer_PWM_Set_Max_Active_Period(double period)
+{
+  max_active_period = period;
 }
 /**
   * @}

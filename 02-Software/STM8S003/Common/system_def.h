@@ -26,7 +26,8 @@
 #define MASTER_NODE_ADDRESS                     0
 
 #define DIMMING_PERIOD_IN_MS_SECOND             1000     ///500ms
-
+#define DIMMING_ON_CHANGE_PERIOD_IN_MS_SECOND   3000
+#define DIMMING_OFF_CHANGE_PERIOD_IN_MS_SECOND  1500
 /*-------------------------------Do not change the value----------------------*/
 
 //System
@@ -58,16 +59,16 @@
 
 //For IR Receiver
 #define IR_RECEIVER_PULSE_WITHD_IN_MS                   (1000/IR_TRANSMITTER_FREQ/2)
-#define IR_RECEIVER_SHORT_PULSE_TIME_OUT_IN_MS          80
-#define IR_RECEIVER_LONG_PULSE_TIME_OUT_IN_MS           400
+#define IR_RECEIVER_SHORT_PULSE_TIME_OUT_IN_MS          70
+#define IR_RECEIVER_LONG_PULSE_TIME_OUT_IN_MS           500
 #define IR_RECEIVER_SHORT_PULSE_PULSE_COUNTER           (IR_RECEIVER_SHORT_PULSE_TIME_OUT_IN_MS/IR_RECEIVER_PULSE_WITHD_IN_MS)
 #define IR_RECEIVER_LONG_PULSE_PULSE_COUNTER            (IR_RECEIVER_LONG_PULSE_TIME_OUT_IN_MS/IR_RECEIVER_PULSE_WITHD_IN_MS)
-#define IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER       20
-#define TWO_PULSE_TIME_OUT_IN_MS                        3
+#define IR_RECEIVER_SHORT_PULSE_THRESHOLD_COUNTER       15
+#define TWO_PULSE_TIME_OUT_IN_MS                        4
 
 
 //For RS485 Controller
-#define TRANSPORT_BAUDRATE                      57600
+#define TRANSPORT_BAUDRATE                      9600
     
 #define TRANSPORT_OUTPUT_DRIVER_PORT            GPIOA
 #define TRANSPORT_OUTPUT_DRIVER_PIN             GPIO_PIN_2
@@ -79,8 +80,8 @@
 #define LED_CONTROL_PORT                        GPIOD
 #define LED_CONTROL_PIN                         GPIO_PIN_4
 
-#define INDICATOR_LED_PORT                      GPIOB
-#define INDICATOR_LED_PIN                       GPIO_PIN_5
+#define INDICATOR_LED_PORT                      GPIOC
+#define INDICATOR_LED_PIN                       GPIO_PIN_3     //Must edit to GPIO_PIN_3
 
 #define DIGITAL_INPUT_PORT                      GPIOA
 #define DIGITAL_INPUT_PIN                       GPIO_PIN_2
@@ -93,8 +94,11 @@
 //#define DIGITAL_OUTPUT_PIN                      GPIO_PIN_6
 
 //For Debug Purpose
-#define LED_PORT                                GPIOB
-#define LED_PIN                                 GPIO_PIN_5
+#define LED_PORT                                GPIOC
+#define LED_PIN                                 GPIO_PIN_4
+
+#define RESERVER_PORT                           GPIOB
+#define RESERVER_PIN                            (GPIO_PIN_4|GPIO_PIN_5)
 
 
 /* Exported functions ------------------------------------------------------- */

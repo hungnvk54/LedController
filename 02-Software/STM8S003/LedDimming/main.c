@@ -126,9 +126,11 @@ void main(void)
   System_Init();
   Task_Init();
 
-//  GPIO_Util_Init(LED_PORT,LED_PIN,GPIO_MODE_OUT_PP_LOW_SLOW);
+  GPIO_Util_Init(LED_PORT,LED_PIN,GPIO_MODE_OUT_PP_LOW_SLOW);
 //  
-//  GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+  GPIO_Util_WriteHigh(LED_PORT,LED_PIN);
+  
+  GPIO_Util_Init(RESERVER_PORT,RESERVER_PIN,GPIO_MODE_IN_FL_NO_IT);
 
   uint32_t previous_counter = 0;
   while (1)

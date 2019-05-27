@@ -110,7 +110,7 @@ void make_decision(void)
     &&(signal_state.pulse_counter < IR_RECEIVER_SHORT_PULSE_PULSE_COUNTER)) 
   {
     signal_state.state = IR_SHORT_PULSE;
-  } else {
+  } else if( signal_state.pulse_counter > IR_RECEIVER_LONG_PULSE_PULSE_COUNTER) {
     signal_state.state = IR_LONG_PULSE;
   }
 }

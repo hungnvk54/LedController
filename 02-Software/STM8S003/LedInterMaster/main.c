@@ -100,6 +100,7 @@ void main(void)
   Task_Init();
   
   uint32_t previous_counter = 0;
+  GPIO_Util_Init(RESERVER_PORT,RESERVER_PIN,GPIO_MODE_IN_FL_NO_IT);
   /* Infinite loop */
   while (1)
   {
