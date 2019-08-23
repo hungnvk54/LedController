@@ -40,9 +40,9 @@ void update_output(uint8_t input_state)
     }
   } else if(output_mode == OUTPUT_AS_INPUT) {
     if( input_state == ON) {
-      node_state.output_state = GPIO_STATE_ON;
-    } else {
       node_state.output_state = GPIO_STATE_OFF;
+    } else {
+      node_state.output_state = GPIO_STATE_ON;
     }
   }
 }
@@ -98,6 +98,11 @@ void Node_State_SetInputState(uint8_t state)
 void Node_State_SetOutputMode(Node_State_Output_Mode_TypeDef mode)
 {
   output_mode = mode;
+}
+
+double Node_State_GetActivePeriod(void)
+{
+  return 1;
 }
 
 /**

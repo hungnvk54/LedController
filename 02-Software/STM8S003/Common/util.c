@@ -32,7 +32,7 @@ uint32_t Delay_Us(uint32_t t)
 }
 void Generate_TestingSignal(void)
 {
-  uint8_t n = 4;
+  uint8_t n = 5;
   //Get Current mode of the Controller
   GPIO_Util_Init(LED_CONTROL_PORT,LED_CONTROL_PIN,GPIO_MODE_OUT_PP_HIGH_SLOW);
   GPIO_Util_Init(INDICATOR_LED_PORT,INDICATOR_LED_PIN,GPIO_MODE_OUT_PP_LOW_FAST);
@@ -46,6 +46,10 @@ void Generate_TestingSignal(void)
 void Wait_SystemStable(void)
 {
   
+}
+
+void Reset_Chip(void){
+  WWDG->CR = WWDG_CR_WDGA; /* Activate WWDG, with clearing T6 */
 }
 /**
   * @}

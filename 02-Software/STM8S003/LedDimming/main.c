@@ -60,7 +60,7 @@ void System_Init()
   IR_Transmitter_Init(IR_OUTPUT_MODE_IO);
   
   ///Init node control
-  Node_State_Manager_Init(OUTPUT_TOGGLE_WHEN_INPUT_ON);//OUTPUT_TOGGLE_WHEN_INPUT_ON);//OUTPUT_AS_INPUT);
+  Node_State_Manager_Init(OUTPUT_AS_INPUT);//OUTPUT_TOGGLE_WHEN_INPUT_ON);//OUTPUT_AS_INPUT);
 }
     
 void Clock_Config(void) { 

@@ -1,0 +1,637 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD17\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">7/1/2019</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2:54:31 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc" class="file"><acronym title="D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc">D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">95</td></tr>
+</table>
+</td>
+</table><a name="IDQET2HWPLUQUUDD4CJ53UXDAEGGRV4HNBGI3KBLO5CX3U3JECV2F"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4EZMG3VKKMIALAPYE1RNO1UN0D0QWWRJ5MODZSKFPSPCV2DBFZEK">Clearance Constraint (Gap=0.2mm) (All),(All)</a></td>
+<td class="column2">22</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZMVE3PJBEFA2IRZ1DWUJQEJ0HD05D5BPFGDK44K4QK0WJNIOGBZM">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3EESUHA22UZDT2J21JU53UCRJAT5JMC0AZHVRPGYILB0VKV3ERN">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3MHSHK0THRPULFSDOREB5JLJQE1UOTHXFSJENWCOH53WAAA5QJ1J">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5UC4LB34QS2IJ0RARAYYNHLK1CURNUW5G0ZE2JOD0TXQN5RKLDNM">Width Constraint (Min=0.4mm) (Max=4mm) (Preferred=0.5mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKMKOAUY43AVIBPCAHE54BD25WLFHWVINNWYCQBBIQAV0EG023KOM">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBARU1S25UG1SEWWMMKO5Y1X1L1OBH1VDADOUTY0BXJXLFR10TD">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDE3HV3YZMXMMOK5I3C4OAL1GM2MSBWSVH4IFZ3LODC0CLSWTPOBDD">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">7</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZ0KEREXV3HEQUPPJ0EEMPFTOJEYRBJGSSGEVNHYTMDCXI2HHKZM">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">11</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSNA5XTY215KPPFHCHL33AHS21POHPFQNOT14UIOZ3TSGDDLLK5CI">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">23</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDTTWG4MBY5H2VM4X3FDSO1M1WGDCDAYRV20WOISGWXJXVOFL51G0D">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">9</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJPS2IIKV5KIYE5YBWW30CYQYAE34KR0MTMD5BSC5QBP2NWJIVSND">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJUJ30EVLCYI4NC5VM4O5CK5OZKPFWKZ2BQ0Z0MP0QJN44C1AWIOB">Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming'))</a></td>
+<td class="column2">23</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCDMNUMJNYZK5PMRUVNVYEPNT5CXKBNDQVI1SYLF5O3WBA2ETNOC">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">95</td>
+</tr>
+</table><br><a name="ID4EZMG3VKKMIALAPYE1RNO1UN0D0QWWRJ5MODZSKFPSPCV2DBFZEK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=0.2mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2594.296mil|Location2.X=2603.42mil|Location1.Y=3302.308mil|Location2.Y=3311.432mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2594.296mil|Location2.X=2603.42mil|Location1.Y=3302.308mil|Location2.Y=3311.432mil|Absolute=True">Clearance Constraint: (0.175mm &lt; 0.2mm) Between Track (15.211mm,8.132mm)(15.211mm,8.988mm) on Top Layer And Pad U2-2(15.211mm,7.482mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2484.021mil|Location2.X=2493.145mil|Location1.Y=3384.277mil|Location2.Y=3393.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2484.021mil|Location2.X=2493.145mil|Location1.Y=3384.277mil|Location2.Y=3393.401mil|Absolute=True">Clearance Constraint: (0.013mm &lt; 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Pad D2-1(13.335mm,9.245mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2658.43mil|Location2.X=2667.554mil|Location1.Y=3380.851mil|Location2.Y=3389.975mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2658.43mil|Location2.X=2667.554mil|Location1.Y=3380.851mil|Location2.Y=3389.975mil|Absolute=True">Clearance Constraint: (0.187mm &lt; 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Pad R1-2(17.39mm,9.271mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2739.139mil|Location2.X=2748.263mil|Location1.Y=3380.851mil|Location2.Y=3389.975mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2739.139mil|Location2.X=2748.263mil|Location1.Y=3380.851mil|Location2.Y=3389.975mil|Absolute=True">Clearance Constraint: (0.187mm &lt; 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Pad R1-1(19.44mm,9.271mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2003.922mil|Location2.X=2013.046mil|Location1.Y=3291.068mil|Location2.Y=3300.192mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2003.922mil|Location2.X=2013.046mil|Location1.Y=3291.068mil|Location2.Y=3300.192mil|Absolute=True">Clearance Constraint: (0.131mm &lt; 0.2mm) Between Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer And Pad P1-1(1.281mm,8.509mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2003.922mil|Location2.X=2013.046mil|Location1.Y=3060.438mil|Location2.Y=3069.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2003.922mil|Location2.X=2013.046mil|Location1.Y=3060.438mil|Location2.Y=3069.562mil|Absolute=True">Clearance Constraint: (0.131mm &lt; 0.2mm) Between Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer And Pad P2-1(1.281mm,1.651mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3516.875mil|Location2.X=3523.125mil|Location1.Y=3386.108mil|Location2.Y=3392.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3516.875mil|Location2.X=3523.125mil|Location1.Y=3386.108mil|Location2.Y=3392.357mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Pad P4-1(38.608mm,8.89mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3445.438mil|Location2.X=3454.562mil|Location1.Y=3381.009mil|Location2.Y=3390.133mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3445.438mil|Location2.X=3454.562mil|Location1.Y=3381.009mil|Location2.Y=3390.133mil|Absolute=True">Clearance Constraint: (0.179mm &lt; 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Via (36.83mm,9.144mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3475.438mil|Location2.X=3484.562mil|Location1.Y=3381.009mil|Location2.Y=3390.133mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3475.438mil|Location2.X=3484.562mil|Location1.Y=3381.009mil|Location2.Y=3390.133mil|Absolute=True">Clearance Constraint: (0.179mm &lt; 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Via (37.592mm,9.144mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3415.438mil|Location2.X=3424.562mil|Location1.Y=3381.009mil|Location2.Y=3390.133mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3415.438mil|Location2.X=3424.562mil|Location1.Y=3381.009mil|Location2.Y=3390.133mil|Absolute=True">Clearance Constraint: (0.179mm &lt; 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Via (36.068mm,9.144mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2045.438mil|Location2.X=2054.562mil|Location1.Y=3381.009mil|Location2.Y=3390.133mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2045.438mil|Location2.X=2054.562mil|Location1.Y=3381.009mil|Location2.Y=3390.133mil|Absolute=True">Clearance Constraint: (0.179mm &lt; 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Via (1.27mm,9.144mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050.438mil|Location2.X=3059.562mil|Location1.Y=3304.276mil|Location2.Y=3313.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050.438mil|Location2.X=3059.562mil|Location1.Y=3304.276mil|Location2.Y=3313.401mil|Absolute=True">Clearance Constraint: (0.091mm &lt; 0.2mm) Between Track (1.27mm,8.89mm)(38.608mm,8.89mm) on Bottom Layer And Via (26.797mm,7.239mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2000.438mil|Location2.X=2006.688mil|Location1.Y=3061.875mil|Location2.Y=3068.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2000.438mil|Location2.X=2006.688mil|Location1.Y=3061.875mil|Location2.Y=3068.125mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.2mm) Between Track (1.281mm,1.651mm)(23.622mm,1.651mm) on Bottom Layer And Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2003.706mil|Location2.X=2012.83mil|Location1.Y=3345.438mil|Location2.Y=3354.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2003.706mil|Location2.X=2012.83mil|Location1.Y=3345.438mil|Location2.Y=3354.562mil|Absolute=True">Clearance Constraint: (0.12mm &lt; 0.2mm) Between Track (1.27mm,8.89mm)(38.608mm,8.89mm) on Bottom Layer And Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3115.438mil|Location2.X=3124.562mil|Location1.Y=3381.875mil|Location2.Y=3390.999mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3115.438mil|Location2.X=3124.562mil|Location1.Y=3381.875mil|Location2.Y=3390.999mil|Absolute=True">Clearance Constraint: (0.135mm &lt; 0.2mm) Between Track (28.448mm,9.398mm)(29.364mm,8.482mm) on Top Layer And Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2760.792mil|Location2.X=2769.916mil|Location1.Y=3381.875mil|Location2.Y=3390.999mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2760.792mil|Location2.X=2769.916mil|Location1.Y=3381.875mil|Location2.Y=3390.999mil|Absolute=True">Clearance Constraint: (0.135mm &lt; 0.2mm) Between Track (19.44mm,9.398mm)(28.448mm,9.398mm) on Top Layer And Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2046.875mil|Location2.X=2053.125mil|Location1.Y=3386.108mil|Location2.Y=3392.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2046.875mil|Location2.X=2053.125mil|Location1.Y=3386.108mil|Location2.Y=3392.357mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.2mm) Between Track (1.27mm,8.89mm)(38.608mm,8.89mm) on Bottom Layer And Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2760.792mil|Location2.X=2769.916mil|Location1.Y=3381.875mil|Location2.Y=3390.999mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2760.792mil|Location2.X=2769.916mil|Location1.Y=3381.875mil|Location2.Y=3390.999mil|Absolute=True">Clearance Constraint: (0.135mm &lt; 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Track (19.44mm,9.398mm)(28.448mm,9.398mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3115.438mil|Location2.X=3124.562mil|Location1.Y=3381.875mil|Location2.Y=3390.999mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3115.438mil|Location2.X=3124.562mil|Location1.Y=3381.875mil|Location2.Y=3390.999mil|Absolute=True">Clearance Constraint: (0.135mm &lt; 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Track (28.448mm,9.398mm)(29.364mm,8.482mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2000.438mil|Location2.X=2006.688mil|Location1.Y=3061.875mil|Location2.Y=3068.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2000.438mil|Location2.X=2006.688mil|Location1.Y=3061.875mil|Location2.Y=3068.125mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.2mm) Between Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer And Track (1.281mm,1.651mm)(23.622mm,1.651mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2003.706mil|Location2.X=2012.83mil|Location1.Y=3345.438mil|Location2.Y=3354.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2003.706mil|Location2.X=2012.83mil|Location1.Y=3345.438mil|Location2.Y=3354.562mil|Absolute=True">Clearance Constraint: (0.12mm &lt; 0.2mm) Between Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer And Track (1.27mm,8.89mm)(38.608mm,8.89mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2046.875mil|Location2.X=2053.125mil|Location1.Y=3386.108mil|Location2.Y=3392.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2046.875mil|Location2.X=2053.125mil|Location1.Y=3386.108mil|Location2.Y=3392.357mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Track (1.27mm,8.89mm)(38.608mm,8.89mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDE3HV3YZMXMMOK5I3C4OAL1GM2MSBWSVH4IFZ3LODC0CLSWTPOBDD"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2044.591mil|Location2.X=2055.841mil|Location1.Y=3316.875mil|Location2.Y=3328.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2044.591mil|Location2.X=2055.841mil|Location1.Y=3316.875mil|Location2.Y=3328.125mil|Absolute=True">Hole To Hole Clearance Constraint: (0.035mm &lt; 0.254mm) Between Via (1.27mm,7.874mm) from Top Layer to Bottom Layer And Pad P1-1(1.281mm,8.509mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2044.591mil|Location2.X=2055.841mil|Location1.Y=3341.875mil|Location2.Y=3353.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2044.591mil|Location2.X=2055.841mil|Location1.Y=3341.875mil|Location2.Y=3353.125mil|Absolute=True">Hole To Hole Clearance Constraint: (0.035mm &lt; 0.254mm) Between Via (1.27mm,9.144mm) from Top Layer to Bottom Layer And Pad P1-1(1.281mm,8.509mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2044.808mil|Location2.X=2056.058mil|Location1.Y=3074.375mil|Location2.Y=3085.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2044.808mil|Location2.X=2056.058mil|Location1.Y=3074.375mil|Location2.Y=3085.625mil|Absolute=True">Hole To Hole Clearance Constraint: (0.162mm &lt; 0.254mm) Between Via (1.281mm,2.413mm) from Top Layer to Bottom Layer And Pad P2-1(1.281mm,1.651mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3459.375mil|Location2.X=3470.625mil|Location1.Y=3354.375mil|Location2.Y=3365.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3459.375mil|Location2.X=3470.625mil|Location1.Y=3354.375mil|Location2.Y=3365.625mil|Absolute=True">Hole To Hole Clearance Constraint: (0.162mm &lt; 0.254mm) Between Via (37.592mm,9.144mm) from Top Layer to Bottom Layer And Via (36.83mm,9.144mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3429.375mil|Location2.X=3440.625mil|Location1.Y=3354.375mil|Location2.Y=3365.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3429.375mil|Location2.X=3440.625mil|Location1.Y=3354.375mil|Location2.Y=3365.625mil|Absolute=True">Hole To Hole Clearance Constraint: (0.162mm &lt; 0.254mm) Between Via (36.068mm,9.144mm) from Top Layer to Bottom Layer And Via (36.83mm,9.144mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.375mil|Location2.X=3125.625mil|Location1.Y=3124.375mil|Location2.Y=3135.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.375mil|Location2.X=3125.625mil|Location1.Y=3124.375mil|Location2.Y=3135.625mil|Absolute=True">Hole To Hole Clearance Constraint: (0.162mm &lt; 0.254mm) Between Via (28.829mm,3.302mm) from Top Layer to Bottom Layer And Via (28.067mm,3.302mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3541.167mil|Location2.X=3548.833mil|Location1.Y=3101.167mil|Location2.Y=3108.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3541.167mil|Location2.X=3548.833mil|Location1.Y=3101.167mil|Location2.Y=3108.833mil|Absolute=True">Hole To Hole Clearance Constraint: (Collision &lt; 0.254mm) Between Via (38.989mm,2.667mm) from Top Layer to Bottom Layer And Via (39.497mm,2.667mm) from Top Layer to Bottom Layer Pad/Via Touching Holes</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDZ0KEREXV3HEQUPPJ0EEMPFTOJEYRBJGSSGEVNHYTMDCXI2HHKZM"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.891mil|Location2.X=2869.141mil|Location1.Y=3080.866mil|Location2.Y=3093.832mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.891mil|Location2.X=2869.141mil|Location1.Y=3080.866mil|Location2.Y=3093.832mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.062mm &lt; 0.254mm) Between Via (22.606mm,2.032mm) from Top Layer to Bottom Layer And Pad U2-11(21.111mm,2.282mm) on Top Layer [Top Solder] Mask Sliver [0.062mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2562.689mil|Location2.X=2573.939mil|Location1.Y=3198.803mil|Location2.Y=3210.053mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2562.689mil|Location2.X=2573.939mil|Location1.Y=3198.803mil|Location2.Y=3210.053mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.211mm &lt; 0.254mm) Between Pad D2-2(13.335mm,5.995mm) on Top Layer And Pad U2-6(15.211mm,4.882mm) on Top Layer [Top Solder] Mask Sliver [0.211mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.733mil|Location2.X=2571.983mil|Location1.Y=3212.17mil|Location2.Y=3223.42mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.733mil|Location2.X=2571.983mil|Location1.Y=3212.17mil|Location2.Y=3223.42mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.048mm &lt; 0.254mm) Between Pad D2-2(13.335mm,5.995mm) on Top Layer And Pad U2-5(15.211mm,5.532mm) on Top Layer [Top Solder] Mask Sliver [0.048mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.733mil|Location2.X=2571.983mil|Location1.Y=3237.761mil|Location2.Y=3249.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.733mil|Location2.X=2571.983mil|Location1.Y=3237.761mil|Location2.Y=3249.011mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.048mm &lt; 0.254mm) Between Pad D2-2(13.335mm,5.995mm) on Top Layer And Pad U2-4(15.211mm,6.182mm) on Top Layer [Top Solder] Mask Sliver [0.048mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.996mil|Location2.X=2572.246mil|Location1.Y=3256.454mil|Location2.Y=3270.61mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.996mil|Location2.X=2572.246mil|Location1.Y=3256.454mil|Location2.Y=3270.61mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.064mm &lt; 0.254mm) Between Pad D2-2(13.335mm,5.995mm) on Top Layer And Pad U2-3(15.211mm,6.832mm) on Top Layer [Top Solder] Mask Sliver [0.064mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.733mil|Location2.X=2571.983mil|Location1.Y=3328.568mil|Location2.Y=3339.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.733mil|Location2.X=2571.983mil|Location1.Y=3328.568mil|Location2.Y=3339.818mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.077mm &lt; 0.254mm) Between Pad D2-1(13.335mm,9.245mm) on Top Layer And Pad U2-1(15.211mm,8.132mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2474.71mil|Location2.X=2485.96mil|Location1.Y=3201.792mil|Location2.Y=3213.042mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2474.71mil|Location2.X=2485.96mil|Location1.Y=3201.792mil|Location2.Y=3213.042mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.216mm &lt; 0.254mm) Between Pad D2-2(13.335mm,5.995mm) on Top Layer And Pad C2-2(11.416mm,5.842mm) on Top Layer [Top Solder] Mask Sliver [0.216mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2092.682mil|Location2.X=2103.932mil|Location1.Y=3286.005mil|Location2.Y=3297.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2092.682mil|Location2.X=2103.932mil|Location1.Y=3286.005mil|Location2.Y=3297.255mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.229mm &lt; 0.254mm) Between Pad P1-1(1.281mm,8.509mm) on Multi-Layer And Pad D1-2(3.713mm,8.255mm) on Top Layer [Top Solder] Mask Sliver [0.229mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3539.481mil|Location2.X=3550.731mil|Location1.Y=3100.532mil|Location2.Y=3111.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3539.481mil|Location2.X=3550.731mil|Location1.Y=3100.532mil|Location2.Y=3111.782mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.078mm &lt; 0.254mm) Between Pad P3-1(40.386mm,2.667mm) on Multi-Layer And Pad Q1-4(36.005mm,4.699mm) on Top Layer [Top Solder] Mask Sliver [0.078mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3470.801mil|Location2.X=3482.051mil|Location1.Y=3350.6mil|Location2.Y=3361.85mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3470.801mil|Location2.X=3482.051mil|Location1.Y=3350.6mil|Location2.Y=3361.85mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.033mm &lt; 0.254mm) Between Via (36.83mm,9.144mm) from Top Layer to Bottom Layer And Pad P4-1(38.608mm,8.89mm) on Multi-Layer [Top Solder] Mask Sliver [0.033mm] / [Bottom Solder] Mask Sliver [0.033mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3444.375mil|Location2.X=3455.625mil|Location1.Y=3354.375mil|Location2.Y=3365.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3444.375mil|Location2.X=3455.625mil|Location1.Y=3354.375mil|Location2.Y=3365.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.201mm &lt; 0.254mm) Between Via (36.068mm,9.144mm) from Top Layer to Bottom Layer And Via (37.592mm,9.144mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.201mm] / [Bottom Solder] Mask Sliver [0.201mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDSNA5XTY215KPPFHCHL33AHS21POHPFQNOT14UIOZ3TSGDDLLK5CI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2668.59mil|Location2.X=2676.257mil|Location1.Y=3284.203mil|Location2.Y=3291.87mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2668.59mil|Location2.X=2676.257mil|Location1.Y=3284.203mil|Location2.Y=3291.87mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (17.311mm,7.507mm) on Top Overlay And Pad P6-1(17.145mm,6.985mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2476.875mil|Location2.X=2484.542mil|Location1.Y=3145.301mil|Location2.Y=3152.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2476.875mil|Location2.X=2484.542mil|Location1.Y=3145.301mil|Location2.Y=3152.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (11.96mm,3.788mm) on Top Overlay And Pad R4-2(12.573mm,3.819mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3754.041mil|Location2.X=3761.707mil|Location1.Y=3191.167mil|Location2.Y=3198.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3754.041mil|Location2.X=3761.707mil|Location1.Y=3191.167mil|Location2.Y=3198.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (43.685mm,2.677mm) on Top Overlay And Pad D4-2(43.688mm,4.191mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3714.27mil|Location2.X=3725.52mil|Location1.Y=3206.875mil|Location2.Y=3218.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3714.27mil|Location2.X=3725.52mil|Location1.Y=3206.875mil|Location2.Y=3218.125mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.127mm &lt; 0.254mm) Between Arc (43.685mm,2.677mm) on Top Overlay And Pad Q2-1(43.688mm,6.223mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.127mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3618.648mil|Location2.X=3626.314mil|Location1.Y=3080.753mil|Location2.Y=3088.419mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3618.648mil|Location2.X=3626.314mil|Location1.Y=3080.753mil|Location2.Y=3088.419mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (43.685mm,2.677mm) on Top Overlay And Pad P3-1(40.386mm,2.667mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3045.86mil|Location2.X=3057.28mil|Location1.Y=3150.466mil|Location2.Y=3161.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3045.86mil|Location2.X=3057.28mil|Location1.Y=3150.466mil|Location2.Y=3161.716mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Arc (26.849mm,4.106mm) on Top Overlay And Pad D3-1(26.162mm,3.544mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3754.041mil|Location2.X=3761.707mil|Location1.Y=3371.167mil|Location2.Y=3378.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3754.041mil|Location2.X=3761.707mil|Location1.Y=3371.167mil|Location2.Y=3378.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (43.685mm,7.249mm) on Top Overlay And Pad Q2-2(43.688mm,8.763mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2078.51mil|Location2.X=2092.157mil|Location1.Y=3250.818mil|Location2.Y=3262.068mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2078.51mil|Location2.X=2092.157mil|Location1.Y=3250.818mil|Location2.Y=3262.068mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.209mm &lt; 0.254mm) Between Text "+" (1.778mm,6.477mm) on Top Overlay And Pad C1-2(1.397mm,5.842mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.209mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.731mil|Location2.X=2571.981mil|Location1.Y=3288.942mil|Location2.Y=3300.192mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.731mil|Location2.X=2571.981mil|Location1.Y=3288.942mil|Location2.Y=3300.192mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.251mm &lt; 0.254mm) Between Track (14.16mm,7.02mm)(14.16mm,8.22mm) on Top Overlay And Pad U2-2(15.211mm,7.482mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.251mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.733mil|Location2.X=2571.983mil|Location1.Y=3317.997mil|Location2.Y=3329.247mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.733mil|Location2.X=2571.983mil|Location1.Y=3317.997mil|Location2.Y=3329.247mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.251mm &lt; 0.254mm) Between Track (12.51mm,8.22mm)(14.16mm,8.22mm) on Top Overlay And Pad U2-1(15.211mm,8.132mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.251mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.733mil|Location2.X=2571.983mil|Location1.Y=3305.674mil|Location2.Y=3316.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.733mil|Location2.X=2571.983mil|Location1.Y=3305.674mil|Location2.Y=3316.924mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.251mm &lt; 0.254mm) Between Track (14.16mm,7.02mm)(14.16mm,8.22mm) on Top Overlay And Pad U2-1(15.211mm,8.132mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.251mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3678.293mil|Location2.X=3685.959mil|Location1.Y=3031.167mil|Location2.Y=3038.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3678.293mil|Location2.X=3685.959mil|Location1.Y=3031.167mil|Location2.Y=3038.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Track (42.042mm,0.762mm)(45.339mm,0.762mm) on Top Overlay And Pad D4-1(43.688mm,1.651mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2657.367mil|Location2.X=2668.617mil|Location1.Y=3337.938mil|Location2.Y=3349.188mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2657.367mil|Location2.X=2668.617mil|Location1.Y=3337.938mil|Location2.Y=3349.188mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.239mm &lt; 0.254mm) Between Track (16.311mm,8.507mm)(20.011mm,8.507mm) on Top Overlay And Pad R1-2(17.39mm,9.271mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.239mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2781.675mil|Location2.X=2792.925mil|Location1.Y=3337.934mil|Location2.Y=3349.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2781.675mil|Location2.X=2792.925mil|Location1.Y=3337.934mil|Location2.Y=3349.184mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.24mm &lt; 0.254mm) Between Track (20.011mm,1.907mm)(20.011mm,8.507mm) on Top Overlay And Pad R1-1(19.44mm,9.271mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.24mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2738.076mil|Location2.X=2749.326mil|Location1.Y=3337.938mil|Location2.Y=3349.188mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2738.076mil|Location2.X=2749.326mil|Location1.Y=3337.938mil|Location2.Y=3349.188mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.239mm &lt; 0.254mm) Between Track (16.311mm,8.507mm)(20.011mm,8.507mm) on Top Overlay And Pad R1-1(19.44mm,9.271mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.239mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3009.611mil|Location2.X=3020.861mil|Location1.Y=3092.564mil|Location2.Y=3103.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3009.611mil|Location2.X=3020.861mil|Location1.Y=3092.564mil|Location2.Y=3103.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Track (25.787mm,2.694mm)(25.787mm,2.894mm) on Top Overlay And Pad D3-2(26.162mm,2.044mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.139mil|Location2.X=3050.389mil|Location1.Y=3092.564mil|Location2.Y=3103.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.139mil|Location2.X=3050.389mil|Location1.Y=3092.564mil|Location2.Y=3103.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Track (26.537mm,2.694mm)(26.537mm,2.894mm) on Top Overlay And Pad D3-2(26.162mm,2.044mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3009.611mil|Location2.X=3020.861mil|Location1.Y=3116.186mil|Location2.Y=3127.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3009.611mil|Location2.X=3020.861mil|Location1.Y=3116.186mil|Location2.Y=3127.436mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Track (25.787mm,2.694mm)(25.787mm,2.894mm) on Top Overlay And Pad D3-1(26.162mm,3.544mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.139mil|Location2.X=3050.389mil|Location1.Y=3116.186mil|Location2.Y=3127.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.139mil|Location2.X=3050.389mil|Location1.Y=3116.186mil|Location2.Y=3127.436mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Track (26.537mm,2.694mm)(26.537mm,2.894mm) on Top Overlay And Pad D3-1(26.162mm,3.544mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3678.293mil|Location2.X=3685.959mil|Location1.Y=3211.167mil|Location2.Y=3218.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3678.293mil|Location2.X=3685.959mil|Location1.Y=3211.167mil|Location2.Y=3218.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Track (42.042mm,5.334mm)(45.339mm,5.334mm) on Top Overlay And Pad Q2-1(43.688mm,6.223mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2099.835mil|Location2.X=2113.68mil|Location1.Y=3282.844mil|Location2.Y=3294.094mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2099.835mil|Location2.X=2113.68mil|Location1.Y=3282.844mil|Location2.Y=3294.094mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Text "+" (1.778mm,6.477mm) on Top Overlay And Pad D1-2(3.713mm,8.255mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2079.386mil|Location2.X=2087.053mil|Location1.Y=3293.804mil|Location2.Y=3301.47mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2079.386mil|Location2.X=2087.053mil|Location1.Y=3293.804mil|Location2.Y=3301.47mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Text "+" (1.778mm,6.477mm) on Top Overlay And Pad P1-1(1.281mm,8.509mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2643.11mil|Location2.X=2654.36mil|Location1.Y=3269.375mil|Location2.Y=3280.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2643.11mil|Location2.X=2654.36mil|Location1.Y=3269.375mil|Location2.Y=3280.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.134mm &lt; 0.254mm) Between Track (16.311mm,1.907mm)(16.311mm,8.507mm) on Top Overlay And Pad P6-1(17.145mm,6.985mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.134mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDTTWG4MBY5H2VM4X3FDSO1M1WGDCDAYRV20WOISGWXJXVOFL51G0D"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2642.176mil|Location2.X=2653.426mil|Location1.Y=3092.875mil|Location2.Y=3104.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2642.176mil|Location2.X=2653.426mil|Location1.Y=3092.875mil|Location2.Y=3104.125mil|Absolute=True">Silk To Silk Clearance Constraint: (0.086mm &lt; 0.254mm) Between Text "R6" (16.624mm,2.502mm) on Top Overlay And Track (16.311mm,1.907mm)(16.311mm,8.507mm) on Top Overlay Silk Text to Silk Clearance [0.086mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2639.888mil|Location2.X=2647.554mil|Location1.Y=3542.397mil|Location2.Y=3550.064mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2639.888mil|Location2.X=2647.554mil|Location1.Y=3542.397mil|Location2.Y=3550.064mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "D2" (14.097mm,12.319mm) on Top Overlay And Text "U2" (15.367mm,13.716mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2576.138mil|Location2.X=2583.804mil|Location1.Y=3481.167mil|Location2.Y=3488.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2576.138mil|Location2.X=2583.804mil|Location1.Y=3481.167mil|Location2.Y=3488.833mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "R4" (12.446mm,11.303mm) on Top Overlay And Text "D2" (14.097mm,12.319mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2336.164mil|Location2.X=2343.83mil|Location1.Y=3498.657mil|Location2.Y=3506.324mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2336.164mil|Location2.X=2343.83mil|Location1.Y=3498.657mil|Location2.Y=3506.324mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "Q3" (8.382mm,12.827mm) on Top Overlay And Text "C2" (6.604mm,11.176mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2098.329mil|Location2.X=2109.579mil|Location1.Y=3407.279mil|Location2.Y=3419.375mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2098.329mil|Location2.X=2109.579mil|Location1.Y=3407.279mil|Location2.Y=3419.375mil|Absolute=True">Silk To Silk Clearance Constraint: (0.192mm &lt; 0.254mm) Between Text "P1" (0.43mm,10.376mm) on Top Overlay And Text "D1" (2.819mm,10.643mm) on Top Overlay Silk Text to Silk Clearance [0.192mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2726.183mil|Location2.X=2733.849mil|Location1.Y=2561.176mil|Location2.Y=2568.843mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2726.183mil|Location2.X=2733.849mil|Location1.Y=2561.176mil|Location2.Y=2568.843mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "R5" (21.082mm,-10.287mm) on Top Overlay And Text "D3" (18.542mm,-9.779mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2766.167mil|Location2.X=2773.833mil|Location1.Y=3483.664mil|Location2.Y=3491.33mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2766.167mil|Location2.X=2773.833mil|Location1.Y=3483.664mil|Location2.Y=3491.33mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "P6" (17.145mm,10.922mm) on Top Overlay And Text "P5" (19.558mm,11.938mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2481.901mil|Location2.X=2489.567mil|Location1.Y=3459.647mil|Location2.Y=3467.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2481.901mil|Location2.X=2489.567mil|Location1.Y=3459.647mil|Location2.Y=3467.314mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "R4" (12.446mm,11.303mm) on Top Overlay And Text "P7" (9.69mm,10.249mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3188.664mil|Location2.X=3196.33mil|Location1.Y=3516.167mil|Location2.Y=3523.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3188.664mil|Location2.X=3196.33mil|Location1.Y=3516.167mil|Location2.Y=3523.833mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "Q1" (28.512mm,11.938mm) on Top Overlay And Text "R2" (29.972mm,13.208mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDJUJ30EVLCYI4NC5VM4O5CK5OZKPFWKZ2BQ0Z0MP0QJN44C1AWIOB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2943.543mil|Location1.Y=0mil|Location2.Y=3190.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2943.543mil|Location1.Y=0mil|Location2.Y=3190.984mil|Absolute=True">Room Definition: Between SMT Small Component R3-10K (23.241mm,3.048mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2572.244mil|Location1.Y=0mil|Location2.Y=3399.409mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2572.244mil|Location1.Y=0mil|Location2.Y=3399.409mil|Absolute=True">Room Definition: Between SMT Small Component D2-1N4148 (13.335mm,7.62mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2093.386mil|Location1.Y=0mil|Location2.Y=3263.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2093.386mil|Location1.Y=0mil|Location2.Y=3263.465mil|Absolute=True">Room Definition: Between SMT Small Component C1-106 (1.397mm,4.967mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2482.913mil|Location1.Y=0mil|Location2.Y=3268.386mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2482.913mil|Location1.Y=0mil|Location2.Y=3268.386mil|Absolute=True">Room Definition: Between SMT Small Component C2-104 (10.541mm,5.842mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2345.984mil|Location1.Y=0mil|Location2.Y=3388.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2345.984mil|Location1.Y=0mil|Location2.Y=3388.976mil|Absolute=True">Room Definition: Between SMT Small Component D1-1N4007 (5.588mm,8.255mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3060.99mil|Location1.Y=0mil|Location2.Y=3165.596mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3060.99mil|Location1.Y=0mil|Location2.Y=3165.596mil|Absolute=True">Room Definition: Between SMT Small Component D3-LED0603 (26.162mm,2.794mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3824.505mil|Location1.Y=0mil|Location2.Y=3210mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3824.505mil|Location1.Y=0mil|Location2.Y=3210mil|Absolute=True">Room Definition: Between SMT Small Component D4-LED IR 3mm-SMD (43.688mm,4.191mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2093.803mil|Location1.Y=0mil|Location2.Y=3378.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2093.803mil|Location1.Y=0mil|Location2.Y=3378.37mil|Absolute=True">Room Definition: Between Small Component P1-P (1.281mm,8.509mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2093.803mil|Location1.Y=0mil|Location2.Y=3108.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2093.803mil|Location1.Y=0mil|Location2.Y=3108.37mil|Absolute=True">Room Definition: Between Small Component P2-P (1.281mm,1.651mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3633.37mil|Location1.Y=0mil|Location2.Y=3148.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3633.37mil|Location1.Y=0mil|Location2.Y=3148.37mil|Absolute=True">Room Definition: Between Small Component P3-P (40.386mm,2.667mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3563.37mil|Location1.Y=0mil|Location2.Y=3393.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3563.37mil|Location1.Y=0mil|Location2.Y=3393.37mil|Absolute=True">Room Definition: Between Small Component P4-P (38.608mm,8.89mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2777.622mil|Location1.Y=0mil|Location2.Y=3277.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2777.622mil|Location1.Y=0mil|Location2.Y=3277.622mil|Absolute=True">Room Definition: Between Small Component P5-P (19.05mm,6.35mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2702.622mil|Location1.Y=0mil|Location2.Y=3302.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2702.622mil|Location1.Y=0mil|Location2.Y=3302.622mil|Absolute=True">Room Definition: Between Small Component P6-P (17.145mm,6.985mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2448.528mil|Location1.Y=0mil|Location2.Y=3363.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2448.528mil|Location1.Y=0mil|Location2.Y=3363.528mil|Absolute=True">Room Definition: Between SMT Small Component P7-P (10.541mm,8.382mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2978.37mil|Location1.Y=0mil|Location2.Y=3303.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2978.37mil|Location1.Y=0mil|Location2.Y=3303.37mil|Absolute=True">Room Definition: Between SMT Small Component P8-P (23.749mm,6.604mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3824.505mil|Location1.Y=0mil|Location2.Y=3390mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3824.505mil|Location1.Y=0mil|Location2.Y=3390mil|Absolute=True">Room Definition: Between SMT Small Component Q2-LED IR 3mm-SMD (43.688mm,8.763mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2480.709mil|Location1.Y=0mil|Location2.Y=3178.661mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2480.709mil|Location1.Y=0mil|Location2.Y=3178.661mil|Absolute=True">Room Definition: Between SMT Small Component Q3-C1815 (10.16mm,2.413mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2795.984mil|Location1.Y=0mil|Location2.Y=3393.543mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2795.984mil|Location1.Y=0mil|Location2.Y=3393.543mil|Absolute=True">Room Definition: Between SMT Small Component R1-470R (18.415mm,9.271mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3058.543mil|Location1.Y=0mil|Location2.Y=3315.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3058.543mil|Location1.Y=0mil|Location2.Y=3315.984mil|Absolute=True">Room Definition: Between SMT Small Component R2-10K (26.162mm,6.223mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2523.543mil|Location1.Y=0mil|Location2.Y=3180.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2523.543mil|Location1.Y=0mil|Location2.Y=3180.984mil|Absolute=True">Room Definition: Between SMT Small Component R4-1K (12.573mm,2.794mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2998.543mil|Location1.Y=0mil|Location2.Y=3190.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2998.543mil|Location1.Y=0mil|Location2.Y=3190.984mil|Absolute=True">Room Definition: Between SMT Small Component R5-1K (24.638mm,3.048mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2785.984mil|Location1.Y=0mil|Location2.Y=3068.543mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2785.984mil|Location1.Y=0mil|Location2.Y=3068.543mil|Absolute=True">Room Definition: Between SMT Small Component R6-330R (18.161mm,1.016mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2319.252mil|Location1.Y=0mil|Location2.Y=3211.378mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2319.252mil|Location1.Y=0mil|Location2.Y=3211.378mil|Absolute=True">Room Definition: Between SMT Small Component U1-CJA1117B-5.0 SOT89 (5.334mm,2.794mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

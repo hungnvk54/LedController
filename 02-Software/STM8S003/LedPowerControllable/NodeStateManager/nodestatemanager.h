@@ -26,8 +26,8 @@ typedef struct
 } Node_State_TypeDef;
 
 typedef enum {
-  OUTPUT_AS_INPUT,
-  OUTPUT_TOGGLE_WHEN_INPUT_ON
+  OUTPUT_AS_INPUT = 0,
+  OUTPUT_TOGGLE_WHEN_INPUT_ON = 1
 } Node_State_Output_Mode_TypeDef;
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/

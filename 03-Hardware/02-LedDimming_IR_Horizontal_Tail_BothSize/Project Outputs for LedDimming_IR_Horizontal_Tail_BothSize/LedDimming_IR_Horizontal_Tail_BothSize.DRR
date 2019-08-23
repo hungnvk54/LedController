@@ -1,0 +1,16 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: LedDimming_IR_Horizontal_Tail_BothSize.PcbDoc   7/9/2019  8:37:35 AM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : LedDimming_IR_Horizontal_Tail_BothSize.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      24mil (0.599mm)                                           Round             4         PTH        0.28inch (7.12mm)
+T2      26mil (0.671mm)                                           Round             2         PTH        0.07inch (1.89mm)
+T3      28mil (0.711mm)                                           Round             8         PTH        1.15inch (29.20mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              14
+
+Total Processing Time (hh:mm:ss) : 00:00:00

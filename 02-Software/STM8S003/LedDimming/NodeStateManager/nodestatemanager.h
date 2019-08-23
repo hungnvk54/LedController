@@ -38,5 +38,6 @@ GPIO_State_TypeDef Node_State_GetOutputState(void);
 void Node_State_SetOutputState(GPIO_State_TypeDef state);
 void Node_State_SetInputState(uint8_t state);
 void Node_State_SetOutputMode(Node_State_Output_Mode_TypeDef mode);
+double Node_State_GetActivePeriod(void);
 #endif /* __NODE_STATE_MANAGER_H */
 

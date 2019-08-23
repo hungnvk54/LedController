@@ -14,6 +14,7 @@
 #include "system_def.h"
 #include "timer_pwm.h"
 #include "write_flash.h"
+#include "util.h"
 /** @addtogroup Template_Project
   * @{
   */
@@ -24,6 +25,11 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 Node_State_TypeDef node_state;
+
+///For enter the setup mode
+uint8_t previous_node_state;
+uint32_t time_accurmate = 0;
+uint8_t state_change_counter = 0;
 
 Node_State_Output_Mode_TypeDef output_mode = OUTPUT_TOGGLE_WHEN_INPUT_ON;
 double dimming_on_change_factor = 0.01;
@@ -54,6 +60,9 @@ void update_output(uint8_t input_state)
 //        }
         node_state.output_state = GPIO_STATE_DIM_UP;
         node_state.dimming_active_period = Timer_PWM_Get_Active_Period();
+        if (node_state.dimming_active_period < 0.07) {
+          node_state.dimming_active_period = 0.07; //Fixbug - When state is off, active period =0 and then change to on/off state, max_active = 0 => cannot change the output state
+        }
       }
       //Change the dim level here
       if( node_state.output_state == GPIO_STATE_DIM_UP) {
@@ -71,7 +80,7 @@ void update_output(uint8_t input_state)
       }
     }
   } else if(output_mode == OUTPUT_AS_INPUT) {
-    if( input_state == ON) {
+    if( input_state == OFF) {
       node_state.output_state = GPIO_STATE_ON;
     } else {
       node_state.output_state = GPIO_STATE_OFF;
@@ -83,18 +92,23 @@ void Node_State_Manager_Init(Node_State_Output_Mode_TypeDef outputMode)
 {
   node_state.input_state = OFF;
   node_state.output_state = GPIO_STATE_OFF;
+  previous_node_state = node_state.input_state;
   node_state.dimming_active_period = 0;
   dimming_on_change_factor = 1.0f/DIMMING_ON_CHANGE_PERIOD_IN_MS_SECOND;
   dimming_off_change_factor = 1.0f/DIMMING_OFF_CHANGE_PERIOD_IN_MS_SECOND;
-  output_mode = outputMode;
+  output_mode = (Node_State_Output_Mode_TypeDef)Flash_Read_OutputMode(); //outputMode;
   
-  Flash_Init();
+  //if (output_mode == OUTPUT_TOGGLE_WHEN_INPUT_ON)
+  {
+    Flash_Init();
   
-  //Read the active value from the Flash
-  double active_value = Flash_Read_ActivePeriod();
-  if( active_value <= 1)
-    Timer_PWM_Set_Max_Active_Period(active_value);
-    Flash_Write_ActivePeriod(active_value);
+    //Read the active value from the Flash
+    double active_value = Flash_Read_ActivePeriod();
+    if( active_value <= 1.0)
+      Timer_PWM_Set_Max_Active_Period(active_value);
+      node_state.dimming_active_period = active_value;
+      Flash_Write_ActivePeriod(active_value);
+  }
 }
 
 void Node_State_Manager_Task(void *args)
@@ -125,10 +139,45 @@ void Node_State_Manager_Task(void *args)
   update_flash_timeout += 1;
   if( update_flash_timeout > 30000) {
     //Only update the flash after 30s
-    double max_active_period = Timer_PWM_Get_Max_Active_Period();
+    double max_active_period = node_state.dimming_active_period;
     Flash_Write_ActivePeriod(max_active_period);
     update_flash_timeout = 0;
   }
+  
+  /// Check the setting mode  
+    // Kiem tra theo so lan vay tay
+  if (((input_state == ON) && (previous_node_state != ON))||\
+    ( (input_state == OFF) && (previous_node_state != OFF)))
+  {
+    if (time_accurmate > 50) {
+      state_change_counter += 1;
+      if (state_change_counter > 16) {
+        //Change the output_mode and save to the flash then reset chip
+        if (output_mode == OUTPUT_AS_INPUT){
+          output_mode = OUTPUT_TOGGLE_WHEN_INPUT_ON;
+        } else{
+          output_mode = OUTPUT_AS_INPUT;
+        }
+        //Save to the flash
+        double max_active_period = node_state.dimming_active_period;
+        Flash_Write_OutputMode((uint8_t)output_mode);
+        Flash_Write_ActivePeriod(max_active_period);
+        Delay_Us(1000);
+        Reset_Chip(); // Reset the chip with flash
+      }
+      time_accurmate = 0;
+    } else{
+      time_accurmate = 0;
+    }
+  }
+  previous_node_state = input_state;
+  
+  time_accurmate += 1;
+  if (time_accurmate > 1000){
+    time_accurmate =0;
+    state_change_counter = 0;
+  }
+  
 }
 
 uint8_t Node_State_GetInputState(void)

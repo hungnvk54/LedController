@@ -22,5 +22,6 @@
 uint32_t Delay_Us(uint32_t t);
 void Generate_TestingSignal(void);
 void Wait_SystemStable(void);
+void Reset_Chip(void);
 #endif /* __TEMPLATE_H */
 

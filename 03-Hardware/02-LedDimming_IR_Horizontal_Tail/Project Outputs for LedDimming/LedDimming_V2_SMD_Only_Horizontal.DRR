@@ -1,0 +1,16 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: LedDimming_V2_SMD_Only_Horizontal.PcbDoc   7/2/2019  2:10:57 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : LedDimming_V2_SMD_Only_Horizontal.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      24mil (0.599mm)                                           Round             17        PTH        3.63inch (92.22mm)
+T2      26mil (0.671mm)                                           Round             2         PTH        0.08inch (2.01mm)
+T3      28mil (0.711mm)                                           Round             6         PTH        2.16inch (54.80mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              25
+
+Total Processing Time (hh:mm:ss) : 00:00:00

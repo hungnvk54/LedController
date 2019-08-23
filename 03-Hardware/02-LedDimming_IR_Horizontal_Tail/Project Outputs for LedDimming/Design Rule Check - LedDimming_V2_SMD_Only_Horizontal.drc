@@ -1,0 +1,145 @@
+Protel Design System Design Rule Check
+PCB File : D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming_IR_Horizontal_Tail\LedDimming_V2_SMD_Only_Horizontal.PcbDoc
+Date     : 7/1/2019
+Time     : 2:54:31 PM
+
+Processing Rule : Clearance Constraint (Gap=0.2mm) (All),(All)
+   Violation between Clearance Constraint: (0.175mm < 0.2mm) Between Track (15.211mm,8.132mm)(15.211mm,8.988mm) on Top Layer And Pad U2-2(15.211mm,7.482mm) on Top Layer 
+   Violation between Clearance Constraint: (0.013mm < 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Pad D2-1(13.335mm,9.245mm) on Top Layer 
+   Violation between Clearance Constraint: (0.187mm < 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Pad R1-2(17.39mm,9.271mm) on Top Layer 
+   Violation between Clearance Constraint: (0.187mm < 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Pad R1-1(19.44mm,9.271mm) on Top Layer 
+   Violation between Clearance Constraint: (0.131mm < 0.2mm) Between Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer And Pad P1-1(1.281mm,8.509mm) on Multi-Layer 
+   Violation between Clearance Constraint: (0.131mm < 0.2mm) Between Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer And Pad P2-1(1.281mm,1.651mm) on Multi-Layer 
+   Violation between Clearance Constraint: (Collision < 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Pad P4-1(38.608mm,8.89mm) on Multi-Layer 
+   Violation between Clearance Constraint: (0.179mm < 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Via (36.83mm,9.144mm) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (0.179mm < 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Via (37.592mm,9.144mm) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (0.179mm < 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Via (36.068mm,9.144mm) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (0.179mm < 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Via (1.27mm,9.144mm) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (0.091mm < 0.2mm) Between Track (1.27mm,8.89mm)(38.608mm,8.89mm) on Bottom Layer And Via (26.797mm,7.239mm) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 0.2mm) Between Track (1.281mm,1.651mm)(23.622mm,1.651mm) on Bottom Layer And Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer 
+   Violation between Clearance Constraint: (0.12mm < 0.2mm) Between Track (1.27mm,8.89mm)(38.608mm,8.89mm) on Bottom Layer And Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer 
+   Violation between Clearance Constraint: (0.135mm < 0.2mm) Between Track (28.448mm,9.398mm)(29.364mm,8.482mm) on Top Layer And Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer 
+   Violation between Clearance Constraint: (0.135mm < 0.2mm) Between Track (19.44mm,9.398mm)(28.448mm,9.398mm) on Top Layer And Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer 
+   Violation between Clearance Constraint: (Collision < 0.2mm) Between Track (1.27mm,8.89mm)(38.608mm,8.89mm) on Bottom Layer And Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer 
+   Violation between Clearance Constraint: (0.135mm < 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Track (19.44mm,9.398mm)(28.448mm,9.398mm) on Top Layer 
+   Violation between Clearance Constraint: (0.135mm < 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Track (28.448mm,9.398mm)(29.364mm,8.482mm) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 0.2mm) Between Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer And Track (1.281mm,1.651mm)(23.622mm,1.651mm) on Bottom Layer 
+   Violation between Clearance Constraint: (0.12mm < 0.2mm) Between Track (0mm,-0.127mm)(0mm,10.033mm) on Keep-Out Layer And Track (1.27mm,8.89mm)(38.608mm,8.89mm) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 0.2mm) Between Track (0mm,10.033mm)(45.085mm,10.033mm) on Keep-Out Layer And Track (1.27mm,8.89mm)(38.608mm,8.89mm) on Bottom Layer 
+Rule Violations :22
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.4mm) (Max=4mm) (Preferred=0.5mm) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.254mm) (All),(All)
+   Violation between Hole To Hole Clearance Constraint: (0.035mm < 0.254mm) Between Via (1.27mm,7.874mm) from Top Layer to Bottom Layer And Pad P1-1(1.281mm,8.509mm) on Multi-Layer 
+   Violation between Hole To Hole Clearance Constraint: (0.035mm < 0.254mm) Between Via (1.27mm,9.144mm) from Top Layer to Bottom Layer And Pad P1-1(1.281mm,8.509mm) on Multi-Layer 
+   Violation between Hole To Hole Clearance Constraint: (0.162mm < 0.254mm) Between Via (1.281mm,2.413mm) from Top Layer to Bottom Layer And Pad P2-1(1.281mm,1.651mm) on Multi-Layer 
+   Violation between Hole To Hole Clearance Constraint: (0.162mm < 0.254mm) Between Via (37.592mm,9.144mm) from Top Layer to Bottom Layer And Via (36.83mm,9.144mm) from Top Layer to Bottom Layer 
+   Violation between Hole To Hole Clearance Constraint: (0.162mm < 0.254mm) Between Via (36.068mm,9.144mm) from Top Layer to Bottom Layer And Via (36.83mm,9.144mm) from Top Layer to Bottom Layer 
+   Violation between Hole To Hole Clearance Constraint: (0.162mm < 0.254mm) Between Via (28.829mm,3.302mm) from Top Layer to Bottom Layer And Via (28.067mm,3.302mm) from Top Layer to Bottom Layer 
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.254mm) Between Via (38.989mm,2.667mm) from Top Layer to Bottom Layer And Via (39.497mm,2.667mm) from Top Layer to Bottom Layer Pad/Via Touching Holes
+Rule Violations :7
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)
+   Violation between Minimum Solder Mask Sliver Constraint: (0.062mm < 0.254mm) Between Via (22.606mm,2.032mm) from Top Layer to Bottom Layer And Pad U2-11(21.111mm,2.282mm) on Top Layer [Top Solder] Mask Sliver [0.062mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.211mm < 0.254mm) Between Pad D2-2(13.335mm,5.995mm) on Top Layer And Pad U2-6(15.211mm,4.882mm) on Top Layer [Top Solder] Mask Sliver [0.211mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.048mm < 0.254mm) Between Pad D2-2(13.335mm,5.995mm) on Top Layer And Pad U2-5(15.211mm,5.532mm) on Top Layer [Top Solder] Mask Sliver [0.048mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.048mm < 0.254mm) Between Pad D2-2(13.335mm,5.995mm) on Top Layer And Pad U2-4(15.211mm,6.182mm) on Top Layer [Top Solder] Mask Sliver [0.048mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.064mm < 0.254mm) Between Pad D2-2(13.335mm,5.995mm) on Top Layer And Pad U2-3(15.211mm,6.832mm) on Top Layer [Top Solder] Mask Sliver [0.064mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.077mm < 0.254mm) Between Pad D2-1(13.335mm,9.245mm) on Top Layer And Pad U2-1(15.211mm,8.132mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.216mm < 0.254mm) Between Pad D2-2(13.335mm,5.995mm) on Top Layer And Pad C2-2(11.416mm,5.842mm) on Top Layer [Top Solder] Mask Sliver [0.216mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.229mm < 0.254mm) Between Pad P1-1(1.281mm,8.509mm) on Multi-Layer And Pad D1-2(3.713mm,8.255mm) on Top Layer [Top Solder] Mask Sliver [0.229mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.078mm < 0.254mm) Between Pad P3-1(40.386mm,2.667mm) on Multi-Layer And Pad Q1-4(36.005mm,4.699mm) on Top Layer [Top Solder] Mask Sliver [0.078mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.033mm < 0.254mm) Between Via (36.83mm,9.144mm) from Top Layer to Bottom Layer And Pad P4-1(38.608mm,8.89mm) on Multi-Layer [Top Solder] Mask Sliver [0.033mm] / [Bottom Solder] Mask Sliver [0.033mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.201mm < 0.254mm) Between Via (36.068mm,9.144mm) from Top Layer to Bottom Layer And Via (37.592mm,9.144mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.201mm] / [Bottom Solder] Mask Sliver [0.201mm]
+Rule Violations :11
+
+Processing Rule : Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Arc (17.311mm,7.507mm) on Top Overlay And Pad P6-1(17.145mm,6.985mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Arc (11.96mm,3.788mm) on Top Overlay And Pad R4-2(12.573mm,3.819mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Arc (43.685mm,2.677mm) on Top Overlay And Pad D4-2(43.688mm,4.191mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.127mm < 0.254mm) Between Arc (43.685mm,2.677mm) on Top Overlay And Pad Q2-1(43.688mm,6.223mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.127mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Arc (43.685mm,2.677mm) on Top Overlay And Pad P3-1(40.386mm,2.667mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Arc (26.849mm,4.106mm) on Top Overlay And Pad D3-1(26.162mm,3.544mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Arc (43.685mm,7.249mm) on Top Overlay And Pad Q2-2(43.688mm,8.763mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.209mm < 0.254mm) Between Text "+" (1.778mm,6.477mm) on Top Overlay And Pad C1-2(1.397mm,5.842mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.209mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.251mm < 0.254mm) Between Track (14.16mm,7.02mm)(14.16mm,8.22mm) on Top Overlay And Pad U2-2(15.211mm,7.482mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.251mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.251mm < 0.254mm) Between Track (12.51mm,8.22mm)(14.16mm,8.22mm) on Top Overlay And Pad U2-1(15.211mm,8.132mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.251mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.251mm < 0.254mm) Between Track (14.16mm,7.02mm)(14.16mm,8.22mm) on Top Overlay And Pad U2-1(15.211mm,8.132mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.251mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Track (42.042mm,0.762mm)(45.339mm,0.762mm) on Top Overlay And Pad D4-1(43.688mm,1.651mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.239mm < 0.254mm) Between Track (16.311mm,8.507mm)(20.011mm,8.507mm) on Top Overlay And Pad R1-2(17.39mm,9.271mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.239mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.24mm < 0.254mm) Between Track (20.011mm,1.907mm)(20.011mm,8.507mm) on Top Overlay And Pad R1-1(19.44mm,9.271mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.24mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.239mm < 0.254mm) Between Track (16.311mm,8.507mm)(20.011mm,8.507mm) on Top Overlay And Pad R1-1(19.44mm,9.271mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.239mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Track (25.787mm,2.694mm)(25.787mm,2.894mm) on Top Overlay And Pad D3-2(26.162mm,2.044mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Track (26.537mm,2.694mm)(26.537mm,2.894mm) on Top Overlay And Pad D3-2(26.162mm,2.044mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Track (25.787mm,2.694mm)(25.787mm,2.894mm) on Top Overlay And Pad D3-1(26.162mm,3.544mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Track (26.537mm,2.694mm)(26.537mm,2.894mm) on Top Overlay And Pad D3-1(26.162mm,3.544mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Track (42.042mm,5.334mm)(45.339mm,5.334mm) on Top Overlay And Pad Q2-1(43.688mm,6.223mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.217mm < 0.254mm) Between Text "+" (1.778mm,6.477mm) on Top Overlay And Pad D1-2(3.713mm,8.255mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.217mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Text "+" (1.778mm,6.477mm) on Top Overlay And Pad P1-1(1.281mm,8.509mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.134mm < 0.254mm) Between Track (16.311mm,1.907mm)(16.311mm,8.507mm) on Top Overlay And Pad P6-1(17.145mm,6.985mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.134mm]
+Rule Violations :23
+
+Processing Rule : Silk to Silk (Clearance=0.254mm) (All),(All)
+   Violation between Silk To Silk Clearance Constraint: (0.086mm < 0.254mm) Between Text "R6" (16.624mm,2.502mm) on Top Overlay And Track (16.311mm,1.907mm)(16.311mm,8.507mm) on Top Overlay Silk Text to Silk Clearance [0.086mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "D2" (14.097mm,12.319mm) on Top Overlay And Text "U2" (15.367mm,13.716mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "R4" (12.446mm,11.303mm) on Top Overlay And Text "D2" (14.097mm,12.319mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "Q3" (8.382mm,12.827mm) on Top Overlay And Text "C2" (6.604mm,11.176mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (0.192mm < 0.254mm) Between Text "P1" (0.43mm,10.376mm) on Top Overlay And Text "D1" (2.819mm,10.643mm) on Top Overlay Silk Text to Silk Clearance [0.192mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "R5" (21.082mm,-10.287mm) on Top Overlay And Text "D3" (18.542mm,-9.779mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "P6" (17.145mm,10.922mm) on Top Overlay And Text "P5" (19.558mm,11.938mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "R4" (12.446mm,11.303mm) on Top Overlay And Text "P7" (9.69mm,10.249mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "Q1" (28.512mm,11.938mm) on Top Overlay And Text "R2" (29.972mm,13.208mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+Rule Violations :9
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+Rule Violations :0
+
+Processing Rule : Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming'))
+   Violation between Room Definition: Between SMT Small Component R3-10K (23.241mm,3.048mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component D2-1N4148 (13.335mm,7.62mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component C1-106 (1.397mm,4.967mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component C2-104 (10.541mm,5.842mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component D1-1N4007 (5.588mm,8.255mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component D3-LED0603 (26.162mm,2.794mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component D4-LED IR 3mm-SMD (43.688mm,4.191mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between Small Component P1-P (1.281mm,8.509mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between Small Component P2-P (1.281mm,1.651mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between Small Component P3-P (40.386mm,2.667mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between Small Component P4-P (38.608mm,8.89mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between Small Component P5-P (19.05mm,6.35mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between Small Component P6-P (17.145mm,6.985mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component P7-P (10.541mm,8.382mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component P8-P (23.749mm,6.604mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component Q2-LED IR 3mm-SMD (43.688mm,8.763mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component Q3-C1815 (10.16mm,2.413mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component R1-470R (18.415mm,9.271mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component R2-10K (26.162mm,6.223mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component R4-1K (12.573mm,2.794mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component R5-1K (24.638mm,3.048mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component R6-330R (18.161mm,1.016mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+   Violation between Room Definition: Between SMT Small Component U1-CJA1117B-5.0 SOT89 (5.334mm,2.794mm) on Top Layer And Room LedDimming (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('LedDimming')) 
+Rule Violations :23
+
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+
+Violations Detected : 95
+Time Elapsed        : 00:00:01

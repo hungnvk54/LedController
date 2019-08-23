@@ -1,0 +1,30 @@
+Change Component Footprint: Designator=D4 Old Footprint=LED_IR_3mm-SMD- Modifire New Footprint=LED_IR_3mm-SMD
+Change Component Footprint: Designator=Q2 Old Footprint=LED_IR_3mm-SMD- Modifire New Footprint=LED_IR_3mm-SMD
+Change Component Comment : Designator=R6 Old Comment=100R New Comment=330R
+Change Component Comment : Designator=D4 Old Comment=LED IR 3mm New Comment=LED IR 3mm-SMD
+Change Component Comment : Designator=Q2 Old Comment=LED IR 3mm New Comment=LED IR 3mm-SMD
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-471ELFCT-ND"; VariantName = "[No Variations]"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "CR0603-JW-471ELFCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "1N4148UR-1-ND"; VariantName = "[No Variations]"
+Added Component: Designator=D2(DIOMELF3515N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "1N4148UR-1-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "541-10.0KSCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=R3(RESC2608X06N_0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "541-10.0KSCT-ND"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=D_Output Pin=D2-1
+Added Pin To Net: NetName=NetD2_2 Pin=D2-2
+Added Pin To Net: NetName=GND Pin=R3-1
+Added Pin To Net: NetName=D_Input Pin=R3-2
+Added Pin To Net: NetName=NetD4_1 Pin=R6-2
+Added Member To Class: ClassName=LedDimming Member=Component D2 1N4148
+Added Member To Class: ClassName=LedDimming Member=Component R3 10K
+Added Room: Name=LedDimming

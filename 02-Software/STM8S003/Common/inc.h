@@ -36,6 +36,7 @@
 #include "system_def.h"
 #include "ir_receiver.h"
 #include "stm8s_flash.h"
+#include "stm8s_wwdg.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/

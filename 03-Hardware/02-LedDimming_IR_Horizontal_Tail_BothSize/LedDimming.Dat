@@ -1,0 +1,16 @@
+﻿Field=#~Integer~#~50|Field=Comment~String~Comment~120|Field=Designator~String~Designator~120|Field=Footprint~String~Footprint~120|Field=LibRef~String~LibRef~120|Field=Quantity~Integer~Quantity~120|Field=Center-X(mm)~String~Center-X(mm)~101|Field=Center-Y(mm)~String~Center-Y(mm)~101|Field=Rotation~String~Rotation~101|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~LedDimming.PrjPcb|ReportField=ProjectFullPath~D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming\LedDimming.PrjPcb|ReportField=Title~Bill of Materials For PCB Document [LedDimming.PcbDoc]|ReportField=TotalQuantity~26|ReportField=ReportTime~12:50:28 AM|ReportField=ReportDate~6/21/2019|ReportField=ReportDateTime~6/21/2019 12:50:28 AM|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=DataSourceFileName~LedDimming.PcbDoc|ReportField=DataSourceFullPath~D:\DATA\03-DuAn\01-LedProject\LedController\03-Hardware\02-LedDimming\LedDimming.PcbDoc|ReportField=PCBConfigurationName~Sources|ReportField=Item~|ReportField=ItemRevision~|ReportField=ItemAndRevision~|ReportField=ItemRevisionBase~|ReportField=ItemRevisionLevel1~|ReportField=ItemRevisionLevel2~|ReportField=ItemRevisionLevel1AndBase~|ReportField=ItemRevisionLevel2AndLevel1~
+1|106|C1|CAPC2012X12N|Capacitor 106|1|10.668|1.905|90
+2|104|C2|CAPC2012X12N|Capacitor 104 0603|1|4.699|3.048|270
+3|1N4007|D1|SODFL504X244-2N|1N4007_SMD Diode|1|5.842|6.731|180
+4|1N4148|D2|DIOMELF3515N|1N4148_SMD|1|4.191|7.467|90
+5|LED0603|D3|DIOC1608X06N|LED0603|1|17.653|6.604|90
+6|LED IR 3mm|D4, Q2|LED_IR_3mm|LED IR 3mm|2|25.019, 25.146|2.794, 7.239|180, 0
+7|P|P1, P2, P3, P4, P5, P6, P7, P8|Point|Point|8|1.397, 1.397, 28.575, 28.575, 14.732, 9.779, 1.27, 1.27|8.509, 1.524, 1.778, 8.128, 7.366, 5.969, 5.969, 3.683|0
+8|AO3400|Q1|SOT95P278X125-3N|AO3400  MOSFET SOT23-3|1|17.018|2.54|270
+9|C1815|Q3|SOT95P278X125-3N|Transitor C1815 NPN|1|17.018|2.54|90
+10|1K|R1, R4, R5|RESC2608X06N_0603|1k_0603_5%|3|10.541, 9.271, 16.256|9.271, 0.889, 6.858|0, 0, 270
+11|10K|R2, R3|RESC2608X06N_0603|R10k_0603_5%|2|20.828, 3.048|8.382, 3.048|0, 90
+12|100R|R6|RESC2608X06N_0603|R100_0603_5%|1|20.955|6.35|0
+13|1K|R7|Var_SMD_3x3|Varistor 3x3 SMD 1KOhm|1|21.098|3.074|180
+14|CJA1117B-5.0 SOT89|U1|SOT89-150P409X160-3N|CJA1117B-5.0 SOT89|1|4.418|2.691|0
+15|STM8S003|U2|TSOP65P640X120-20N|STM8S003|1|9.906|5.08|0
