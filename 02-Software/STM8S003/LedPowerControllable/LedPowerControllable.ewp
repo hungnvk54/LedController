@@ -1310,7 +1310,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>LedDimming.hex</state>
+                    <state>$PROJ_FNAME$.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -1365,7 +1365,7 @@
                 </option>
                 <option>
                     <name>IlinkOutputFile</name>
-                    <state>LedDimming.out</state>
+                    <state>$PROJ_FNAME$.out</state>
                 </option>
                 <option>
                     <name>IlinkDebugInfoEnable</name>

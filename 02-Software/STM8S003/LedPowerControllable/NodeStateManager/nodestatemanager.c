@@ -27,9 +27,9 @@
 Node_State_TypeDef node_state;
 
 ///For enter the setup mode
-uint8_t previous_node_state;
+/*uint8_t previous_node_state;
 uint32_t time_accurmate = 0;
-uint8_t state_change_counter = 0;
+uint8_t state_change_counter = 0;*/
 
 Node_State_Output_Mode_TypeDef output_mode = OUTPUT_TOGGLE_WHEN_INPUT_ON;
 double dimming_on_change_factor = 0.01;
@@ -92,11 +92,11 @@ void Node_State_Manager_Init(Node_State_Output_Mode_TypeDef outputMode)
 {
   node_state.input_state = OFF;
   node_state.output_state = GPIO_STATE_OFF;
-  previous_node_state = node_state.input_state;
+  //previous_node_state = node_state.input_state;
   node_state.dimming_active_period = 0;
   dimming_on_change_factor = 1.0f/DIMMING_ON_CHANGE_PERIOD_IN_MS_SECOND;
   dimming_off_change_factor = 1.0f/DIMMING_OFF_CHANGE_PERIOD_IN_MS_SECOND;
-  output_mode = (Node_State_Output_Mode_TypeDef)Flash_Read_OutputMode(); //outputMode;
+  output_mode = outputMode;
   
   //if (output_mode == OUTPUT_TOGGLE_WHEN_INPUT_ON)
   {
@@ -146,7 +146,7 @@ void Node_State_Manager_Task(void *args)
   
   /// Check the setting mode  
     // Kiem tra theo so lan vay tay
-  if (((input_state == ON) && (previous_node_state != ON))||\
+  /*if (((input_state == ON) && (previous_node_state != ON))||\
     ( (input_state == OFF) && (previous_node_state != OFF)))
   {
     if (time_accurmate > 50) {
@@ -176,7 +176,7 @@ void Node_State_Manager_Task(void *args)
   if (time_accurmate > 1000){
     time_accurmate =0;
     state_change_counter = 0;
-  }
+  }*/
   
 }
 
