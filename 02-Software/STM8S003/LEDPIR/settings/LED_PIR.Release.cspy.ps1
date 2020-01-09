@@ -23,9 +23,9 @@ param([String]$debugfile = "");
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LEDPIR\settings\LED_PIR.Release.general.xcl" --backend -f "E:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LEDPIR\settings\LED_PIR.Release.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "D:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LEDPIR\settings\LED_PIR.Release.general.xcl" --backend -f "D:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LEDPIR\settings\LED_PIR.Release.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LEDPIR\settings\LED_PIR.Release.general.xcl" --debug_file=$debugfile --backend -f "E:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LEDPIR\settings\LED_PIR.Release.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "D:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LEDPIR\settings\LED_PIR.Release.general.xcl" --debug_file=$debugfile --backend -f "D:\DATA\03-DuAn\01-LedProject\LedController\02-Software\STM8S003\LEDPIR\settings\LED_PIR.Release.driver.xcl" 
 }

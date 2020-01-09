@@ -49,10 +49,12 @@ void Led_Control_Cmd( GPIO_TypeDef *port, GPIO_Pin_TypeDef pin,\
     Led_Control_Immediate(state);
   } else if( CONTROL_MODE_DIMMING == running_mode )
   {
+#ifdef LED_DIMMING
     if(( state == GPIO_STATE_DIM_UP)||(state == GPIO_STATE_DIM_DOWN))
     {
       Timer_PWM_Set_Active_Period(Node_State_GetActivePeriod());
     }
+#endif
     Timer_PWM_Start(state);
   }
 }

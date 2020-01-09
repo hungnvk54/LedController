@@ -46,7 +46,10 @@ void process_digital_input()
     if( GPIO_STATE_ON == current_input_state )
     {
       //Toggle the output
-      Node_State_ToggleOutputState();
+      //Node_State_ToggleOutputState();
+      Node_State_SetOutputState(GPIO_STATE_ON);
+    } else{
+      Node_State_SetOutputState(GPIO_STATE_OFF);
     }
   }
 }

@@ -83,10 +83,10 @@
 #define INDICATOR_LED_PORT                      GPIOC
 #define INDICATOR_LED_PIN                       GPIO_PIN_3     //Must edit to GPIO_PIN_3
 
-#define DIGITAL_INPUT_PORT                      GPIOA
-#define DIGITAL_INPUT_PIN                       GPIO_PIN_2
-#define DIGITAL_OUTPUT_PORT                     GPIOA
-#define DIGITAL_OUTPUT_PIN                      GPIO_PIN_1
+#define DIGITAL_INPUT_PORT                      GPIOC
+#define DIGITAL_INPUT_PIN                       GPIO_PIN_5
+#define DIGITAL_OUTPUT_PORT                     GPIOC
+#define DIGITAL_OUTPUT_PIN                      GPIO_PIN_6
 
 //#define DIGITAL_INPUT_PORT                      GPIOC
 //#define DIGITAL_INPUT_PIN                       GPIO_PIN_7
